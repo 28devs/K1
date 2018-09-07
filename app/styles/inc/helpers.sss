@@ -4,7 +4,12 @@
   &:before
     content: ''
     display: block
-    position: absolute -24px null null -15px
+    position: absolute -28px null null -15px
     background: svg-load('icons/quote.svg')
     size: size('icons/quote.svg')
     z-index: 1
+    transform: scale(.7) @md scale(1)
+
+  &__text
+    position: relative
+    z-index: 2

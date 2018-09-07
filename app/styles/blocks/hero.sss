@@ -1,32 +1,40 @@
 .hero
-  background: resolve('hero/bg.jpg') center / cover
-  height: calc(100vh - 60px)
+  background: #7aa0cf resolve('hero/bg.jpg') center / cover
+  height: calc(100vh - 30px) @lg calc(100vh - 60px)
   box: vertical center middle
-  margin: 30px
-  padding: 30px 6.25%
+  margin: 15px @lg 30px
+  padding: 15px 6.25% @md 30px 6.25%
   position: relative
 
   &:after
     content: ''
     position: absolute null 6.25% -5px null
-    background: svg-load('icons/k1.svg' fill: #fff)
-    size: size('icons/k1.svg')
+    background: svg-load('icons/k1.svg' fill: #fff) no-repeat center / contain
+    size: 50px @md 106px 100px @lg 186px 178px @xxl size('icons/k1.svg')
+    display: @md-down none
 
   &__title
-    text: 700 center 120px 110px #fff
+    text: 700 center .9 #fff
+    font-size: responsive 44px 120px
+    font-range: $sm-px $xxl-px
     font-family: $font-title
     margin-top: auto
+    cursor: default
 
-  &__text
-    text: 500 left 17px 26px #fff
+  &__quote
+    text: 500 left 15px 1.3 #fff @lg 17px @xxl 20px
     font-family: $font-text
     align-self: flex-start
+    max-width: 89% @md 60% @lg 33%
+    position: absolute
+    bottom: 20% @md 17%
+    cursor: default
 
   &__discover
-    text: 400 left 18px #fff
+    text: 400 left 13px #fff @md 15px @lg 18px
     font-family: $font-title
     margin-top: auto
-    margin-bottom: 30px
+    cursor: pointer
     
     &:after
       content: ''
