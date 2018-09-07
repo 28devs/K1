@@ -3,6 +3,14 @@
   height: calc(100vh - 60px)
   box: vertical center middle
   margin: 30px
+  padding: 30px 6.25%
+  position: relative
+
+  &:after
+    content: ''
+    position: absolute null 6.25% -5px null
+    background: svg-load('icons/k1.svg' fill: #fff)
+    size: size('icons/k1.svg')
 
   &__title
     text: 700 center 120px 110px #fff
@@ -13,9 +21,16 @@
     text: 500 left 17px 26px #fff
     font-family: $font-text
     align-self: flex-start
-    margin-left: 6.25%
 
   &__discover
     text: 400 left 18px #fff
     font-family: $font-title
     margin-top: auto
+    margin-bottom: 30px
+    
+    &:after
+      content: ''
+      display: block
+      background: svg-load('icons/wave.svg' fill: #fff)
+      size: size('icons/wave.svg')
+      margin: 6px auto 0
