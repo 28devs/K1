@@ -13,3 +13,14 @@
   &__text
     position: relative
     z-index: 2
+
+.lines
+  position: fixed 0 0 0 0
+  z-index: 99999
+  pointer-events: none
+  box: center space-between
+  @extend .container
+
+  &__elem
+    size: 1px 100%
+    background: rgba(255, 255, 255, 0.2045)
