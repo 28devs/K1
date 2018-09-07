@@ -6,12 +6,32 @@
 .row
   display: flex
   flex-wrap: wrap
-  
+
+.col
+  position: relative
+
+  &:before, &:after
+    background-color: #fff
+    position: absolute
+    top: 0
+    content: ''
+    height: 100vh
+    width: 1px
+
+  &:before
+    left: 0
+
+  &:after
+    right: 0
+   
 .col-1
   width: 50%
 
 .col-2
   width: 100%
+
+.offset-0
+  margin-left: 0
 
 .offset-1
   margin-left: 50%
@@ -37,6 +57,9 @@
 
   .offset-md-3
     margin-left: 75%
+
+  .offset-md-0
+    margin-left: 0
 
 @media $lg
   .col-lg-1
@@ -71,6 +94,10 @@
 
   .offset-lg-5
     margin-left: 83.333333%
- 
+
+  .offset-lg-0
+    margin-left: 0
+
+
  
 

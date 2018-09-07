@@ -1,1 +1,18 @@
-//- .links
+.links
+  .container
+    .row
+        .offset-lg-2.offset-md-0.col-lg-3
+          .links__wrap
+            .links__title Explore more charity websites
+
+            .links__items-wrap
+              each item in links
+                .links__item
+                  .links__img-wrap
+                    img(src="img/links/templ.jpg", alt="")
+
+                  .links__text
+                    .links__item-title K1
+                    .links__item-desc= item
+
+
