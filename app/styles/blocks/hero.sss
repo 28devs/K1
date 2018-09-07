@@ -1,4 +1,9 @@
 .hero
   background: resolve('hero/bg.jpg') center / cover
-  height: 100vh
-  box-shadow: inset 0 0 0 30px #fff
+  height: calc(100vh - 60px)
+  box: vertical center middle
+  margin: 30px
+
+  &__title
+    text: 700 center 120px 110px #fff
+    font-family: $font-title
