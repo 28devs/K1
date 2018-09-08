@@ -1,0 +1,71 @@
+.form
+  box: bottom center
+  background-color: #f0f0f0
+  min-height: 70vh
+  position: relative
+
+  &__lines .lines__elem
+    background: rgba(255, 255, 255, 0.6)
+
+  &__wrap
+    width: 100% @lg 77.08333vw
+    margin-top: 50px 
+
+  &__head
+    box: space-between
+    font-family: 'Futura Md BT', arial
+    padding: 0 5.20833333vw
+
+  &__head-item
+    text: 100px .71 500    
+    font-size: responsive 40px 100px
+    font-range: $sm-px $xxxl-px
+    position: relative
+    z-index: 1
+
+    &:nth-child(1)
+      color: #c2c8d5
+
+    &:nth-child(2)
+      color: #FFC33B
+      opacity: .7
+
+    &:nth-child(3)
+      color: #ffffff
+      opacity: 0.923
+
+  &__body
+    position: relative
+    z-index: 2
+    background-color: $black
+    padding: 50px 32px 0 @lg 75px 0 0 12.5vw
+
+  &__desc
+    font-family: $font-text
+    max-width: 100% @lg 637px
+    color: #fff
+    font-size: responsive 16px 24px
+    font-range: $md-px $xxl-px
+    font-weight: 400
+    margin-bottom: 20px
+
+  &__fields
+    box: vertical @md horizontal stretch 
+
+  &__fields-half
+
+    & + &
+      margin-left: 0 @md 50px
+      margin-top: 30px @md 0
+      box: vertical right
+
+    &:nth-child(1)
+      width: 100% @md 50% @lg 25vw
+ 
+    &:nth-child(2)
+      // width: 100% @md 50% @lg 28.47222222vw
+      width: 100% @md 50% @lg 29.8vw
+    
+  &__btn
+    margin-top: 35px
+    margin-bottom: -30px

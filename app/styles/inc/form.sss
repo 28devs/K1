@@ -1,28 +1,46 @@
 .input
+  padding: 18px 23px
+  background-color: #333C51
+  height: 60px
+  outline: 0
+  border: 0
+  text: #fff 16px 60px 400
+  font-family: $font-text
+  width: 100%
+  transition: .3s ease
 
-  &__elem
-    border: 1px solid #D3D9E4
-    border-color: #D3D9E4
-    border-radius: 30px
-    padding: 18px 23px
-    height: 54px
-    outline: 0
-    text: $text-black 14px
-    font-family: $font
-    width: 100%
-    transition: .3s ease
+  & + &
+    margin-top: 30px @md 20px
 
-    &::placeholder
-      text: #7C90B9
+  &::placeholder
+    text: rgba(255, 255, 255, 0.5) 
 
-    &:focus
-      border-color: #036FF5
-      box-shadow: inset 0px 3px 0px #D9D9D9
+.textarea
+  width: 100%
+  height: 140px
+  box-sizing: border-box
+  padding: 20px
+  resize: none
+  background-color: #333C51
+  outline: 0
+  border: 0
+  text: #fff 16px 1.4 400
+  font-family: $font-text
+  width: 100%
+  transition: .3s ease
 
-  &--error
-    ^&__elem
-      border-color: #FF0F00
-      text: #FF0F00
+  &::placeholder
+    text: rgba(255, 255, 255, 0.5) 16px 1.4 400
 
-      &::placeholder
-        text: #FF0F00
+
+
+  // &:focus
+    
+
+  // &--error
+  //   ^&__elem
+  //     border-color: #FF0F00
+  //     text: #FF0F00
+
+  //     &::placeholder
+  //       text: #FF0F00
