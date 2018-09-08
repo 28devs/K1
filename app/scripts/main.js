@@ -34,6 +34,48 @@ if (stickyNavMobileOpenBtn) {
 }
 
 //
+// Sponsors slider
+//
+const sponsorsSliderBlock = document.querySelector('.sponsors__slider');
+
+if (sponsorsSliderBlock) {
+  const sponsorsSliderPrevBtn = document.querySelector(
+    '.sponsors__slider-control--prev'
+  );
+  const sponsorsSliderNextBtn = document.querySelector(
+    '.sponsors__slider-control--next'
+  );
+
+  const sponsorsSlider = $(sponsorsSliderBlock).lightSlider({
+    item: 1,
+    autoWidth: true,
+    slideMargin: 0,
+    controls: false,
+    pager: false,
+    onBeforeSlide: function(elem) {
+      if (sponsorsSlider.getCurrentSlideCount() == 1) {
+        sponsorsSliderPrevBtn.classList.add('sponsors__slider-control--hide');
+      } else {
+        sponsorsSliderPrevBtn.classList.remove(
+          'sponsors__slider-control--hide'
+        );
+      }
+
+      if (sponsorsSlider.getCurrentSlideCount() == 4) {
+        sponsorsSliderNextBtn.classList.add('sponsors__slider-control--hide');
+      } else {
+        sponsorsSliderNextBtn.classList.remove(
+          'sponsors__slider-control--hide'
+        );
+      }
+    }
+  });
+
+  sponsorsSliderPrevBtn.onclick = sponsorsSlider.goToPrevSlide;
+  sponsorsSliderNextBtn.onclick = sponsorsSlider.goToNextSlide;
+}
+
+//
 // DEV
 //
 

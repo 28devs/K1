@@ -3,11 +3,31 @@ section.sponsors.lines__wrap
     .row
       .offset-lg-2.offset-md-0.col-lg-4.col-md-4.col-2
         h2.sponsors__title Sponsors
+          .sponsors__title-rank Platinum
 
-        .sponsors__slider
-          each i in [1,2,3,4,5,6,7,8,9,10]
-            .sponsors__img-wrap
-              img.sponsors__img(src='img/sponsors/'+i+'.jpg', alt='sponsor')
+          .sponsors__slider-control.sponsors__slider-control--prev.sponsors__slider-control--hide
+          .sponsors__slider-control.sponsors__slider-control--next
+
+        ul.sponsors__slider
+          li.sponsors__slide
+            each i in [1,2,3,4,5,6,7,8]
+              .sponsors__img-wrap
+                img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
+
+          li.sponsors__slide
+            each i in [9,10]
+              .sponsors__img-wrap
+                img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
+
+          li.sponsors__slide
+            each i in [11,12,13,14,15,16]
+              .sponsors__img-wrap
+                img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
+
+          li.sponsors__slide
+            each i in [17]
+              .sponsors__img-wrap
+                img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
 
         .sponsors__quote.quote 
           .quote__text The Restoration Programme centres on the construction of a replica of Britannia based on her original lines designed by GL Watson.
