@@ -15,8 +15,8 @@
     z-index: 2
 
 .lines
-  position: fixed 0 0 0 0
-  z-index: 99999
+  position: absolute 0 0 0 0
+  z-index: 1
   pointer-events: none
   box: center space-between
   @extend .container
@@ -24,3 +24,13 @@
   &__elem
     size: 1px 100%
     background: rgba(255, 255, 255, 0.2045)
+
+    &:nth-child(6), &:nth-child(7)
+      display: none @lg block
+
+    &:nth-child(4), &:nth-child(5)
+      display: none @md block
+
+  &__wrap > *:not(.lines)
+    position: relative
+    z-index: 2
