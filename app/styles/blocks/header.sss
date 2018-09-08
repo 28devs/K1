@@ -1,0 +1,26 @@
+.header
+  position: absolute 0 0 null 0
+  z-index: 999
+  padding: 30px
+  margin: 40px
+
+  &__logo
+    size: 123px 17px @lg size('icons/logo.svg')
+
+    &--dark
+      background: svg-load('icons/logo.svg' fill: $black) no-repeat center / contain
+      display: none
+
+    &--white
+      background: svg-load('icons/logo.svg' fill: #fff) no-repeat center / contain
+      margin: * 80px @lg * 133px
+
+  &__nav
+    box: center middle
+
+  &__link
+    text: 500 #fff 13px @lg 15px
+    text-decoration: none
+
+    & + &
+      margin-left: 50px @lg 80px
