@@ -1,4 +1,4 @@
-section.links
+section.links.lines__wrap
   .container
     .row
       .offset-lg-2.offset-md-0.col-lg-3.col-md-4.col-2
@@ -7,12 +7,14 @@ section.links
         .links__items-scroll
           .links__items-wrap
             each item in links
-              .links__item
+              article.links__item
                 .links__img-wrap
                   img.links__img(src="img/links/templ.jpg", alt="")
 
                 .links__text
                   .links__item-title K1
                   .links__item-desc= item
+  
+  +lines('links__lines')
 
 
