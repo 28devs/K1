@@ -34,3 +34,16 @@
   &__wrap > *:not(.lines)
     position: relative
     z-index: 2
+
+.wave-link
+  text: $wave-link 18px
+  font-family: $font-title
+  text-decoration: none
+  display: inline-block
+
+  &:after
+    content: ''
+    display: block
+    background: svg-load('icons/wave.svg' fill: $wave-link)
+    size: 50px 4px
+    margin: 3px 0 0 0
