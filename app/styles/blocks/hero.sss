@@ -1,17 +1,21 @@
 .hero
   background: #7aa0cf resolve('hero/bg.jpg') center / cover
-  height: calc(100vh - 30px) @lg calc(100vh - 60px)
-  box: vertical center middle
-  margin: 15px @lg 30px
-  padding: 15px 6.25% @md 30px 6%
+  height: 100vh
+  padding: 15px 6.25% 30px @md 30px 6.25% 50px
   position: relative
+  box-shadow: inset 0 0 0 15px #fff @lg inset 0 0 0 30px #fff
 
   &:after
     content: ''
-    position: absolute null 6.25% -5px null
+    position: absolute null 6.25% null null
+    bottom: 14px @lg 25px
     background: svg-load('icons/k1.svg' fill: #fff) no-repeat center / contain
     size: 50px @md 106px 100px @lg 186px 178px @xxl size('icons/k1.svg')
     display: @md-down none
+
+  &__container
+    box: vertical center middle
+    height: 100%
 
   &__title
     text: 700 center .9 #fff
