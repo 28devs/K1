@@ -1,26 +1,165 @@
 .header
   position: absolute 0 0 null 0
   z-index: 999
-  padding: 30px
-  margin: 40px
+  padding: 13px 0 @md 30px
+  margin: 30px auto @md 30px auto @xxl 40px auto
+  max-width: 87.5% @md calc(87.5% + 60px)
+  min-height: 50px
+
+  &--nav-open
+    bottom: 0
+    margin: 20px auto !important
+    background: #fff
+    box-shadow: 0 0 0 60px #fff
+    position: fixed
+
+    ^&__logo
+      display: none !important
+
+    ^&__link
+      overflow: visible
+
+  &--is-scroll
+    position: fixed
+    background: #fff
+    margin: 20px auto
+    padding: 13px 0 @md 24px 30px
+
+    &:after
+      content: ''
+      display: none @md block
+      position: absolute 50% null null null
+      left: calc(123px + (38% - 123px) / 2) @lg calc(173px + (36% - 173px) / 2)
+      width: 3vw @md 4vw @lg 50px @xl 90px @xxl 110px
+      transform: translateX(-50%)
+      border-bottom: 1px $black solid 
+
+    ^&__nav
+      box: @md top
+      padding: 0
+
+      &-wrap
+        margin-left: @md 33.33333%
+
+    ^&__link
+      text: $black
+
+    ^&__logo--dark
+      display: flex
+      position: @md absolute
+
+    ^&__logo--white
+      display: none
 
   &__logo
-    size: 123px 17px @lg size('icons/logo.svg')
+    height: 22px
+    width: 123px @lg width('icons/logo.svg')
 
     &--dark
-      background: svg-load('icons/logo.svg' fill: $black) no-repeat center / contain
+      background: svg-load('icons/logo.svg' fill: $black) no-repeat left center / contain
+      width: 123px
+      align-items: center
+      justify-content: flex-end
       display: none
 
     &--white
       background: svg-load('icons/logo.svg' fill: #fff) no-repeat center / contain
-      margin: * 80px @lg * 133px
 
   &__nav
     box: center middle
 
+    &-wrap
+      box: center
+      display: @md-down none
+
+      &--open
+        display: flex !important
+        box: vertical space-between left
+        position: absolute 100px 0 0 0
+
+        ^^^&__link
+          text: $black 40px
+          font-family: $font-title
+          margin-left: 30px !important
+      
+      .header:not(.header--is-scroll) &
+        position: absolute
+
   &__link
     text: 500 #fff 13px @lg 15px
     text-decoration: none
+    overflow: hidden
+    position: relative
+    display: block
+    padding: 5px 0
 
     & + &
-      margin-left: 50px @lg 80px
+      margin-left: 30px @md 50px @lg 80px
+
+    .header:not(.header--is-scroll) &:first-child
+      margin-left: 45px
+
+    .header:not(.header--is-scroll) & + &:nth-last-child(2)
+      margin-left: 30vw @lg 440px
+      
+    &:hover
+      text: $nav-active
+      
+    &--active
+      text: $nav-active !important
+
+      .header--nav-open &:before, .header--nav-open &:after
+        content: ''
+        display: block @md none
+        position: absolute 50% null null null
+        width: 1000px
+        border: 1px $nav-active solid
+
+      .header--nav-open &:before
+        transform: translateX(-100%)
+        left: -25px
+
+      .header--nav-open &:after
+        transform: translateX(100%)
+        right: -25px
+
+      .header:not(.header--nav-open) &:after
+        content: ''
+        position: absolute
+        display: block
+        background: svg-load('icons/wave.svg' fill: $nav-active)
+        size: size('icons/wave.svg')
+        margin: 1px auto 0
+
+  &__mobile-nav
+    size: 50px
+    background: #fff
+    position: absolute 0 null null 0
+    display: block @md none
+    box: vertical center middle
+    cursor: pointer
+
+    &--close
+      ^&-line
+        margin-top: -2px !important
+
+        &:first-child
+          width: 33px
+          transform: rotate(45deg)
+
+        &:nth-child(2)
+          width: 0
+          opacity: 0
+
+        &:last-child
+          width: 33px
+          transform: rotate(-45deg)
+
+    &-line
+      width: 26px
+      border-bottom: 2px $black solid
+      transition: .3s ease
+      position: relative 0 0 0 0
+
+      & + &
+        margin-top: 6px
