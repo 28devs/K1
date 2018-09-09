@@ -1,4 +1,4 @@
-mixin header($class)
+mixin header($class, $active)
   header.header(class=$class)
     nav.header__nav
       a.header__logo.header__logo--dark(href='#!')
@@ -10,7 +10,8 @@ mixin header($class)
         .header__mobile-nav-line
 
       .header__nav-wrap
-        a.header__link(href='#!') History
-        a.header__link(href='#!') Press
-        a.header__link(href='#!') About
-        a.header__link(href='#!') Sponsorship
+        each name in ['history', 'press', 'about', 'sponsorship']
+          a.header__link(
+            href='#!' 
+            class=($active == name ? 'header__link--active' : '')
+            )= name.charAt(0).toUpperCase() + name.slice(1)

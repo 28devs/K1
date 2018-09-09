@@ -33,7 +33,7 @@
 
   &__wrap > *:not(.lines):not(.parallax)
     position: relative
-    z-index: 2
+    z-index: 99
 
 .wave-link
   text: $wave-link 18px
@@ -54,3 +54,17 @@
     text: $black 700 100px 1
     font-family: $font-title
     margin-top: 210px
+
+.img
+  max-width: 100%
+  width: 100%
+
+.text
+  text: 20px 1.8
+
+.icon
+  display: block
+  
+  &--achor
+    background: resolve('icons/anchor.svg')
+    size: size('icons/anchor.svg')
