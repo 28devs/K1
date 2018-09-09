@@ -53,7 +53,12 @@ if (sponsorsSliderBlock) {
     controls: false,
     pager: false,
     onBeforeSlide: function(elem) {
-      if (sponsorsSlider.getCurrentSlideCount() == 1) {
+      let current = sponsorsSlider.getCurrentSlideCount();
+      let max = sponsorsSlider.getTotalSlideCount();
+
+      current > max ? --current : null;
+
+      if (current == 1) {
         sponsorsSliderPrevBtn.classList.add('sponsors__slider-control--hide');
       } else {
         sponsorsSliderPrevBtn.classList.remove(
@@ -61,13 +66,27 @@ if (sponsorsSliderBlock) {
         );
       }
 
-      if (sponsorsSlider.getCurrentSlideCount() == 4) {
+      if (current >= max) {
         sponsorsSliderNextBtn.classList.add('sponsors__slider-control--hide');
       } else {
         sponsorsSliderNextBtn.classList.remove(
           'sponsors__slider-control--hide'
         );
       }
+      let currentSlide = document.querySelector(
+        '.sponsors__slide:nth-child(' + current + ')'
+      );
+      let rank = currentSlide.getAttribute('data-rank');
+
+      document
+        .querySelectorAll('.sponsors__title-rank')
+        .forEach(function(elem) {
+          elem.classList.add('sponsors__title-rank--hide');
+        });
+
+      document
+        .querySelector('.sponsors__title-rank--' + rank)
+        .classList.remove('sponsors__title-rank--hide');
     }
   });
 

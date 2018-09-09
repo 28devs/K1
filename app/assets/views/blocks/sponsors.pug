@@ -3,28 +3,30 @@ section.sponsors.lines__wrap
     .row
       .offset-lg-2.offset-md-0.col-lg-4.col-md-4.col-2
         h2.sponsors__title Sponsors
-          .sponsors__title-rank Platinum
+          .sponsors__title-rank.sponsors__title-rank--platinum Platinum
+          .sponsors__title-rank.sponsors__title-rank--gold.sponsors__title-rank--hide Gold
+          .sponsors__title-rank.sponsors__title-rank--silver.sponsors__title-rank--hide Silver
 
           .sponsors__slider-control.sponsors__slider-control--prev.sponsors__slider-control--hide
           .sponsors__slider-control.sponsors__slider-control--next
 
         ul.sponsors__slider
-          li.sponsors__slide
+          li.sponsors__slide(data-rank='platinum')
             each i in [1,2,3,4,5,6,7,8]
               .sponsors__img-wrap
                 img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
 
-          li.sponsors__slide
+          li.sponsors__slide(data-rank='platinum')
             each i in [9,10]
               .sponsors__img-wrap
                 img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
 
-          li.sponsors__slide
+          li.sponsors__slide(data-rank='gold')
             each i in [11,12,13,14,15,16]
               .sponsors__img-wrap
                 img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
 
-          li.sponsors__slide
+          li.sponsors__slide(data-rank='silver')
             each i in [17]
               .sponsors__img-wrap
                 img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
