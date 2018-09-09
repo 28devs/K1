@@ -90,3 +90,20 @@
 
   &__link
     margin: 40px 0 110px
+
+  &__arcs
+    position: absolute 0 0 0 0
+    position: absolute !important
+
+    &-elem
+      position: absolute
+
+      &--long
+        background: svg-load('sponsors/line-long.svg')
+        size: size('sponsors/line-long.svg')
+
+      &--short
+        bottom: 0
+        left: 0
+        background: svg-load('sponsors/line-short.svg')
+        size: size('sponsors/line-short.svg')
