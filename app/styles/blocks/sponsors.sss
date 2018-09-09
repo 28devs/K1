@@ -15,10 +15,11 @@
 
     &-rank
       display: inline-block
-      font-size: responsive 20px 50px
+      font-size: responsive 35px 50px
       font-range: $lg-px $xxl-px
       font-family: $font-decor
-      transform: translate(-26%, -115%)
+      transform: translate(-80%, -55%) @md translate(-26%, -55%)
+      position: absolute
       
       &--hide
         display: none
@@ -36,12 +37,13 @@
     overflow: visible
 
   &__slider
-    margin: 70px 0 90px
+    margin: 70px 0 50px 0 @md 70px 0 90px
 
     &-control
-      size: 60px
+      size: 42px @md 60px
       border: 1px #F0F0F0 solid
-      background: #fff svg-load('icons/arrow.svg') no-repeat center / 27px
+      background: #fff svg-load('icons/arrow.svg') no-repeat center
+      background-size: 23px @md 27px
       cursor: pointer
       opacity: 1
       transition: .15s ease
@@ -52,33 +54,30 @@
 
       &--prev
         transform: scale(-1)
-        position: absolute 20% null null -29%
+        position: absolute
+        top: 110% @md 20%
+        left: auto @lg -29%
+        right: 20% @lg auto 
 
       &--next
-        position: absolute 20% 21% null null
+        position: absolute
+        top: 110% @md 20%
+        right: 3% @md 9% @lg 21%
 
   &__slide
     box: wrap top
     opacity: .2
     transition: opacity .3s ease
-    
-    &:nth-child(1)
-      width: 792px
-    &:nth-child(2)
-      width: 198px
-    &:nth-child(3)
-      width: 588px
-    &:nth-child(4)
-      width: 792px
 
     &.active
       opacity: 1
 
   &__img
     display: block
+    max-width: 80px @lg 100px @xl 150px
 
     &-wrap
-      size: 196px 100px
+      height: 60px @md 100px
       box: center
       margin-bottom: 20px
 
@@ -89,11 +88,12 @@
       text: 14px 20px @lg 16px 28px
 
   &__link
-    margin: 40px 0 110px
+    margin: 40px 0 90px @md 40px 0 150px
 
   &__arcs
     position: absolute 0 0 0 0
     position: absolute !important
+    pointer-events: none
 
     &-elem
       position: absolute
