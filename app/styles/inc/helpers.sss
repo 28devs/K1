@@ -31,7 +31,7 @@
     &:nth-child(4), &:nth-child(5)
       display: none @md block
 
-  &__wrap > *:not(.lines)
+  &__wrap > *:not(.lines):not(.parallax)
     position: relative
     z-index: 2
 
@@ -47,3 +47,10 @@
     background: svg-load('icons/wave.svg' fill: $wave-link)
     size: 50px 4px
     margin: 3px 0 0 0
+
+.page
+
+  &__title
+    text: $black 700 100px 1
+    font-family: $font-title
+    margin-top: 210px
