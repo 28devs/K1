@@ -13,7 +13,9 @@ const collWidth = function() {
 // Minify header when page scroll
 //
 
-const stickyNav = document.querySelector('.header');
+const stickyNav = document.querySelector(
+  '.header:not(.header--permanent-scroll)'
+);
 
 if (stickyNav) {
   stickyNav.classList.add('header--is-load');
