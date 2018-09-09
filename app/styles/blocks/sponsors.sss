@@ -1,5 +1,7 @@
 .sponsors
   position: relative
+  overflow: hidden
+  padding-top: 40px
 
   &__lines .lines__elem
     background: rgba(0, 0, 0, 0.05)
@@ -9,18 +11,75 @@
     line-height: 1
     font-size: responsive 70px 100px
     font-range: $lg-px $xxl-px
+    position: relative
+
+    &-rank
+      display: inline-block
+      font-size: responsive 20px 50px
+      font-range: $lg-px $xxl-px
+      font-family: $font-decor
+      transform: translate(-26%, -115%)
+      
+      &--hide
+        display: none
+
+      &--platinum
+        color: rgba(29, 39, 62, 0.3)
+
+      &--gold
+        color: rgba(222, 174, 64, 0.7)
+
+      &--silver
+        color: rgba(29, 39, 62, 0.19)
+
+  .lSSlideOuter, .lSSlideWrapper
+    overflow: visible
 
   &__slider
-    box: center wrap space-between
     margin: 70px 0 90px
 
+    &-control
+      size: 60px
+      border: 1px #F0F0F0 solid
+      background: #fff svg-load('icons/arrow.svg') no-repeat center / 27px
+      cursor: pointer
+      opacity: 1
+      transition: .15s ease
+
+      &--hide
+        visibility: hidden
+        opacity: 0
+
+      &--prev
+        transform: scale(-1)
+        position: absolute 20% null null -29%
+
+      &--next
+        position: absolute 20% 21% null null
+
+  &__slide
+    box: wrap top
+    opacity: .2
+    transition: opacity .3s ease
+    
+    &:nth-child(1)
+      width: 792px
+    &:nth-child(2)
+      width: 198px
+    &:nth-child(3)
+      width: 588px
+    &:nth-child(4)
+      width: 792px
+
+    &.active
+      opacity: 1
+
   &__img
-    width: 70%
-    max-width: 100px
+    display: block
 
     &-wrap
-      width: 20%
-      box: top center
+      size: 196px 100px
+      box: center
       margin-bottom: 20px
 
   &__quote
@@ -30,4 +89,4 @@
       text: 14px 20px @lg 16px 28px
 
   &__link
-    margin: 80px 0 50px
+    margin: 40px 0 110px
