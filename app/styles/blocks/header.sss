@@ -74,13 +74,14 @@
 
       &--open
         display: flex !important
-        box: vertical space-between left
+        box: vertical left
         position: absolute 100px 0 0 0
 
         ^^^&__link
           text: $black 40px
           font-family: $font-title
           margin-left: 30px !important
+          margin-bottom: 10px
       
       .header:not(.header--is-scroll) &
         position: absolute
@@ -140,6 +141,12 @@
     cursor: pointer
 
     &--close
+      &:after
+        content: 'CLOSE'
+        text: #1D273E 700 12px
+        position: absolute
+        transform: translateX(120%)
+
       ^&-line
         margin-top: -2px !important
 
