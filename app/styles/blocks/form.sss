@@ -3,7 +3,7 @@
   background-color: #f0f0f0
   min-height: 70vh
   position: relative
-  padding: 40px 0 140px @md 100px 0 200px
+  padding: 40px 0 80px @md * * 100px @xl 100px 0 143px
   overflow: hidden
 
   &__lines .lines__elem
@@ -14,19 +14,19 @@
     margin-top: 50px 
 
   &__head
-    box: space-between
+    box: left
     font-family: $font-decor
     padding: 0 5.20833333vw
 
   &__head-item
     text: 100px .71 500    
-    font-size: responsive 40px 100px
+    font-size: responsive 38px 100px
     font-range: $sm-px $xxxl-px
     position: relative
     z-index: 1
 
     & + &
-      margin-left: 5vw
+      margin-left: 5.0694444vw
 
     &:nth-child(1)
       color: #c2c8d5
@@ -54,6 +54,10 @@
     font-weight: 400
     margin-bottom: 20px
 
+  &__quote
+    &:before
+      left: -15px @lg calc(-3.5vw + (-60px)) @xxl calc(-4.444444vw + (-60px))
+
   &__fields
     box: vertical @md horizontal stretch 
 
@@ -73,4 +77,4 @@
     
   &__btn
     margin-top: 35px
-    margin-bottom: -30px
+    margin-bottom:  -24px @lg -22px @xl -30px
