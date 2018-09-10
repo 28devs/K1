@@ -1,8 +1,9 @@
 .history
   position: relative
+  @extend .footer-padding
 
   &__title
-    margin-bottom: 130px
+    margin-bottom: 60px @md 130px
     
   &__lines .lines__elem
     background: rgba(0, 0, 0, 0.05)
@@ -12,18 +13,156 @@
 
   &__k1
     position: absolute
-    top: 200px
-    left: 6.25%
+    top: 260px @md 200px
+    left: auto @md 6.25%
+    right: 0 @md auto
     z-index: 2
+    width: @md-down 24%
+
 
   &__icon
-    margin-bottom: 40px
+    margin-bottom: 23px @md 30px @lg 40px
+    margin-top: @md-down 20px
 
   &__text
 
-    &--right
-      margin-left: 80px
+    &--style
+      
+      &-1
+        max-width: 72% @md 340px
 
-    &--1
-      width: 340px
+      &-2
+        max-width: 420px
+        margin-bottom: @md-down 35px
+
+      &-3
+        max-width: 440px
+        margin-left: @lg 30px
+        margin-top: @md-down 35px
+
+      &-6
+        max-width: 440px
+
+      &-7
+        max-width: 880px
+
+  &__align
+
+    &--left
+      margin-left: @md 170px
+
+    &--right
+      margin-left: @md 80px
+
+  &__block
     
+    &-2
+      margin-top: 30px @md 130px
+
+    &-3
+      margin: 55px 0 @md 120px 0
+      flex-direction: @md-down column-reverse
+
+    &-5
+      margin: 55px 0 @md 120px 0
+
+  &__img
+
+    &-4
+      margin-left: @lg-down 7%
+      width: @lg-down 78%
+
+    &-5
+      margin-left: @lg-down 15%
+      width: @lg-down 78%
+
+    &-6
+      width: @lg-down 78%
+      margin-bottom: @lg-down 35px
+
+  &__block-quote
+    flex-direction: @md-down column-reverse
+
+    .icon__tips
+      margin-bottom: 30px
+
+  &__slider
+    position: relative
+
+    &-block
+      overflow: hidden
+    
+    &-wrap
+      margin: 80px auto 90px @md 160px auto 120px
+      max-width: 90% @md 70%
+      position: relative
+      
+      .lSSlideOuter, .lSSlideWrapper
+        overflow: visible
+
+    &-controls
+      position: absolute null 0 0 null
+      box: center
+      transform: @md-down translateY(100%)
+
+    &-control
+      size: 70px @lg 101px
+      border: 0
+
+      & + &
+        margin-left: 1px
+
+  &__slide
+
+    &-img
+      display: block
+      width: 100%
+      max-width: 100%
+
+    &-img-wrap
+      opacity: .2
+      transform: scale(.95) @md scale(.9)
+      transition: .3s ease
+
+    &.active &-img-wrap
+      transform: scale(1)
+      opacity: 1
+    
+  &__big-numbers
+    background: resolve('history/photo-7.jpg') center / cover @retina resolve('history/photo-7@2x.jpg') center / cover
+    margin: 50px 0 @md 160px 0 120px
+    padding: 70px 0 40px @md 90px 0 50px
+    overflow: hidden
+
+    .row
+      flex-direction: @md-down column-reverse
+
+    .offset-lg-1
+      align-self: @md-down flex-end
+
+    &-first
+      margin-top: @md 450px
+    
+    &-last
+      margin-bottom: 100px
+
+.big-number
+
+  &__value
+    text: 700 #fff 257px 1
+    font-size: responsive 158px 257px
+    font-range: $sm-px $xxl-px
+    font-family: $font-title
+
+    &:after
+      content: ''
+      display: block
+      background: svg-load('icons/wave-large.svg' fill: $third) no-repeat center / contain
+      size: 104px 7px @md  size('icons/wave-large.svg')
+      margin: 10px 0 20px @lg 20px 0 45px
+
+  &__text
+    text: 700 #fff 117px 0.86
+    font-size: responsive 80px 117px
+    font-range: $sm-px $xxl-px
+    font-family: $font-title

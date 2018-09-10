@@ -13,6 +13,7 @@
   &__text
     position: relative
     z-index: 2
+    margin-left: @md-down 10px
 
 .lines
   position: absolute 0 0 0 0
@@ -51,42 +52,49 @@
 .page
 
   &__title
-    text: $black 700 100px 1
+    text: $black 500 100px 1 @md 700
+    font-size: responsive 60px 100px
+    font-range: $sm-px $xxl-px
     font-family: $font-title
-    margin-top: 210px
+    margin-top: 120px @md 210px
 
 .img
   max-width: 100%
   width: 100%
 
 .text
-  text: 20px 1.8
+  text: 14px 1.8 @md 16px @lg 20px
 
   & + &
     margin-top: 30px
 
   &--italic
-    text: italic 30px 1.4
+    text: italic 21px 1.4 @md 24px @lg 30px
     font-family: $font-title
 
 .icon
   display: block
   
   &--achor
-    background: resolve('icons/anchor.svg')
-    size: size('icons/anchor.svg')
+    background: resolve('icons/anchor.svg') no-repeat center / contain
+    size: 38px 44px @md size('icons/anchor.svg')
 
   &--cup
-    background: resolve('icons/cup.svg')
-    size: size('icons/cup.svg')
+    background: resolve('icons/cup.svg') no-repeat center / contain
+    size: 62px 48px @md size('icons/cup.svg')
 
   &--text
     text: 700 80px 1 $icon-text
+    font-size: responsive 56px 80px
+    font-range: $sm-px $xxl-px
     font-family: $font-title
 
   &__tips
     text: italic 500 20px 1 #979797
+    font-size: responsive 14px 20px
+    font-range: $sm-px $xxl-px
     float: right
+    margin-right: @md-down 20px
 
 .footer-padding
   padding-bottom: 140px @md 170px @xl 220px

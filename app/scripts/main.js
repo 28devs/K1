@@ -42,7 +42,7 @@ if (stickyNavMobileOpenBtn) {
     document
       .querySelector('.header__nav-wrap')
       .classList.toggle('header__nav-wrap--open');
-    stickyNav.classList.toggle('header--nav-open');
+    document.querySelector('.header').classList.toggle('header--nav-open');
   });
 }
 
@@ -163,7 +163,15 @@ if (historySliderBlock) {
     item: 1,
     slideMargin: 56,
     controls: false,
-    pager: false
+    pager: false,
+    responsive: [
+      {
+        breakpoint: 680,
+        settings: {
+          slideMargin: 0
+        }
+      }
+    ]
   });
 
   historySliderPrevBtn.onclick = historySlider.goToPrevSlide;
