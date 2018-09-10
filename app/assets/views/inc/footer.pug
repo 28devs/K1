@@ -1,5 +1,4 @@
-footer.footer.lines__wrap
-  .container
-    .footer__copy.offset-0.offset-lg-2 Copyright © 2018 – K1 Britannia
-
-  +lines('footer__lines')
+mixin footer($offset)
+  footer.footer
+    .container
+      .footer__copy(class=$offset) Copyright © 2018 – K1 Britannia
