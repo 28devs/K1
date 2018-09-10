@@ -62,12 +62,23 @@
 .text
   text: 20px 1.8
 
+  & + &
+    margin-top: 30px
+
+  &--italic
+    text: italic 30px 1.4
+    font-family: $font-title
+
 .icon
   display: block
   
   &--achor
     background: resolve('icons/anchor.svg')
     size: size('icons/anchor.svg')
+
+  &--cup
+    background: resolve('icons/cup.svg')
+    size: size('icons/cup.svg')
 
   &--text
     text: 700 80px 1 $icon-text
@@ -76,7 +87,6 @@
   &__tips
     text: italic 500 20px 1 #979797
     float: right
-    margin-top: 5px
 
 .footer-padding
   padding-bottom: 140px @md 170px @xl 220px
