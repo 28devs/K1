@@ -7,3 +7,10 @@ mixin lines($class)
     .lines__elem
     .lines__elem
     .lines__elem
+
+mixin sponsorship(data, $class)
+  section.sponsorship__item(class=$class)
+    h2.sponsorship__title!= data.title
+    .sponsorship__text
+      .sponsorship__text-side!= data.text1
+      .sponsorship__text-side!= data.text2
