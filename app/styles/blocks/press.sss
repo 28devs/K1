@@ -1,0 +1,76 @@
+.press
+  position: relative
+  padding-bottom: 70px @md 70px @xl 120px
+  overflow: hidden
+
+  &__lines .lines__elem
+    background: #F0F0F0
+
+  &__bg
+    position: absolute 0 0 null 0
+    max-width: 100%
+    min-width: 700px
+
+  &__anchor
+    position: absolute 600px 0 null null
+
+  &__k1
+    position: absolute
+    top: 260px @md 660px
+    left: auto @md 6.25%
+    right: 0 @md auto
+    z-index: 2
+    width: @md-down 24%
+
+  &__title
+    margin-bottom: 40px @md 60px @lg 85px
+
+  &__article
+    padding: 0 @md 0 40px
+    margin-bottom: 40px @md 50px @lg 60px
+
+    &--large
+      padding: 0
+
+      ^&-img-wrap
+        margin: @md-down 0 -45% 0 -6%
+
+      ^&-title
+        font-size: responsive 28px 40px
+        font-range: $lg-px $xxl-px
+        padding-right: @md-down 31%
+
+      ^&-content
+        padding-right: 22% @md 25%
+
+    &-img
+      display: block
+      max-width: 100%
+
+      &-wrap
+        position: relative
+
+    &-title
+      text: #fff 700 30px 1.2
+      font-family: $font-title
+      font-size: responsive 21px 30px
+      font-range: $lg-px $xxl-px
+      position: absolute null 0 0 0
+      padding: 0 20px 16px 20px @md 0 40px 30px 40px
+
+      &:before
+        content: ''
+        display: block
+        background: svg-load('icons/wave-large.svg' fill: $third) no-repeat center / contain
+        size: 48px 4px @md 68px 5px
+        margin-bottom: 15px @md 20px
+
+    &-content
+      padding: 25px 0 0 0 @md 33px 40px 30px 40px
+
+    &-text
+      text: 14px 1.75 @md 16px
+
+    &-link
+      margin-top: 10px @md 20px
+
