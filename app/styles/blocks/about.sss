@@ -1,0 +1,73 @@
+.about
+  padding: 100px 0 @lg 200px 0 100px
+  position: relative
+  @extend .footer-padding
+
+  &__lines .lines__elem
+    background: #F0F0F0
+
+  &__article-item
+    margin-top: 40px @lg 70px
+
+  &__title
+    font-size: responsive 70px 100px
+    font-range: $lg-px $xxl-px
+    font-family: $font-title
+    line-height: 1
+    margin-bottom: 47px @lg 90px
+
+  &__subtitle
+    font-family: 'Futura'
+    text: #DB4045 14px * 400 @lg 20px
+    text-transform: uppercase
+    margin-bottom: 20px @lg 32px
+
+  &__text
+    text: 14px 1.8 400 @lg 20px
+    font-family: $font
+    padding-right: 4vw
+
+  &__slide-img
+    width: 100%
+
+  &__cap
+    margin-top: 15px @lg 34px
+    padding-right: 4vw
+    font-style: italic
+    text: #9E9E9E 14px 1.6 @lg 20px
+    font-family: Times New Roman
+
+  &__img
+    max-width: 100% @lg 29.79vw
+    width: 100%
+
+    &-inner
+      width: 100%
+      height: auto
+
+  &__slider-block
+    position: relative
+    padding-bottom: 60px @md 80px @lg 0
+
+  .slider
+
+    &__controls
+      position: absolute
+      bottom: 12px @lg -20px
+      right: 0
+      box: horizontal
+  
+    &__control
+      size: 46px @md 66px
+      border: 0
+      background: #E03A3E svg-load('icons/arrow-rounded.svg') no-repeat center
+
+  [data-slider-control="next"]
+    margin-left: 1px
+
+  &__wheel    
+    position: absolute
+    top: 1260px @lg 740px
+    right: 0
+    z-index: 2
+    width: 42.5vw

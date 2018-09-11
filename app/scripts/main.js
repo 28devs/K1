@@ -179,6 +179,38 @@ if (historySliderBlock) {
 }
 
 //
+// About slider
+//
+
+const aboutSliderBlock = document.querySelector('.about__slider');
+
+if (aboutSliderBlock) {
+  const aboutSliderPrevBtn = document.querySelector(
+    '.about__slider-block [data-slider-control=prev]'
+  );
+  const aboutSliderNextBtn = document.querySelector(
+    '.about__slider-block [data-slider-control=next]'
+  );
+
+  const aboutSlider = $(aboutSliderBlock).lightSlider({
+    item: 1,
+    slideMargin: 56,
+    controls: false,
+    pager: false,
+    responsive: [
+      {
+        breakpoint: 680,
+        settings: {
+          slideMargin: 0
+        }
+      }
+    ]
+  });
+  console.log(aboutSliderPrevBtn)
+  aboutSliderPrevBtn.onclick = aboutSlider.goToPrevSlide;
+  aboutSliderNextBtn.onclick = aboutSlider.goToNextSlide;
+}
+//
 // DEV
 //
 
