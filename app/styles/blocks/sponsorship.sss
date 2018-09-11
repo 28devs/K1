@@ -1,18 +1,21 @@
 .sponsorship
   position: relative
   background-color: #262427
-  padding: 225px 0 100px
+  padding: 100px 0 @lg 225px 0 100px
 
   &__vert-text
     position: absolute
     top: 360px
-    left: 6.25%
+    left: auto @md 6.25%
+    right: 2px @md auto
     z-index: 2
+    width: 6vw
+    max-width: 150.58px
 
   &__item
 
     & + &
-      margin-top: 200px
+      margin-top: 63px @md 100px @lg 200px
 
     &--platinum
       ^^&__title
@@ -29,13 +32,27 @@
   &__text 
     color: rgba(255, 255, 255, .8)
     font-family: $font
-    text: 16px 1.75 400
+    text: 13px 1.75 400 @lg 16px 
     box: vertical @lg horizontal
 
     &-side
       padding-right: 5.55555vw
       flex: 1
       box-sizing: border-box
+    
+    &-item
+      position: relative
+      padding-left: 40px @lg 0
+
+      &:before
+        content: ''
+        position: absolute
+        left: 0 @lg -30px
+        top: 10px
+        background: svg-load('icons/dot.svg')
+        size: size('icons/dot.svg')
+      & + &
+        margin-top: 20px
 
   &__title
     font-family: $font-title
@@ -50,4 +67,5 @@
       font-size: responsive 60px 150px
       font-range: $sm-px $xxl-px
 
-  
+  & + .footer .footer__copy
+    color: #dedede
