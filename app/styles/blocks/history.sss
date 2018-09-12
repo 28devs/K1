@@ -13,15 +13,14 @@
 
   &__k1
     position: absolute
-    top: 260px @md 200px
-    left: auto @md 6.25%
+    top: 260px @md 300px @lg 200px
+    left: auto @lg 6.25%
     right: 0 @md auto
     z-index: 2
-    width: @md-down 24%
-
+    width: @md-down 24% @lg-down 11%
 
   &__icon
-    margin-bottom: 23px @md 30px @lg 40px
+    margin-bottom: 23px @md 18px @lg 40px
     margin-top: @md-down 20px
 
   &__text
@@ -37,8 +36,9 @@
 
       &-3
         max-width: 440px
-        margin-left: @lg 30px
+        margin-left: @lg 30px @xxl 33.333%
         margin-top: @md-down 35px
+        margin-right: 30px
 
       &-6
         max-width: 440px
@@ -49,22 +49,22 @@
   &__align
 
     &--left
-      margin-left: @md 170px
+      margin-left: @md 70px @lg 170px @xxl 33.333%
 
     &--right
-      margin-left: @md 80px
+      margin-left: @md 50px @lg 80px
 
   &__block
     
     &-2
-      margin-top: 30px @md 130px
+      margin-top: 30px @md 90px @lg 130px
 
     &-3
-      margin: 55px 0 @md 120px 0
+      margin: 55px 0 @md 60px 0 90px @lg 120px 0
       flex-direction: @md-down column-reverse
 
     &-5
-      margin: 55px 0 @md 120px 0
+      margin: 55px 0 @md 90px 0 @lg 120px 0
 
   &__img
 
@@ -82,6 +82,7 @@
 
   &__block-quote
     flex-direction: @md-down column-reverse
+    margin-left: 6%
 
     .icon__tips
       margin-bottom: 30px
@@ -93,7 +94,7 @@
       overflow: hidden
     
     &-wrap
-      margin: 80px auto 90px @md 160px auto 120px
+      margin: 80px auto 90px @md 80px auto 80px @lg 160px auto 120px
       max-width: 90% @md 70%
       position: relative
       

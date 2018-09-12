@@ -166,6 +166,12 @@ if (historySliderBlock) {
     pager: false,
     responsive: [
       {
+        breakpoint: 1080,
+        settings: {
+          slideMargin: 30
+        }
+      },
+      {
         breakpoint: 680,
         settings: {
           slideMargin: 0
