@@ -12,13 +12,16 @@
     min-width: 700px
 
   &__anchor
-    position: absolute 600px 0 null null
+    position: absolute 540px 0 null null
+    display: @lg-down none
+    background: #fff
+    padding-top: 160px
 
   &__k1
     position: absolute
     top: 260px @md 660px
-    left: auto @md 6.25%
-    right: 0 @md auto
+    left: auto @lg 6.25%
+    right: 0 @lg auto
     z-index: 2
     width: @md-down 24%
 
@@ -26,11 +29,11 @@
     margin-bottom: 40px @md 60px @lg 85px
 
   &__article
-    padding: 0 @md 0 40px
+    padding: 0 @md 0 10% @lg 0 40px @xxl 0 80px
     margin-bottom: 40px @md 50px @lg 60px
 
     &--large
-      padding: 0
+      padding: 0 !important
 
       ^&-img-wrap
         margin: @md-down 0 -45% 0 -6%
@@ -46,6 +49,7 @@
     &-img
       display: block
       max-width: 100%
+      width: 100%
 
       &-wrap
         position: relative
