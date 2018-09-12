@@ -259,6 +259,13 @@ var animationElems = [
       yPercent: -50,
       paused: true
     }
+  },
+  {
+    selector: '.press__anchor',
+    settings: {
+      yPercent: -150,
+      paused: true
+    }
   }
 ];
 
