@@ -265,6 +265,13 @@ var animationElems = [
       yPercent: -150,
       paused: true
     }
+  },
+  {
+    selector: '.sponsorship__vert-text',
+    settings: {
+      yPercent: -55,
+      paused: true
+    }
   }
 ];
 
