@@ -40,7 +40,7 @@
   font-style: normal;
 } */
 @font-face {
-  font-family: 'Futura Md BT';
+  font-family: 'Futura';
   src: url('../fonts/futura/FuturaBT-Medium.eot');
   src: local('Futura Medium BT'), local('FuturaBT-Medium'),
       url('../fonts/futura/FuturaBT-Medium.eot?#iefix') format('embedded-opentype'),
