@@ -234,10 +234,12 @@ const navDev = document.querySelectorAll('.header__link');
 
 navDev.forEach(function(elem) {
   elem.addEventListener('click', function(e) {
+    e.stopPropagation();
+
     navDev.forEach(function(elem) {
       elem.classList.remove('header__link--active');
     });
 
-    e.target.classList.add('header__link--active');
+    e.target.parentNode.classList.add('header__link--active');
   });
-});
+}, false);

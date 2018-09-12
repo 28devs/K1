@@ -14,4 +14,5 @@ mixin header($class, $active)
           a.header__link(
             href='#!' 
             class=($active == name ? 'header__link--active' : '')
-            )= name.charAt(0).toUpperCase() + name.slice(1)
+            )
+            .header__link-text= name.charAt(0).toUpperCase() + name.slice(1)

@@ -18,8 +18,10 @@
       font-size: responsive 35px 50px
       font-range: $lg-px $xxl-px
       font-family: $font-decor
-      transform: translate(-80%, -55%) @md translate(-26%, -55%)
+      transform: translate(30%, -55%) @md translate(-26%, -55%)
       position: absolute
+      right: 0 @md auto
+      top: 0 @md auto
       
       &--hide
         display: none
@@ -62,7 +64,7 @@
 
   &__img
     display: block
-    max-width: 80px @lg 100px @xl 150px
+    max-width: 80px @md 70% @lg 100px @xl 150px
 
     &-wrap
       height: 60px @md 100px
@@ -76,7 +78,7 @@
       text: 14px 20px @lg 16px 28px
 
   &__link
-    margin: 40px 0 90px @md 40px 0 150px
+    margin: 40px 0 90px @md 40px 0 100px @lg 40px 0 150px
 
   &__arcs
     position: absolute 0 0 0 0
