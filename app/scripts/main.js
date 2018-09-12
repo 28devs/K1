@@ -166,6 +166,12 @@ if (historySliderBlock) {
     pager: false,
     responsive: [
       {
+        breakpoint: 1080,
+        settings: {
+          slideMargin: 30
+        }
+      },
+      {
         breakpoint: 680,
         settings: {
           slideMargin: 0
@@ -206,7 +212,7 @@ if (aboutSliderBlock) {
       }
     ]
   });
-  console.log(aboutSliderPrevBtn)
+  console.log(aboutSliderPrevBtn);
   aboutSliderPrevBtn.onclick = aboutSlider.goToPrevSlide;
   aboutSliderNextBtn.onclick = aboutSlider.goToNextSlide;
 }
