@@ -182,34 +182,44 @@ if (historySliderBlock) {
 // About slider
 //
 
-const aboutSliderBlock = document.querySelector('.about__slider');
-
-if (aboutSliderBlock) {
-  const aboutSliderPrevBtn = document.querySelector(
-    '.about__slider-block [data-slider-control=prev]'
-  );
-  const aboutSliderNextBtn = document.querySelector(
-    '.about__slider-block [data-slider-control=next]'
-  );
-
-  const aboutSlider = $(aboutSliderBlock).lightSlider({
-    item: 1,
-    slideMargin: 56,
-    controls: false,
-    pager: false,
-    responsive: [
-      {
-        breakpoint: 680,
-        settings: {
-          slideMargin: 0
+function aboutSlider(slideElem, parent) {
+  if (slideElem) {
+    const prevBtn = parent.querySelector(
+      '[data-slider-control=prev]'
+    );
+    const nextBtn = parent.querySelector(
+      '[data-slider-control=next]'
+    );
+  
+    const slider = $(slideElem).lightSlider({
+      item: 1,
+      slideMargin: 56,
+      controls: false,
+      pager: false,
+      responsive: [
+        {
+          breakpoint: 680,
+          settings: {
+            slideMargin: 0
+          }
         }
-      }
-    ]
-  });
-  console.log(aboutSliderPrevBtn)
-  aboutSliderPrevBtn.onclick = aboutSlider.goToPrevSlide;
-  aboutSliderNextBtn.onclick = aboutSlider.goToNextSlide;
+      ]
+    });
+    prevBtn.onclick = slider.goToPrevSlide;
+    nextBtn.onclick = slider.goToNextSlide;
+  }
 }
+
+const aboutSliders = document.querySelectorAll('.about__slider-block');
+
+if(aboutSliders) {
+  aboutSliders.forEach(function(item) {
+    let slideElem = item.querySelector('.about__slider');
+    aboutSlider(slideElem, item);
+  });
+}
+ 
+
 //
 // DEV
 //
