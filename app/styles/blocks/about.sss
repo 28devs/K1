@@ -40,6 +40,7 @@
   &__img
     max-width: 100% @lg 29.79vw
     width: 100%
+    display: block
 
     &-inner
       width: 100%
@@ -53,20 +54,20 @@
 
     &__controls
       position: absolute
-      bottom: 12px @lg -20px
+      bottom: 12px @lg -10px
       right: 0
       box: horizontal
   
     &__control
       size: 46px @md 66px
       border: 0
-      background: #E03A3E svg-load('icons/arrow-rounded.svg') no-repeat center
+      background: #E03A3E svg-load('icons/arrow-rounded.svg' fill: #fff) no-repeat center
 
   [data-slider-control="next"]
     margin-left: 1px
 
   &__wheel    
-    position: absolute
+    position: fixed
     top: 1260px @lg 740px
     right: 0
     z-index: 2

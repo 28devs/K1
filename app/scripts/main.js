@@ -195,17 +195,9 @@ function aboutSlider(slideElem, parent) {
 
     const slider = $(slideElem).lightSlider({
       item: 1,
-      slideMargin: 56,
+      slideMargin: 0,
       controls: false,
-      pager: false,
-      responsive: [
-        {
-          breakpoint: 680,
-          settings: {
-            slideMargin: 0
-          }
-        }
-      ]
+      pager: false
     });
     prevBtn.onclick = slider.goToPrevSlide;
     nextBtn.onclick = slider.goToNextSlide;
@@ -262,6 +254,13 @@ var animationElems = [
   },
   {
     selector: '.press__anchor',
+    settings: {
+      yPercent: -150,
+      paused: true
+    }
+  },
+  {
+    selector: '.about__wheel',
     settings: {
       yPercent: -150,
       paused: true
