@@ -14,21 +14,21 @@ const collWidth = function() {
 // Minify header when page scroll
 //
 
-const stickyNav = document.querySelector(
-  '.header:not(.header--permanent-scroll)'
-);
+// const stickyNav = document.querySelector(
+//   '.header:not(.header--permanent-scroll)'
+// );
 
-if (stickyNav) {
-  stickyNav.classList.add('header--is-load');
+// if (stickyNav) {
+//   stickyNav.classList.add('header--is-load');
 
-  const headerScroll = function() {
-    this.scrollY < 8
-      ? stickyNav.classList.remove('header--is-scroll')
-      : stickyNav.classList.add('header--is-scroll');
-  };
-  headerScroll();
-  window.onscroll = headerScroll;
-}
+//   const headerScroll = function() {
+//     this.scrollY < 8
+//       ? stickyNav.classList.remove('header--is-scroll')
+//       : stickyNav.classList.add('header--is-scroll');
+//   };
+//   headerScroll();
+//   window.onscroll = headerScroll;
+// }
 
 //
 // Open mobile menu button
@@ -330,4 +330,13 @@ if (loader) {
 var hero = document.querySelector('.hero');
 
 if (hero) {
+  var header = document.querySelector('.header');
+
+  setTimeout(function() {
+    hero.classList.add('hero--is-show');
+  }, 6000);
+
+  setTimeout(function() {
+    header.classList.add('header--is-show');
+  }, 6000);
 }
