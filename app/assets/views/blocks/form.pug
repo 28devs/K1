@@ -2,9 +2,10 @@ section.form.lines__wrap
   .form__wrap
     form.form__elem
       .form__head
-        p.form__head-item Platinum
-        p.form__head-item Gold
-        p.form__head-item Silver
+        .form__head-item Platinum
+        .form__head-item Gold
+        .form__head-item Silver
+
       .form__body
         .form__quote.quote
           p.form__desc.quote__text If you decide to become a part of the story reviving the legend then send us your application form.
@@ -19,6 +20,6 @@ section.form.lines__wrap
 
             input.btn.form__btn(type="submit" value="Send message")
 
-  +lines('form__lines')
+  .form__bg.parallax
 
-    //- .copy Copyright &copy; 2018 – K1 Britannia
+  +lines('form__lines')

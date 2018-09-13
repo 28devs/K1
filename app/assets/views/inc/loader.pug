@@ -28,6 +28,13 @@ style.
     position: fixed;
     left: 0;
     top: 0;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+  }
+
+  .loader--fade-out {
+    opacity: 0;
+    pointer-events: none;
   }
 
   .loader__logo {

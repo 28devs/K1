@@ -6,6 +6,13 @@
   max-width: 90% @md calc(90% + 60px) @md 87.5% @md calc(87.5% + 60px)
   min-height: 50px
 
+  &--hide-top
+    @mixin fade-out -30px, .3s
+
+  &--show-top
+    @mixin fade-in
+    transition-delay: .3s
+
   &--is-show
     ^&__logo, ^&__nav-wrap
       @mixin fade-in

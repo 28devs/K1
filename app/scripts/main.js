@@ -233,7 +233,7 @@ var animationElems = [
   {
     selector: '.parallax__k1',
     settings: {
-      yPercent: -80,
+      yPercent: -100,
       paused: true
     }
   },
@@ -366,43 +366,70 @@ if (hero) {
       }
     }
   });
-}
 
-var transitionFrom1To2 = function() {
-  from1to2 = false;
+  var transitionFrom1To2 = function() {
+    from1to2 = false;
 
-  loader.classList.remove('loader--lines-hide');
+    loader.classList.remove('loader--lines-hide');
 
-  setTimeout(function() {
-    hero.classList.add('hero--is-hide');
-    header.classList.add('header--is-scroll');
-  }, 550);
+    setTimeout(function() {
+      hero.classList.add('hero--is-hide');
+      header.classList.add('header--is-scroll', 'header--hide-top');
+    }, 550);
 
-  setTimeout(function() {
-    loader.classList.add('loader--lines-hide');
-    document.querySelector('.home').classList.remove('home--scroll-hide');
-  }, 550 * 2);
-};
+    setTimeout(function() {
+      loader.classList.add('loader--fade-out');
+      header.classList.add('header--show-top');
+      document.querySelector('.links').classList.add('links--is-show');
+      document.querySelector('.home').classList.remove('home--scroll-hide');
+      document.querySelector('.home__k1').classList.add('home__k1--show');
+    }, 550 * 2);
+  };
 
-//
-// Cloud opacity
-//
+  // Cloud opacity
 
-var cloudElem = document.querySelector('.links__cloud');
+  var linksCloudBgAnimation = TweenLite.to(
+    document.querySelector('.links__cloud'),
+    1,
+    {
+      autoAlpha: 0,
+      paused: true
+    }
+  );
 
-if (cloudElem) {
-  var animation = TweenLite.to(cloudElem, 1, {
-    autoAlpha: 0,
+  TweenLite.ticker.addEventListener('tick', function() {
+    linksCloudBgAnimation.progress(
+      clamp(
+        normalize(
+          window.pageYOffset,
+          0,
+          document.querySelector('.links').clientHeight
+        ),
+        0,
+        1
+      )
+    );
+  });
+
+  // Form bg opacity
+
+  var formBgAnimation = TweenLite.to(document.querySelector('.form__bg'), 1, {
+    autoAlpha: 1,
     paused: true
   });
 
-  TweenLite.ticker.addEventListener('tick', cloud);
-
-  var min = 0;
-  var max = document.querySelector('.links').clientHeight;
-
-  function cloud() {
-    var step = clamp(normalize(window.pageYOffset, min, max), 0, 1);
-    animation.progress(step);
-  }
+  TweenLite.ticker.addEventListener('tick', function() {
+    var step = clamp(
+      normalize(
+        window.pageYOffset,
+        document.querySelector('.sponsors').offsetTop +
+          document.querySelector('.sponsors').clientHeight / 3,
+        document.querySelector('.form').offsetTop -
+          document.querySelector('.form').clientHeight / 3
+      ),
+      0,
+      1
+    );
+    formBgAnimation.progress(step);
+  });
 }
