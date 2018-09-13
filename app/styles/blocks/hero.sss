@@ -6,6 +6,19 @@
   box-shadow: inset 0 0 0 10px #fff @md inset 0 0 0 15px #fff @lg inset 0 0 0 30px #fff
   z-index: 99
 
+  &--is-show
+
+    ^&__title-row
+
+      &:first-child
+        @mixin fade-in
+
+      &:last-child
+        @mixin fade-in
+
+    ^&__quote, ^&__discover, &^&:after
+      @mixin fade-in
+
   &:after
     content: ''
     position: absolute null 6.25% null null
@@ -13,6 +26,7 @@
     background: svg-load('icons/k1.svg' fill: #fff) no-repeat center / contain
     size: 50px @md 106px 100px @lg 186px 178px @xxl size('icons/k1.svg')
     display: @md-down none
+    @mixin fade-out 30px, .55s, .6s
 
   &__container
     box: vertical center middle
@@ -26,6 +40,14 @@
     margin-top: auto
     cursor: default
 
+    &-row
+
+      &:first-child
+        @mixin fade-out 30px, .45s
+
+      &:last-child
+        @mixin fade-out 30px, .45s, .15s
+
   &__quote
     text: 500 left 15px 1.3 #fff @lg 17px @xxl 20px
     font-family: $font-text
@@ -35,12 +57,14 @@
     bottom: 20% @md 17%
     cursor: default
     margin-left: @md-down 10px
+    @mixin fade-out 0, .3s, .15s
 
   &__discover
     text: 400 left 13px #fff @md 15px @lg 18px
     font-family: $font-title
     margin-top: auto
     cursor: pointer
+    @mixin fade-out 0, .3s, .3s
 
     &:after
       content: ''

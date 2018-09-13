@@ -6,6 +6,10 @@
   max-width: 90% @md calc(90% + 60px) @md 87.5% @md calc(87.5% + 60px)
   min-height: 50px
 
+  &--is-show
+    ^&__logo, ^&__nav-wrap
+      @mixin fade-in
+
   &--nav-open
     bottom: 0
     margin: 20px auto !important
@@ -55,6 +59,7 @@
   &__logo
     height: 22px
     width: 123px @lg width('icons/logo.svg')
+    @mixin fade-out 0, .3s
 
     &--dark
       background: svg-load('icons/logo.svg' fill: $black) no-repeat left center / contain
@@ -72,6 +77,7 @@
     &-wrap
       box: center
       display: @md-down none
+      @mixin fade-out 15px, .3s
 
       &--open
         display: flex !important
