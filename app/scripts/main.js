@@ -264,9 +264,8 @@ var animationElems = [
 
 AOS.init({
   once: true,
-  duration: 250,
+  duration: 250
 });
-
 
 animationElems.forEach(function(elem) {
   var element = document.querySelector(elem.selector);
@@ -304,7 +303,6 @@ var loader = document.querySelector('.loader');
 var isLoad = false;
 
 $(window).load(function() {
-  console.log('window load');
   isLoad = true;
 });
 
@@ -312,11 +310,16 @@ if (loader) {
   setTimeout(function() {
     var loadInterval = setInterval(function() {
       if (isLoad) {
-        console.log('isLoad');
+        setTimeout(function() {
+          loader.classList.add('loader--lines-hide');
+        }, 500);
+
+        loader.classList.add('loader--progress-hide');
+        loader.classList.add('loader--logo-hide');
         clearInterval(loadInterval);
       }
     }, 100);
-  }, 5800);
+  }, 4800);
 
   //loader.classList.add('loader--start');
 }
