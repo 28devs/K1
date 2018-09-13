@@ -276,6 +276,7 @@ animationElems.forEach(function(elem) {
 });
 
 TweenLite.ticker.addEventListener('tick', update);
+
 function update() {
   var min = 0;
   var max = document.body.scrollHeight;
@@ -370,7 +371,6 @@ if (hero) {
 var transitionFrom1To2 = function() {
   from1to2 = false;
 
-
   loader.classList.remove('loader--lines-hide');
 
   setTimeout(function() {
@@ -384,40 +384,25 @@ var transitionFrom1To2 = function() {
   }, 550 * 2);
 };
 
+//
+// Cloud opacity
+//
+
 var cloudElem = document.querySelector('.links__cloud');
-if(cloudElem) {
-  window.onscroll = function(e) {
-    // true - down, false - up
-    var direction = this.oldScroll > this.scrollY ? false : true;
-    this.oldScroll = this.scrollY;
 
-    if(direction) {
-      // console.log('pau')
-    }
-    //////
-    var animation;
-    var cloudParentElem = document.querySelector('.links');
-    var scroll = window.pageYOffset || document.documentElement.scrollTop;
-    var parentHeight = cloudParentElem.clientHeight;
+if (cloudElem) {
+  var animation = TweenLite.to(cloudElem, 1, {
+    autoAlpha: 0,
+    paused: true
+  });
 
-    function cloud() {
-      var step = scroll / parentHeight;
-      console.log(step)
-      animation.progress(step);
+  TweenLite.ticker.addEventListener('tick', cloud);
 
-    }
-    if(direction) {
-      animation = TweenLite.to(cloudElem, 1, {
-        autoAlpha: 0,
-        paused: true
-      });
-    } else {
-      animation = TweenLite.to(cloudElem, 1, {
-        autoAlpha: 1,
-        paused: true
-      });
-    }
+  var min = 0;
+  var max = document.querySelector('.links').clientHeight;
 
-    TweenLite.ticker.addEventListener("tick", cloud);
+  function cloud() {
+    var step = clamp(normalize(window.pageYOffset, min, max), 0, 1);
+    animation.progress(step);
   };
 }
