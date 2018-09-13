@@ -1,6 +1,7 @@
 //
 // Get coll width in px
 //
+
 const collCount = function() {
   return window.innerWidth >= 1024 ? 6 : window.innerWidth >= 680 ? 4 : 2;
 };
@@ -214,24 +215,6 @@ if (aboutSliders) {
 }
 
 //
-// DEV
-//
-
-const navDev = document.querySelectorAll('.header__link');
-
-navDev.forEach(function(elem) {
-  elem.addEventListener('click', function(e) {
-    e.stopPropagation();
-
-    navDev.forEach(function(elem) {
-      elem.classList.remove('header__link--active');
-    });
-
-    e.target.parentNode.classList.add('header__link--active');
-  });
-}, false);
-
-//
 // Parallax
 //
 
@@ -301,4 +284,29 @@ function normalize(value, min, max) {
 
 function clamp(value, min, max) {
   return value < min ? min : value > max ? max : value;
+}
+
+//
+// Loader
+//
+
+var loader = document.querySelector('.loader');
+var isLoad = false;
+
+$(window).load(function() {
+  console.log('window load');
+  isLoad = true;
+});
+
+if (loader) {
+  setTimeout(function() {
+    var loadInterval = setInterval(function() {
+      if (isLoad) {
+        console.log('isLoad');
+        clearInterval(loadInterval);
+      }
+    }, 100);
+  }, 5800);
+
+  //loader.classList.add('loader--start');
 }
