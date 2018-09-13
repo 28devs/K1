@@ -10,11 +10,11 @@ mixin lines($class)
 
 mixin sponsorship(data, $class)
   section.sponsorship__item(class=$class)
-    h2.sponsorship__title!= data.title
+    h2.sponsorship__title(data-aos)!= data.title
     .sponsorship__text
       .sponsorship__text-side
         each item in data.text1
-          .sponsorship__text-item!= item
+          .sponsorship__text-item(data-aos)!= item
       .sponsorship__text-side
         each item in data.text2
-          .sponsorship__text-item!= item
+          .sponsorship__text-item(data-aos)!= item
