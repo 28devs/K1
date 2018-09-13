@@ -300,13 +300,14 @@ function clamp(value, min, max) {
 //
 
 var loader = document.querySelector('.loader');
-var isLoad = false;
-
-$(window).load(function() {
-  isLoad = true;
-});
 
 if (loader) {
+  var isLoad = false;
+
+  $(window).load(function() {
+    isLoad = true;
+  });
+
   setTimeout(function() {
     var loadInterval = setInterval(function() {
       if (isLoad) {
@@ -320,6 +321,13 @@ if (loader) {
       }
     }, 100);
   }, 4800);
+}
 
-  //loader.classList.add('loader--start');
+//
+// Hero animation
+//
+
+var hero = document.querySelector('.hero');
+
+if (hero) {
 }
