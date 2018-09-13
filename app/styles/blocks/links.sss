@@ -1,6 +1,5 @@
 .links
-  min-height: 70vh
-  padding: 100px 0
+  padding: 140px 0 100px @md 190px 0 100px
   box-sizing: border-box
   color: $black
   font-family: $font-title
@@ -25,6 +24,7 @@
   &__items-scroll
     height: 340px @md initial
     overflow: hidden @md initial
+    margin: @md-down 0 -5.5%
 
   &__img
     width: 200px @md 100% @xxl 200px
@@ -45,6 +45,12 @@
     overflow-x: auto @md hidden
     padding-bottom: 30px @md initial
     max-width: 760px
+    padding-left: @md-down 5%
+
+    &:after
+      content: ''
+      display: block @md none
+      min-width: 5%
 
   &__text
     border: #f0f0f0 1px solid

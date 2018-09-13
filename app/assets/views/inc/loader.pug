@@ -84,11 +84,11 @@ style.
     animation: progress 3s;
     animation-delay: 1.8s;
     animation-fill-mode: forwards;
+    transform-origin: right;
   }
 
   .loader--progress-hide .loader__progress {
     transform: scaleX(0);
-    transform-origin: right;
     transition: .3s ease;
   }
 
@@ -129,7 +129,7 @@ style.
     background: #fff;
     height: 100%;
     transform: scaleX(1);
-    transform-origin: right;
+    transform-origin: right bottom;
     transition: .3s ease-in-out;
   }
 
@@ -159,11 +159,11 @@ style.
   }
 
   .loader__lines-elem {
-    width: 22.5%;
+    width: 45%;
   }
 
-  .loader__lines-elem:first-child,
-  .loader__lines-elem:last-child {
+  .loader__lines-elem:nth-child(1),
+  .loader__lines-elem:nth-child(4) {
     width: 5%;
   }
 
@@ -171,21 +171,59 @@ style.
     transform: scaleX(0);
   }
 
+  .loader--lines-hide-bottom .loader__lines-elem {
+    transform: scaleX(0);
+  }
+
   .loader--lines-hide {
     pointer-events: none;
   }
 
+  .loader__lines-elem:nth-child(5),
+  .loader__lines-elem:nth-child(6),
+  .loader__lines-elem:nth-child(7),
+  .loader__lines-elem:nth-child(8) {
+    display: none;
+  }
+
   @media (min-width: 680px) {
     .loader__lines-elem {
-      width: 14.5833333%;
+      width: 21.875%;
     }
 
-    .loader__lines-elem:first-child,
-    .loader__lines-elem:last-child {
+    .loader__lines-elem:nth-child(1),
+    .loader__lines-elem:nth-child(6) {
       width: 6.25%;
+    }
+
+    .loader__lines-elem:nth-child(4) {
+      width: 21.875%;
+    }
+
+    .loader__lines-elem:nth-child(5),
+    .loader__lines-elem:nth-child(6) {
+      display: block;
     }
   }
 
   @media (min-width: 1024px) {
+    .loader__lines-elem {
+      width: 14.5833333%;
+    }
 
+    .loader__lines-elem:nth-child(4),
+    .loader__lines-elem:nth-child(6) {
+      width: 14.5833333%;
+    }
+
+    .loader__lines-elem:nth-child(8) {
+      width: 6.25%;
+    }
+
+    .loader__lines-elem:nth-child(5),
+    .loader__lines-elem:nth-child(6),
+    .loader__lines-elem:nth-child(7),
+    .loader__lines-elem:nth-child(8) {
+      display: block;
+    }
   }

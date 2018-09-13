@@ -312,8 +312,11 @@ if (loader) {
       if (isLoad) {
         setTimeout(function() {
           loader.classList.add('loader--lines-hide');
-          document.querySelector('.home').classList.remove('home--scroll-hide');
         }, 500);
+
+        setTimeout(function() {
+          from1to2 = true;
+        }, 1000);
 
         loader.classList.add('loader--progress-hide');
         loader.classList.add('loader--logo-hide');
@@ -331,6 +334,7 @@ var hero = document.querySelector('.hero');
 
 if (hero) {
   var header = document.querySelector('.header');
+  var from1to2 = false;
 
   setTimeout(function() {
     hero.classList.add('hero--is-show');
@@ -339,11 +343,46 @@ if (hero) {
   setTimeout(function() {
     header.classList.add('header--is-show');
   }, 6000);
+
+  $('.hero__discover').click(function() {
+    transitionFrom1To2();
+  });
+
+  $(window).on('wheel', function(event) {
+    console.log(from1to2);
+    if (window.pageYOffset == 0 && from1to2) {
+      if (event.originalEvent.deltaY < 0) {
+        // document.querySelector('.home').classList.add('home--scroll-hide');
+        // loader.classList.remove('loader--lines-hide');
+        // setTimeout(function() {
+        //   hero.classList.remove('hero--is-hide');
+        // }, 550);
+        // setTimeout(function() {
+        //   loader.classList.add('loader--lines-hide');
+        // }, 550 * 2);
+      } else {
+        transitionFrom1To2();
+      }
+    }
+  });
 }
 
-//
-// links animation
-//
+var transitionFrom1To2 = function() {
+  from1to2 = false;
+
+
+  loader.classList.remove('loader--lines-hide');
+
+  setTimeout(function() {
+    hero.classList.add('hero--is-hide');
+    header.classList.add('header--is-scroll');
+  }, 550);
+
+  setTimeout(function() {
+    loader.classList.add('loader--lines-hide');
+    document.querySelector('.home').classList.remove('home--scroll-hide');
+  }, 550 * 2);
+};
 
 var cloudElem = document.querySelector('.links__cloud');
 
