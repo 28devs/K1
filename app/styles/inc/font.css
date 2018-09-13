@@ -1,53 +1,13 @@
-/* @font-face {
-  font-family: 'Futura';
-  src: url('../fonts/futura/Futura-Bold.eot?#iefix') 
-  format('embedded-opentype'),  
-    url('../fonts/futura/Futura-Bold.woff') format('woff'), 
-    url('../fonts/futura/Futura-Bold.ttf') format('truetype'), 
-    url('../fonts/futura/Futura-Bold.svg#Futura-Bold') format('svg');
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Futura';
-  src: url('../fonts/futura/Futura-Medium.eot?#iefix') format('embedded-opentype'),  
-    url('../fonts/futura/Futura-Medium.woff') format('woff'), 
-    url('../fonts/futura/Futura-Medium.ttf') format('truetype'), 
-    url('../fonts/futura/Futura-Medium.svg#Futura-Medium') format('svg');
-  font-weight: 500;
-  font-style: normal;
-} */
-/* @font-face {
-  font-family: 'Futura';
-  src: url('../fonts/futura/Futura-Medium.eot');
-  src: local('Futura-Medium'), local('Futura-Medium'),
-    url('../fonts/futura/Futura-Medium.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/futura/Futura-Medium.woff') format('woff'),
-    url('../fonts/futura/Futura-Medium.ttf') format('truetype'),
-    url('../fonts/futura/Futura-Medium.svg#Futura-Medium') format('svg');
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Futura';
-  src: url('../fonts/futura/Futura-Bold.eot');
-  src: local('Futura-Bold'), local('Futura-Bold'),
-    url('../fonts/futura/Futura-Bold.eot?#iefix') format('embedded-opentype'),
-    url('../fonts/futura/Futura-Bold.woff') format('woff'),
-    url('../fonts/futura/Futura-Bold.ttf') format('truetype'),
-    url('../fonts/futura/Futura-Bold.svg#Futura-Bold') format('svg');
-  font-weight: 700;
-  font-style: normal;
-} */
 @font-face {
   font-family: 'Futura';
   src: url('../fonts/futura/FuturaBT-Medium.eot');
   src: local('Futura Medium BT'), local('FuturaBT-Medium'),
-      url('../fonts/futura/FuturaBT-Medium.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/futura/FuturaBT-Medium.woff2') format('woff2'),
-      url('../fonts/futura/FuturaBT-Medium.woff') format('woff'),
-      url('../fonts/futura/FuturaBT-Medium.ttf') format('truetype'),
-      url('../fonts/futura/FuturaBT-Medium.svg#FuturaBT-Medium') format('svg');
+    url('../fonts/futura/FuturaBT-Medium.eot?#iefix')
+      format('embedded-opentype'),
+    url('../fonts/futura/FuturaBT-Medium.woff2') format('woff2'),
+    url('../fonts/futura/FuturaBT-Medium.woff') format('woff'),
+    url('../fonts/futura/FuturaBT-Medium.ttf') format('truetype'),
+    url('../fonts/futura/FuturaBT-Medium.svg#FuturaBT-Medium') format('svg');
   font-weight: 500;
   font-style: normal;
 }
@@ -56,11 +16,11 @@
   font-family: 'Futura';
   src: url('../fonts/futura/Futura-Bold.eot');
   src: local('Futura-Bold'),
-      url('../fonts/futura/Futura-Bold.eot?#iefix') format('embedded-opentype'),
-      url('../fonts/futura/Futura-Bold.woff2') format('woff2'),
-      url('../fonts/futura/Futura-Bold.woff') format('woff'),
-      url('../fonts/futura/Futura-Bold.ttf') format('truetype'),
-      url('../fonts/futura/Futura-Bold.svg#Futura-Bold') format('svg');
+    url('../fonts/futura/Futura-Bold.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/futura/Futura-Bold.woff2') format('woff2'),
+    url('../fonts/futura/Futura-Bold.woff') format('woff'),
+    url('../fonts/futura/Futura-Bold.ttf') format('truetype'),
+    url('../fonts/futura/Futura-Bold.svg#Futura-Bold') format('svg');
   font-weight: bold;
   font-style: normal;
 }

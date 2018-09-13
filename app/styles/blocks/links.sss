@@ -4,16 +4,16 @@
   box-sizing: border-box
   background: url('../img/links/bg-clouds.jpg') no-repeat center / cover
   color: $black
-  font-family: $font-title, serif
+  font-family: $font-title
   position: relative
 
   &__lines .lines__elem
     background: linear-gradient(0, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.01) 20%, rgba(255, 255, 255, 0.6) 100%)
-  
+
   &__item
-    width: initial @md 28% @lg 30% @xl 31% @xxl initial 
+    width: initial @md 28% @lg 30% @xl 31% @xxl initial
     padding-right: 20px
-    
+
     & + &
       margin-left: 50px @lg 0
 
@@ -24,7 +24,7 @@
   &__img
     width: 200px @md 100% @xxl 200px
     height: auto
-    
+
   &__title
     font-family: $font-title
     line-height: 1
@@ -49,9 +49,7 @@
 
   &__item-title
     text: 30px .8 40 @lg 21px @xl 26px @xxl 30px
-    // font-size: responsive 21px 30px
-    // font-range: $lg-px $xxl-px
-  
+
   &__item-desc
     text: 20px 1.2 400 @lg 14px @xl 18px @xxl 20px
     position: relative
@@ -62,7 +60,6 @@
       top: 0
       content: ''
       width: 50px @lg 35.56px @xxl 50px
-      // padding-bottom: 5% @lg 2% @xxl 50px
       height: 3.31px @lg 2.35px @xxl 3.31px
       display: block
       background: svg-load('links/wave.svg', fill: #E03A3E) no-repeat right center / contain
