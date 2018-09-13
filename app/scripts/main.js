@@ -331,3 +331,21 @@ var hero = document.querySelector('.hero');
 
 if (hero) {
 }
+
+//
+// links animation
+//
+
+var links = document.querySelector('.links');
+
+if(links) {
+  window.onscroll = function(e) {
+    // true - down, false - up
+    var direction = this.oldScroll > this.scrollY ? false : true;
+    this.oldScroll = this.scrollY;
+    
+    if(direction) {
+      console.log('pau')
+    }
+  }
+}
