@@ -258,6 +258,16 @@ var animationElems = [
   }
 ];
 
+//
+//animation on scroll
+//
+
+AOS.init({
+  once: true,
+  duration: 250,
+});
+
+
 animationElems.forEach(function(elem) {
   var element = document.querySelector(elem.selector);
 
