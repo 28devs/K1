@@ -215,6 +215,15 @@ if (aboutSliders) {
 }
 
 //
+//animation on scroll
+//
+
+AOS.init({
+  once: true,
+  duration: 250
+});
+
+//
 // Parallax
 //
 
@@ -257,15 +266,6 @@ var animationElems = [
     }
   }
 ];
-
-//
-//animation on scroll
-//
-
-AOS.init({
-  once: true,
-  duration: 250
-});
 
 animationElems.forEach(function(elem) {
   var element = document.querySelector(elem.selector);
@@ -353,7 +353,7 @@ if(links) {
     // true - down, false - up
     var direction = this.oldScroll > this.scrollY ? false : true;
     this.oldScroll = this.scrollY;
-    
+
     if(direction) {
       console.log('pau')
     }
