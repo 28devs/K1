@@ -1,0 +1,9 @@
+@define-mixin fade-out $translateY, $transition: .3s, $delay: 0s
+  transform: translateY($translateY)
+  transition: transform $transition ease-in-out, opacity $transition ease-in-out
+  transition-delay: $delay
+  opacity: 0
+
+@define-mixin fade-in $translateY
+  transform: translateY(0)
+  opacity: 1
