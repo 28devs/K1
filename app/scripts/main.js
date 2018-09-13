@@ -276,7 +276,6 @@ animationElems.forEach(function(elem) {
 });
 
 TweenLite.ticker.addEventListener('tick', update);
-
 function update() {
   var min = 0;
   var max = document.body.scrollHeight;
@@ -346,16 +345,40 @@ if (hero) {
 // links animation
 //
 
-var links = document.querySelector('.links');
+var cloudElem = document.querySelector('.links__cloud');
 
-if(links) {
+if(cloudElem) {
   window.onscroll = function(e) {
     // true - down, false - up
     var direction = this.oldScroll > this.scrollY ? false : true;
     this.oldScroll = this.scrollY;
 
     if(direction) {
-      console.log('pau')
+      // console.log('pau')
     }
-  }
+    //////
+    var cloudParentElem = document.querySelector('.links');
+    var scroll = window.pageYOffset || document.documentElement.scrollTop;
+    var parentHeight = cloudParentElem.clientHeight;
+
+    function cloud() {
+      var step = scroll / parentHeight;
+      console.log(step)
+      // animation.progress(step);
+
+    }
+    if(direction) {
+      var animation = TweenLite.to(cloudElem, 1, {
+        autoAlpha: 0,
+        paused: true
+      });
+    } else {
+      var animation = TweenLite.to(cloudElem, 1, {
+        autoAlpha: 1,
+        paused: true
+      });
+    }
+
+    TweenLite.ticker.addEventListener("tick", cloud);
+  };
 }
