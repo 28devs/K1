@@ -313,6 +313,7 @@ if (loader) {
       if (isLoad) {
         setTimeout(function() {
           loader.classList.add('loader--lines-hide');
+          document.querySelector('.home').classList.remove('home--scroll-hide');
         }, 500);
 
         loader.classList.add('loader--progress-hide');
