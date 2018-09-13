@@ -42,6 +42,7 @@
 
   const processors = [
     require('postcss-import'),
+    require('postcss-mixins'),
     require('postcss-alias'),
     require('postcss-for'),
     require('postcss-each'),
@@ -61,7 +62,6 @@
     require('postcss-short-text'),
     require('postcss-responsive-type'),
     require('postcss-extend'),
-    require('postcss-mixins'),
     require('postcss-inline-svg')({
       path: 'app/assets/img/'
     }),
