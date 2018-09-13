@@ -269,7 +269,7 @@ var animationElems = [
   {
     selector: '.sponsorship__vert-text',
     settings: {
-      yPercent: -55,
+      yPercent: -90,
       paused: true
     }
   }
