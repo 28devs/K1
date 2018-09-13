@@ -385,7 +385,6 @@ var transitionFrom1To2 = function() {
 };
 
 var cloudElem = document.querySelector('.links__cloud');
-
 if(cloudElem) {
   window.onscroll = function(e) {
     // true - down, false - up
@@ -396,6 +395,7 @@ if(cloudElem) {
       // console.log('pau')
     }
     //////
+    var animation;
     var cloudParentElem = document.querySelector('.links');
     var scroll = window.pageYOffset || document.documentElement.scrollTop;
     var parentHeight = cloudParentElem.clientHeight;
@@ -403,16 +403,16 @@ if(cloudElem) {
     function cloud() {
       var step = scroll / parentHeight;
       console.log(step)
-      // animation.progress(step);
+      animation.progress(step);
 
     }
     if(direction) {
-      var animation = TweenLite.to(cloudElem, 1, {
+      animation = TweenLite.to(cloudElem, 1, {
         autoAlpha: 0,
         paused: true
       });
     } else {
-      var animation = TweenLite.to(cloudElem, 1, {
+      animation = TweenLite.to(cloudElem, 1, {
         autoAlpha: 1,
         paused: true
       });
