@@ -14,8 +14,12 @@
     transition-delay: .3s
 
   &--is-show
-    ^&__logo, ^&__nav-wrap
+    ^&__logo
       @mixin fade-in
+
+    ^&__nav-wrap
+      transform: translateX(0) translateY(0) @md translateX(-50%)
+      opacity: 1
 
   &--nav-open
     bottom: 0
@@ -79,13 +83,17 @@
       background: svg-load('icons/logo.svg' fill: #fff) no-repeat center / contain
 
   &__nav
-    box: center middle
+    box: center middle @md left
 
     &-wrap
       box: center
       display: @md-down none
       margin-left: @lg-down -5px @md-down 0
-      @mixin fade-out 15px, .3s
+      left: * @md 50%
+      transform: translateX(0) translateY(15px) @md translateX(-50%) translateY(15px)
+      transition: transform .3s ease-in-out, opacity .3s ease-in-out
+      transition-delay: 0
+      opacity: 0
 
       &--open
         display: flex !important
