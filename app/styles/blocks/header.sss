@@ -56,6 +56,7 @@
 
       &-wrap
         margin-left: @md 33.33333%
+        transform: translateX(0) translateY(0) @md translateX(0)
 
     ^&__link
       text: $black
@@ -83,14 +84,14 @@
       background: svg-load('icons/logo.svg' fill: #fff) no-repeat center / contain
 
   &__nav
-    box: center middle @md left
+    box: center middle
 
     &-wrap
       box: center
       display: @md-down none
       margin-left: @lg-down -5px @md-down 0
-      left: * @md 50%
-      transform: translateX(0) translateY(15px) @md translateX(-50%) translateY(15px)
+      left:  @md 50%
+      transform: translateX(0) translateY(15px) @md translateX(-50%)
       transition: transform .3s ease-in-out, opacity .3s ease-in-out
       transition-delay: 0
       opacity: 0
