@@ -19,7 +19,8 @@
     gulpWatchPug = require('gulp-watch-pug'),
     cssbeautify = require('gulp-cssbeautify'),
     stripCssComments = require('gulp-strip-css-comments'),
-    cssDeclarationSorter = require('css-declaration-sorter');
+    cssDeclarationSorter = require('css-declaration-sorter'),
+    rev = require('gulp-rev-append');
 
   // Попробовать позже https://www.npmjs.com/package/gulp-pug-inheritance
   // jadeInheritance = require('gulp-jade-inheritance'),
@@ -37,6 +38,12 @@
           pretty: true
         })
       )
+      .pipe(gulp.dest('dest/'));
+  });
+
+  gulp.task('rev', function() {
+    return gulp.src('dest/*.html')
+      .pipe(rev())
       .pipe(gulp.dest('dest/'));
   });
 
@@ -108,7 +115,8 @@
 
   // write js
   gulp.task('scripts', function() {
-    return gulp.src('app/scripts/**').pipe(gulp.dest('dest/scripts'));
+    return gulp.src('app/scripts/**')
+    .pipe(gulp.dest('dest/scripts'));
   });
 
   //delete dest folder
@@ -150,11 +158,12 @@
       gulp.parallel(
         'assets',
         'postcss',
-        'views',
+        'rev',
         'libs-css',
         'libs-js',
         'scripts'
-      )
+      ),
+      'views'
     )
   );
 
@@ -174,6 +183,7 @@
     gulp.watch('app/scripts/**/*.*', gulp.series('scripts'));
     gulp.watch('app/assets/**/*.*', gulp.series('assets'));
     gulp.watch('app/assets/views/**/*.*', gulp.series('views'));
+    gulp.watch('dest/styles/main.css*', gulp.series('rev'));
     gulp.watch('app/libs/**/*.js', gulp.series('libs-js'));
     gulp.watch('app/libs/**/*.css', gulp.series('libs-css'));
   });
