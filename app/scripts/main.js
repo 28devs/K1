@@ -233,7 +233,7 @@ var animationElems = [
   {
     selector: '.parallax__k1',
     settings: {
-      yPercent: -100,
+      yPercent: -180,
       paused: true
     }
   },
