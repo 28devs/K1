@@ -446,6 +446,7 @@ if (hero) {
 
     setTimeout(function() {
       hero.classList.remove('hero--is-hide');
+      header.classList.remove('header--is-scroll');
     }, 550);
 
     setTimeout(function() {
