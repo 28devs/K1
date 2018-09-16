@@ -27,6 +27,9 @@
     background: #fff
     box-shadow: 0 0 0 100px #fff
     position: fixed
+    max-width: 100vw
+    overflow-x: hidden
+    overflow-y: scroll
 
     ^&__logo
       display: none !important
@@ -100,6 +103,10 @@
         display: flex !important
         box: vertical left
         position: absolute 100px 0 0 0
+        // max-width: 100vw
+        // overflow-x: hidden
+        // overflow-y: scroll
+
 
         ^^^&__link
           text: $black 40px
@@ -174,7 +181,9 @@
         content: 'CLOSE'
         text: #1D273E 700 12px
         position: absolute
-        transform: translateX(120%)
+        transform: translateY(-50%) translateX(120%)
+        top: 50%
+
 
       ^&-line
         margin-top: -2px !important

@@ -332,6 +332,17 @@ if (loader) {
 //
 
 var hero = document.querySelector('.hero');
+var links = document.querySelector('.links');
+//tousch event create
+var heroTouch = new Hammer(hero);
+heroTouch.get('swipe').set({
+  direction: Hammer.DIRECTION_VERTICAL,
+});
+var linksTouch = new Hammer(links);
+linksTouch.get('swipe').set({
+  direction: Hammer.DIRECTION_VERTICAL,
+});
+
 
 if (hero) {
   var header = document.querySelector('.header');
@@ -349,27 +360,66 @@ if (hero) {
     transitionFrom1To2();
   });
 
+
+  var scrollTop = false;
   $(window).on('wheel', function(event) {
-    console.log(from1to2);
     if (window.pageYOffset == 0 && from1to2) {
-      if (event.originalEvent.deltaY < 0) {
-        // document.querySelector('.home').classList.add('home--scroll-hide');
-        // loader.classList.remove('loader--lines-hide');
-        // setTimeout(function() {
-        //   hero.classList.remove('hero--is-hide');
-        // }, 550);
-        // setTimeout(function() {
-        //   loader.classList.add('loader--lines-hide');
-        // }, 550 * 2);
-      } else {
+      if (event.originalEvent.deltaY < 0 && scrollTop) {
+        transitionFrom2To1();
+      }
+      if (event.originalEvent.deltaY > 0) {
         transitionFrom1To2();
       }
     }
   });
+  heroTouch.on("swipeup", function(ev) {
+    if (window.pageYOffset == 0 && from1to2) {
+      // console.log(scrollTop)
+      // console.log(ev.type)
+      // if(ev.type==='swipedown' && scrollTop) {
+      //   transitionFrom2To1();
+      // }
+      if(ev.type==='swipeup') {
+        transitionFrom1To2();
+      }
+    }
+  });
+  linksTouch.on("swipedown swipeup", function(ev) {
+    var currentScroll = $("html, body").animate({ scrollTop: "1000px" });
+    if (window.pageYOffset == 0 && from1to2) {
+      if(ev.type==='swipedown' && scrollTop) {
+        transitionFrom2To1();
+      }
+      if(ev.type==='swipeup') {
+        $('body').scrollTo(ev.deltaY * -1);
+        console.log(ev.deltaY)
+        // window.scrollTo(0, currentScroll + ev.deltaY * -1);
+      }
+    } else {
+        console.log(currentScroll)
+        // console.log(ev.type)
+        if(ev.type==='swipedown') {
+          window.scrollTo(0, 0);
+        }
+        if(ev.type==='swipeup') {
+          // window.scrollTo(0, currentScroll + ev.deltaY * -1);
+          $('body').scrollTo(currentScroll + ev.deltaY/4 * -1)
+        }
+      }
+  });
+  // var hero1 = $('.hero')
+  // console.log(hero1)
+  // hero1.on('swipe', function(event){
+  //   event.preventDefault();
+  //   alert(1)
+  //   if(event.direction == 'left' || event.direction == 'right'){
+  //       console.log(123)
+  //   }
+  // });
 
   var transitionFrom1To2 = function() {
     from1to2 = false;
-
+    scrollTop = true;
     loader.classList.remove('loader--lines-hide');
 
     setTimeout(function() {
@@ -383,8 +433,26 @@ if (hero) {
       document.querySelector('.links').classList.add('links--is-show');
       document.querySelector('.home').classList.remove('home--scroll-hide');
       document.querySelector('.home__k1').classList.add('home__k1--show');
+      from1to2 = true;
     }, 550 * 2);
   };
+
+  var transitionFrom2To1 = function() {
+    from1to2 = false;
+    scrollTop = false
+    document.querySelector('.home').classList.add('home--scroll-hide');
+    loader.classList.remove('loader--lines-hide');
+    loader.classList.remove('loader--fade-out');
+
+    setTimeout(function() {
+      hero.classList.remove('hero--is-hide');
+    }, 550);
+
+    setTimeout(function() {
+      loader.classList.add('loader--lines-hide');
+      from1to2 = true;
+    }, 550 * 2);
+  }
 
   // Cloud opacity
 
@@ -433,3 +501,4 @@ if (hero) {
     formBgAnimation.progress(step);
   });
 }
+
