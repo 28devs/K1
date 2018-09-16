@@ -89,13 +89,17 @@
 
     &-elem
       position: absolute
+      bottom: 0
 
       &--long
-        background: svg-load('sponsors/line-long.svg')
-        size: size('sponsors/line-long.svg')
+        background: svg-load('sponsors/line-long.svg') no-repeat center / cover
+        width: 100%
+        padding-bottom: 47%
 
       &--short
         bottom: 0
         left: 0
-        background: svg-load('sponsors/line-short.svg')
-        size: size('sponsors/line-short.svg')
+        background: svg-load('sponsors/line-short.svg') no-repeat center / cover
+        // width: 46.73vw
+        width: 36vw
+        padding-bottom: 19%
