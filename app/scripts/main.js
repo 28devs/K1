@@ -364,20 +364,22 @@ if (hero) {
   });
 
   touch(hero, 'down', transitionFrom1To2);
-  touch(links, 'up', transitionFrom2To1);
+  touch(links, 'up', transitionFrom2To1, true);
 
-  function touch(elem, direction, callback) {
+  function touch(elem, direction, callback, scroll) {
     var swipeDir;
     var posStart;
     var posEnd;
 
     elem.addEventListener("touchstart", function(e) {
-      e.preventDefault;
+      if(!scroll)
+        e.preventDefault()
       posStart = parseInt(e.changedTouches[0].pageY)
     }, false);
 
     elem.addEventListener("touchend", function(e) {
-      e.preventDefault;
+      if(!scroll)
+        e.preventDefault()
       posEnd = parseInt(e.changedTouches[0].pageY);
       swipeDir = (posEnd - posStart) > 0 ? 'up' : 'down';
       console.log(swipeDir)
