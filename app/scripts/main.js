@@ -478,6 +478,7 @@ if (hero) {
 //
 //paralax on mouse move for main
 //
+
 $(".hero").mousemove(function(e) {
   parallaxIt(e, ".hero__clouds", -20);
   parallaxIt(e, ".hero__sea", -5);
@@ -496,3 +497,38 @@ function parallaxIt(e, target, movement) {
   });
 }
 
+//
+// hyroscope
+//
+var output = $('.output'),
+    rotX = 0,
+    rotY = 0;
+
+if (window.DeviceMotionEvent) {
+  window.ondeviceorientation = function(event) {
+    beta = event.beta;
+    gamma = event.gamma;
+    setTimeout(function(){
+      normalizeData(gamma, beta)
+    }, 50)
+  }
+}
+
+function normalizeData(_g, _b){
+  b = Math.round(_b);
+  g = Math.round(_g);
+  rotY += (g - rotY) / 5;
+  rotX += (b - rotX) / 5;
+  // output.text('gamma: ' + g + ' / beta: ' + b);
+
+  parallaxGy('.hero__ships', g, b)
+}
+
+function parallaxGy(target, x, y) {
+  var $this = $(".hero");
+
+  TweenMax.to(target, 1, {
+    x: x,
+    y: y
+  });
+}
