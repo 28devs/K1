@@ -503,3 +503,24 @@ if (hero) {
   });
 }
 
+//
+//paralax on mouse move for main
+//
+$(".hero").mousemove(function(e) {
+  parallaxIt(e, ".hero__clouds", -20);
+  parallaxIt(e, ".hero__sea", -5);
+  // parallaxIt(e, ".hero__hills", -5);
+  parallaxIt(e, ".hero__ships", -5);
+});
+
+function parallaxIt(e, target, movement) {
+  var $this = $(".hero");
+  var relX = e.pageX - $this.offset().left;
+  var relY = e.pageY - $this.offset().top;
+
+  TweenMax.to(target, 1, {
+    x: (relX - $this.width() / 2) / $this.width() * movement,
+    y: (relY - $this.height() / 2) / $this.height() * movement
+  });
+}
+

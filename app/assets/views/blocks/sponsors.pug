@@ -1,16 +1,16 @@
 section.sponsors.lines__wrap
   .container
     .row
-      .col-2.offset-lg-2.col-lg-4
+      .col-2.offset-lg-2.col-lg-4(data-aos)
         h2.sponsors__title Sponsors
           .sponsors__title-rank.sponsors__title-rank--platinum Platinum
           .sponsors__title-rank.sponsors__title-rank--gold.sponsors__title-rank--hide Gold
           .sponsors__title-rank.sponsors__title-rank--silver.sponsors__title-rank--hide Silver
 
           .slider__control.sponsors__slider-control--prev.slider__control--prev.slider__control--hide(data-slider-control='prev')
-          .slider__control.sponsors__slider-control--next(data-slider-control='next')
+          .slider__control.sponsors__slider-control--next(data-slider-control='next' data-aos)
 
-        ul.sponsors__slider
+        ul.sponsors__slider(data-aos)
           li.sponsors__slide(data-rank='platinum')
             each i in [1,2,3,4,5,6,7,8]
               .sponsors__img-wrap
@@ -31,10 +31,10 @@ section.sponsors.lines__wrap
               .sponsors__img-wrap
                 img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
 
-        .sponsors__quote.quote 
+        .sponsors__quote.quote(data-aos)
           .quote__text The Restoration Programme centres on the construction of a replica of Britannia based on her original lines designed by GL Watson.
 
-        a.wave-link.sponsors__link(href='#!') More about sponsorship
+        a.wave-link.sponsors__link(href='#!' data-aos) More about sponsorship
 
   .sponsors__arcs.parallax
     .sponsors__arcs-elem.sponsors__arcs-elem--long

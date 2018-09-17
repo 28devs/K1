@@ -1,10 +1,55 @@
 .hero
-  background: #7aa0cf resolve('hero/bg.jpg') center / cover @retina #7aa0cf resolve('hero/bg@2x.jpg') center / cover
-  // height: 100vh
   padding: 15px 6.25% 30px @md 30px 6.25% 50px
   position: fixed 0 0 0 0
-  box-shadow: inset 0 0 0 10px #fff @md inset 0 0 0 15px #fff @lg inset 0 0 0 30px #fff
   z-index: 999
+
+  &__bg
+    position: absolute 0 0 0 0
+    width: 100%
+    height: 100%
+    z-index: 1 !important
+    overflow: hidden
+
+    &:after
+      content: ''
+      position: absolute 0 0 0 0
+      z-index: 99
+      border: 30px solid #ffffff
+
+    &-wraps
+      position: absolute
+
+    &-img
+      width: 100%
+
+  &__clouds
+    z-index: 1
+    width: 100vw
+    height: 100vh
+    object-fit: cover
+
+    img
+      position: absolute
+      width: 100%
+      top: 0
+      bottom: 0
+      display: block
+
+  &__sea
+    z-index: 3
+    bottom: 0
+
+    img
+      height: 200px
+      object-fit: cover
+
+  &__hills
+    z-index: 2
+    bottom: 130px
+
+  &__ships
+    z-index: 4
+    bottom: 80px
 
   &--is-hide
     display: none
