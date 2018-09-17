@@ -333,16 +333,6 @@ if (loader) {
 
 var hero = document.querySelector('.hero');
 var links = document.querySelector('.links');
-//tousch event create
-var heroTouch = new Hammer(hero);
-heroTouch.get('swipe').set({
-  direction: Hammer.DIRECTION_VERTICAL,
-});
-var linksTouch = new Hammer(links);
-linksTouch.get('swipe').set({
-  direction: Hammer.DIRECTION_VERTICAL,
-});
-
 
 if (hero) {
   var header = document.querySelector('.header');
@@ -372,52 +362,32 @@ if (hero) {
       }
     }
   });
-  heroTouch.on("swipeup", function(ev) {
-    if (window.pageYOffset == 0 && from1to2) {
-      // console.log(scrollTop)
-      // console.log(ev.type)
-      // if(ev.type==='swipedown' && scrollTop) {
-      //   transitionFrom2To1();
-      // }
-      if(ev.type==='swipeup') {
-        transitionFrom1To2();
-      }
-    }
-  });
-  linksTouch.on("swipedown swipeup", function(ev) {
-    var currentScroll = $("html, body").animate({ scrollTop: "1000px" });
-    if (window.pageYOffset == 0 && from1to2) {
-      if(ev.type==='swipedown' && scrollTop) {
-        transitionFrom2To1();
-      }
-      if(ev.type==='swipeup') {
-        $('body').scrollTo(ev.deltaY * -1);
-        console.log(ev.deltaY)
-        // window.scrollTo(0, currentScroll + ev.deltaY * -1);
-      }
-    } else {
-        console.log(currentScroll)
-        // console.log(ev.type)
-        if(ev.type==='swipedown') {
-          window.scrollTo(0, 0);
-        }
-        if(ev.type==='swipeup') {
-          // window.scrollTo(0, currentScroll + ev.deltaY * -1);
-          $('body').scrollTo(currentScroll + ev.deltaY/4 * -1)
-        }
-      }
-  });
-  // var hero1 = $('.hero')
-  // console.log(hero1)
-  // hero1.on('swipe', function(event){
-  //   event.preventDefault();
-  //   alert(1)
-  //   if(event.direction == 'left' || event.direction == 'right'){
-  //       console.log(123)
-  //   }
-  // });
 
-  var transitionFrom1To2 = function() {
+  touch(hero, 'down', transitionFrom1To2);
+  touch(links, 'up', transitionFrom2To1);
+
+  function touch(elem, direction, callback) {
+    var swipeDir;
+    var posStart;
+    var posEnd;
+
+    elem.addEventListener("touchstart", function(e) {
+      e.preventDefault;
+      posStart = parseInt(e.changedTouches[0].pageY)
+    }, false);
+
+    elem.addEventListener("touchend", function(e) {
+      e.preventDefault;
+      posEnd = parseInt(e.changedTouches[0].pageY);
+      swipeDir = (posEnd - posStart) > 0 ? 'up' : 'down';
+      console.log(swipeDir)
+      if(window.pageYOffset == 0 && swipeDir === direction) {
+        callback()
+      }
+    }, false);
+  }
+
+  function transitionFrom1To2() {
     from1to2 = false;
     scrollTop = true;
     loader.classList.remove('loader--lines-hide');
@@ -437,7 +407,7 @@ if (hero) {
     }, 550 * 2);
   };
 
-  var transitionFrom2To1 = function() {
+  function transitionFrom2To1() {
     from1to2 = false;
     scrollTop = false
     document.querySelector('.home').classList.add('home--scroll-hide');
@@ -453,7 +423,7 @@ if (hero) {
       loader.classList.add('loader--lines-hide');
       from1to2 = true;
     }, 550 * 2);
-  }
+  };
 
   // Cloud opacity
 
