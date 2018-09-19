@@ -10,16 +10,20 @@
     position: absolute 0 0 null 0
     max-width: 100%
     min-width: 700px
+    padding-top: 100% @md 70% @lg 50% @xxl 45% @xxxl 35%
+    background: resolve('press/bg.jpg') no-repeat center / cover @retina resolve('press/bg@2x.jpg') no-repeat center / cover
 
   &__anchor
-    position: fixed 540px 0 null null
+    position: fixed null 0 null null
+    top: 540px @xxl 650px
     display: @lg-down none
     background: #fff
     padding-top: 160px
+    padding-left: 300px
 
   &__k1
     position: fixed
-    top: 260px @md 660px
+    top: 290px @md 660px
     left: auto @lg 6.25%
     right: 0 @lg auto
     z-index: 2

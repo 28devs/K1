@@ -2,6 +2,14 @@
   padding: 15px 6.25% 30px @md 30px 6.25% 50px
   position: fixed 0 0 0 0
   z-index: 999
+  overflow: hidden
+
+  &:before
+    content: ''
+    position: absolute 0 0 0 0
+    z-index: 99
+    border: 30px solid #ffffff
+    border-width: 10px @md 15px @lg 30px
 
   &__bg
     position: absolute 0 0 0 0
@@ -9,12 +17,6 @@
     height: 100%
     z-index: 1 !important
     overflow: hidden
-
-    &:after
-      content: ''
-      position: absolute 0 0 0 0
-      z-index: 99
-      border: 30px solid #ffffff
 
     &-wraps
       position: absolute
@@ -24,28 +26,27 @@
 
   &__clouds
     z-index: 1
-    width: 100vw
+    width: calc(100% + 400px)
     height: 100vh
-    object-fit: cover
-
-    img
-      position: absolute
-      width: 100%
-      top: 0
-      bottom: 0
-      display: block
+    top: -100px
+    left: -200px
+    background: resolve('hero/clouds.jpg') center no-repeat / cover @retina resolve('hero/clouds@2x.jpg') center no-repeat / cover
 
   &__sea
     z-index: 3
-    bottom: 0
-
-    img
-      height: 200px
-      object-fit: cover
+    bottom: -30px
+    width: calc(100% + 200px)
+    left: -100px
+    height: 240px @md 200px
+    background: resolve('hero/sea.png') center no-repeat / cover @retina resolve('hero/sea@2x.png') center no-repeat / cover
 
   &__hills
     z-index: 2
-    bottom: 130px
+    bottom: 160px @md 130px
+    left: -130px
+    width: calc(100% + 260px)
+    padding-top: 25%
+    background: resolve('hero/hills.png') center no-repeat / cover @retina resolve('hero/hills@2x.png') center no-repeat / cover
 
   &__ships
     z-index: 4

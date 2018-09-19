@@ -1,7 +1,7 @@
 .sponsorship
   position: relative
   background-color: #262427
-  padding: 100px 0 @lg 225px 0 190px
+  padding: 170px 0 @lg 225px 0 190px
 
   &__vert-text
     position: fixed
@@ -9,7 +9,7 @@
     left: auto @lg 6.25%
     right: 2px @lg auto
     z-index: 2
-    width: @md-down 24% @lg-down 11%
+    width: @md-down 24% @lg-down 11% @lg 134px
 
   &__lines .lines__elem
     background: rgba(240, 240, 240, 0.1)
@@ -38,21 +38,25 @@
     box: vertical @lg horizontal
 
     &-side
-      padding-right: 5.55555vw
+      padding-right: 7vw
       flex: 1
       box-sizing: border-box
 
+      & + &
+        margin-top: @lg-down 20px
+
     &-item
       position: relative
-      padding-left: 40px @lg 0
+      padding-left: 28px @md 35px @lg 0
 
       &:before
         content: ''
         position: absolute
         left: 0 @lg -30px
-        top: 10px
+        top: 8px @lg 10px
         background: svg-load('icons/dot.svg')
         size: size('icons/dot.svg')
+
       & + &
         margin-top: 20px
 
@@ -61,8 +65,8 @@
     font-size: responsive 40px 100px
     font-range: $sm-px $xxl-px
     font-weight: 700
-    line-height: 1.2
-    margin-bottom: 15px
+    line-height: 0.8
+    margin-bottom: 45px @md 60px @lg 80px
 
     &-accent
       display: block

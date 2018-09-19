@@ -10,25 +10,25 @@ section.sponsors.lines__wrap
           .slider__control.sponsors__slider-control--prev.slider__control--prev.slider__control--hide(data-slider-control='prev')
           .slider__control.sponsors__slider-control--next(data-slider-control='next' data-aos)
 
-        ul.sponsors__slider(data-aos)
+        ul.sponsors__slider
           li.sponsors__slide(data-rank='platinum')
             each i in [1,2,3,4,5,6,7,8]
-              .sponsors__img-wrap
+              .sponsors__img-wrap(data-aos)
                 img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
 
           li.sponsors__slide(data-rank='platinum')
             each i in [9,10]
-              .sponsors__img-wrap
+              .sponsors__img-wrap(data-aos)
                 img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
 
           li.sponsors__slide(data-rank='gold')
             each i in [11,12,13,14,15,16]
-              .sponsors__img-wrap
+              .sponsors__img-wrap(data-aos)
                 img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
 
           li.sponsors__slide(data-rank='silver')
             each i in [17]
-              .sponsors__img-wrap
+              .sponsors__img-wrap(data-aos)
                 img.sponsors__img(src='img/sponsors/'+i+'.png', alt='sponsor')
 
         .sponsors__quote.quote(data-aos)

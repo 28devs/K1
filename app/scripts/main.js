@@ -215,7 +215,7 @@ if (aboutSliders) {
 }
 
 //
-//animation on scroll
+// Animation on scroll
 //
 
 AOS.init({
@@ -233,7 +233,7 @@ var animationElems = [
   {
     selector: '.parallax__k1',
     settings: {
-      yPercent: -180,
+      yPercent: -110,
       paused: true
     }
   },
@@ -350,7 +350,6 @@ if (hero) {
     transitionFrom1To2();
   });
 
-
   var scrollTop = false;
   $(window).on('wheel', function(event) {
     if (window.pageYOffset == 0 && from1to2) {
@@ -371,22 +370,28 @@ if (hero) {
     var posStart;
     var posEnd;
 
-    elem.addEventListener("touchstart", function(e) {
-      if(!scroll)
-        e.preventDefault()
-      posStart = parseInt(e.changedTouches[0].pageY)
-    }, false);
+    elem.addEventListener(
+      'touchstart',
+      function(e) {
+        if (!scroll) e.preventDefault();
+        posStart = parseInt(e.changedTouches[0].pageY);
+      },
+      false
+    );
 
-    elem.addEventListener("touchend", function(e) {
-      if(!scroll)
-        e.preventDefault()
-      posEnd = parseInt(e.changedTouches[0].pageY);
-      swipeDir = (posEnd - posStart) > 0 ? 'up' : 'down';
-      console.log(swipeDir)
-      if(window.pageYOffset == 0 && swipeDir === direction) {
-        callback()
-      }
-    }, false);
+    elem.addEventListener(
+      'touchend',
+      function(e) {
+        if (!scroll) e.preventDefault();
+        posEnd = parseInt(e.changedTouches[0].pageY);
+        swipeDir = posEnd - posStart > 0 ? 'up' : 'down';
+        console.log(swipeDir);
+        if (window.pageYOffset == 0 && swipeDir === direction) {
+          callback();
+        }
+      },
+      false
+    );
   }
 
   function transitionFrom1To2() {
@@ -407,14 +412,18 @@ if (hero) {
       document.querySelector('.home__k1').classList.add('home__k1--show');
       from1to2 = true;
     }, 550 * 2);
-  };
+  }
 
   function transitionFrom2To1() {
     from1to2 = false;
-    scrollTop = false
-    document.querySelector('.home').classList.add('home--scroll-hide');
+    scrollTop = false;
+
     loader.classList.remove('loader--lines-hide');
     loader.classList.remove('loader--fade-out');
+
+    setTimeout(function() {
+      document.querySelector('.home').classList.add('home--scroll-hide');
+    }, 300);
 
     setTimeout(function() {
       hero.classList.remove('hero--is-hide');
@@ -425,7 +434,7 @@ if (hero) {
       loader.classList.add('loader--lines-hide');
       from1to2 = true;
     }, 550 * 2);
-  };
+  }
 
   // Cloud opacity
 
@@ -476,59 +485,66 @@ if (hero) {
 }
 
 //
-//paralax on mouse move for main
+// Parallax
 //
 
-$(".hero").mousemove(function(e) {
-  parallaxIt(e, ".hero__clouds", -20);
-  parallaxIt(e, ".hero__sea", -5);
-  // parallaxIt(e, ".hero__hills", -5);
-  parallaxIt(e, ".hero__ships", -5);
-});
+const homeParallax = document.querySelector('.home');
 
-function parallaxIt(e, target, movement) {
-  var $this = $(".hero");
-  var relX = e.pageX - $this.offset().left;
-  var relY = e.pageY - $this.offset().top;
+if (homeParallax) {
+  var parallaxIt = function(e, target, movementX, movementY) {
+    var $this = $('.hero');
+    var relX = e.pageX - $this.offset().left;
+    var relY = e.pageY - $this.offset().top;
 
-  TweenMax.to(target, 1, {
-    x: (relX - $this.width() / 2) / $this.width() * movement,
-    y: (relY - $this.height() / 2) / $this.height() * movement
+    TweenMax.to(target, 1, {
+      x: ((relX - $this.width() / 2) / $this.width()) * movementX,
+      y: ((relY - $this.height() / 2) / $this.height()) * movementY,
+      ease: Linear.easeNone
+    });
+  };
+
+  $('.hero, .header').mousemove(function(e) {
+    parallaxIt(e, '.hero__clouds', -200, -100);
+    parallaxIt(e, '.hero__hills', -130, -40);
+    parallaxIt(e, '.hero__sea', -100, -30);
+    parallaxIt(e, '.hero__ships', -50, -20);
   });
-}
 
-//
-// hyroscope
-//
-var output = $('.output'),
-    rotX = 0,
+  //
+  // Hyroscope
+  //
+
+  var rotX = 0,
     rotY = 0;
 
-if (window.DeviceMotionEvent) {
-  window.ondeviceorientation = function(event) {
-    beta = event.beta;
-    gamma = event.gamma;
-    setTimeout(function(){
-      normalizeData(gamma, beta)
-    }, 50)
+  if (window.DeviceMotionEvent) {
+    window.ondeviceorientation = function(event) {
+      beta = event.beta;
+      gamma = event.gamma;
+      setTimeout(function() {
+        normalizeData(gamma, beta);
+      }, 50);
+    };
   }
-}
 
-function normalizeData(_g, _b){
-  b = Math.round(_b);
-  g = Math.round(_g);
-  rotY += (g - rotY) / 5;
-  rotX += (b - rotX) / 5;
-  // output.text('gamma: ' + g + ' / beta: ' + b);
+  function normalizeData(_g, _b) {
+    b = Math.round(_b);
+    g = Math.round(_g);
+    rotY += (g - rotY) / 5;
+    rotX += (b - rotX) / 5;
 
-  parallaxGy('.hero__ships', g, b)
-}
+    parallaxGy('.hero__clouds', g, b, 2.2, 1.1);
+    parallaxGy('.hero__hills', g, b, 1.7, 1.5);
+    parallaxGy('.hero__sea', g, b, 1.2, 2);
+    parallaxGy('.hero__ships', g, b, 1.1, 2.5);
+  }
 
-function parallaxGy(target, x, y) {
-  var $this = $(".hero");
+  function parallaxGy(target, x, y, coefX, coefY) {
+    var $this = $('.hero');
 
-  TweenMax.to(target, 1, {
-    x: x,
-    y: y
-  });
+    TweenMax.to(target, 1, {
+      x: x * coefX,
+      y: y / coefY
+    });
+  }
 }
