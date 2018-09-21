@@ -20,8 +20,12 @@
     background: linear-gradient(0, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.01) 20%, rgba(255, 255, 255, 0.6) 100%)
 
   &__item
-    width: initial @md 28% @lg 30% @xl 31% @xxl initial
-    padding-right: 20px
+    width: 200px
+    min-width: 200px
+    border: #f0f0f0 1px solid
+    padding: 0 0 25px 25px
+    cursor: pointer
+    text-decoration: none
     @mixin fade-out 30px, .3s, .9s
 
     &:nth-child(2)
@@ -31,7 +35,7 @@
       transition-delay: 1.4s
 
     & + &
-      margin-left: 50px @lg 0
+      margin-left: 40px @md 60px
 
   &__items-scroll
     height: 340px @md initial
@@ -39,30 +43,33 @@
     margin: @md-down 0 -5.5%
 
   &__img
-    width: 200px @md 100% @xxl 200px
     height: auto
+    cursor: pointer
 
     &-wrap
       position: relative
       z-index: 2
+      margin: -30px 0 38px 0
+      cursor: pointer
 
   &__title
     font-family: $font-title
     line-height: 1
     font-size: responsive 70px 100px
     font-range: $lg-px $xxl-px
-    margin-bottom: 60px  @lg 45px @xxl  65px
+    margin-bottom: 60px @lg 45px @xxl  65px
     max-width: 883px
     @mixin fade-out 30px, .3s, .6s
 
   &__items-wrap
-    box: space-between
-    margin: 0 @lg 0 -46px @xl 0 -46px
+    box:
+    margin: 0 @lg 0 -25px
     overflow: hidden
     overflow-x: auto @md hidden
     padding-bottom: 30px @md initial
     max-width: 760px
     padding-left: @md-down 5%
+    padding-top: 50px
 
     &:after
       content: ''
@@ -70,27 +77,25 @@
       min-width: 5%
 
   &__text
-    border: #f0f0f0 1px solid
     backdrop-filter: blur(3px)
     position: relative
     z-index: 1
-    margin: -180px -20px 0 20px @lg -134px -16px 0 16px @xxl -180px -20px 0 20px
-    padding: 200px 0 20px 25px @lg 148px 0 14px 16px @xxl 200px 0 20px 25px
 
   &__item-title
-    text: 30px .8 40 @lg 21px @xl 26px @xxl 30px
+    text: $text-black 30px 1 40 @lg 24px @xl 30px
+    cursor: pointer
 
   &__item-desc
-    text: 20px 1.2 400 @lg 14px @xl 18px @xxl 20px
+    text: $text-black 20px 1.2 400 @lg 18px @xl 20px
+    cursor: pointer
     position: relative
 
     &:after
       position: absolute
       right: -3px
-      top: 0
+      top: 10px
       content: ''
-      width: 50px @lg 35.56px @xxl 50px
-      height: 3.31px @lg 2.35px @xxl 3.31px
+      size: size('links/wave.svg')
       display: block
       background: svg-load('links/wave.svg', fill: #E03A3E) no-repeat right center / contain
 
