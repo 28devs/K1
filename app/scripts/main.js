@@ -2,11 +2,11 @@
 // Get coll width in px
 //
 
-const collCount = function() {
+const collCount = function () {
   return window.innerWidth >= 1024 ? 6 : window.innerWidth >= 680 ? 4 : 2;
 };
 
-const collWidth = function() {
+const collWidth = function () {
   return (window.innerWidth * 0.875) / collCount();
 };
 
@@ -37,7 +37,7 @@ const collWidth = function() {
 const stickyNavMobileOpenBtn = document.querySelector('.header__mobile-nav');
 
 if (stickyNavMobileOpenBtn) {
-  stickyNavMobileOpenBtn.addEventListener('click', function(e) {
+  stickyNavMobileOpenBtn.addEventListener('click', function (e) {
     e.stopPropagation();
     stickyNavMobileOpenBtn.classList.toggle('header__mobile-nav--close');
     document
@@ -67,7 +67,7 @@ if (sponsorsSliderBlock) {
     slideMargin: 0,
     controls: false,
     pager: false,
-    onBeforeSlide: function(elem) {
+    onBeforeSlide: function (elem) {
       let current = sponsorsSlider.getCurrentSlideCount();
       let max = sponsorsSlider.getTotalSlideCount();
       let controlHideClass = 'slider__control--hide';
@@ -93,7 +93,7 @@ if (sponsorsSliderBlock) {
 
       document
         .querySelectorAll('.sponsors__title-rank')
-        .forEach(function(elem) {
+        .forEach(function (elem) {
           elem.classList.add(rankHideClass);
         });
 
@@ -109,8 +109,8 @@ if (sponsorsSliderBlock) {
   var slides = document.querySelectorAll('.sponsors__slide');
 
   // Set new coll width for img-wrap
-  var updateCollWidth = function() {
-    slides.forEach(function(slide, i) {
+  var updateCollWidth = function () {
+    slides.forEach(function (slide, i) {
       // last slide always full width
       if (slides.length === i + 1) {
         var colls = collCount() == 6 ? 4 : collCount();
@@ -126,7 +126,7 @@ if (sponsorsSliderBlock) {
         }
       }
 
-      slide.querySelectorAll('.sponsors__img-wrap').forEach(function(elem) {
+      slide.querySelectorAll('.sponsors__img-wrap').forEach(function (elem) {
         elem.style.width = collWidth().toFixed(0) + 'px';
       });
     });
@@ -165,8 +165,7 @@ if (historySliderBlock) {
     slideMargin: 56,
     controls: false,
     pager: false,
-    responsive: [
-      {
+    responsive: [{
         breakpoint: 1080,
         settings: {
           slideMargin: 30
@@ -208,7 +207,7 @@ function aboutSlider(slideElem, parent) {
 const aboutSliders = document.querySelectorAll('.about__slider-block');
 
 if (aboutSliders) {
-  aboutSliders.forEach(function(item) {
+  aboutSliders.forEach(function (item) {
     let slideElem = item.querySelector('.about__slider');
     aboutSlider(slideElem, item);
   });
@@ -229,8 +228,7 @@ AOS.init({
 
 var animations = [];
 
-var animationElems = [
-  {
+var animationElems = [{
     selector: '.parallax__k1',
     settings: {
       yPercent: -110,
@@ -267,7 +265,7 @@ var animationElems = [
   }
 ];
 
-animationElems.forEach(function(elem) {
+animationElems.forEach(function (elem) {
   var element = document.querySelector(elem.selector);
 
   if (element) {
@@ -282,7 +280,7 @@ function update() {
   var max = document.body.scrollHeight;
   var step = clamp(normalize(window.pageYOffset, min, max), 0, 1);
 
-  animations.forEach(function(elem) {
+  animations.forEach(function (elem) {
     elem.progress(step);
   });
 }
@@ -304,18 +302,18 @@ var loader = document.querySelector('.loader');
 if (loader) {
   var isLoad = false;
 
-  $(window).load(function() {
+  $(window).load(function () {
     isLoad = true;
   });
 
-  setTimeout(function() {
-    var loadInterval = setInterval(function() {
+  setTimeout(function () {
+    var loadInterval = setInterval(function () {
       if (isLoad) {
-        setTimeout(function() {
+        setTimeout(function () {
           loader.classList.add('loader--lines-hide');
         }, 500);
 
-        setTimeout(function() {
+        setTimeout(function () {
           from1to2 = true;
         }, 1000);
 
@@ -338,20 +336,20 @@ if (hero) {
   var header = document.querySelector('.header');
   var from1to2 = false;
 
-  setTimeout(function() {
+  setTimeout(function () {
     hero.classList.add('hero--is-show');
   }, 6000);
 
-  setTimeout(function() {
+  setTimeout(function () {
     header.classList.add('header--is-show');
   }, 6000);
 
-  $('.hero__discover').click(function() {
+  $('.hero__discover').click(function () {
     transitionFrom1To2();
   });
 
   var scrollTop = false;
-  $(window).on('wheel', function(event) {
+  $(window).on('wheel', function (event) {
     if (window.pageYOffset == 0 && from1to2) {
       if (event.originalEvent.deltaY < 0 && scrollTop) {
         transitionFrom2To1();
@@ -372,7 +370,7 @@ if (hero) {
 
     elem.addEventListener(
       'touchstart',
-      function(e) {
+      function (e) {
         if (!scroll) e.preventDefault();
         posStart = parseInt(e.changedTouches[0].pageY);
       },
@@ -381,7 +379,7 @@ if (hero) {
 
     elem.addEventListener(
       'touchend',
-      function(e) {
+      function (e) {
         if (!scroll) e.preventDefault();
         posEnd = parseInt(e.changedTouches[0].pageY);
         swipeDir = posEnd - posStart > 0 ? 'up' : 'down';
@@ -397,14 +395,15 @@ if (hero) {
   function transitionFrom1To2() {
     from1to2 = false;
     scrollTop = true;
+    playParallax = false;
     loader.classList.remove('loader--lines-hide');
 
-    setTimeout(function() {
+    setTimeout(function () {
       hero.classList.add('hero--is-hide');
       header.classList.add('header--is-scroll', 'header--hide-top');
     }, 550);
 
-    setTimeout(function() {
+    setTimeout(function () {
       loader.classList.add('loader--fade-out');
       header.classList.add('header--show-top');
       document.querySelector('.links').classList.add('links--is-show');
@@ -417,20 +416,21 @@ if (hero) {
   function transitionFrom2To1() {
     from1to2 = false;
     scrollTop = false;
+    playParallax = true;
 
     loader.classList.remove('loader--lines-hide');
     loader.classList.remove('loader--fade-out');
 
-    setTimeout(function() {
+    setTimeout(function () {
       document.querySelector('.home').classList.add('home--scroll-hide');
     }, 300);
 
-    setTimeout(function() {
+    setTimeout(function () {
       hero.classList.remove('hero--is-hide');
       header.classList.remove('header--is-scroll');
     }, 550);
 
-    setTimeout(function() {
+    setTimeout(function () {
       loader.classList.add('loader--lines-hide');
       from1to2 = true;
     }, 550 * 2);
@@ -440,14 +440,13 @@ if (hero) {
 
   var linksCloudBgAnimation = TweenLite.to(
     document.querySelector('.links__cloud'),
-    1,
-    {
+    1, {
       autoAlpha: 0,
       paused: true
     }
   );
 
-  TweenLite.ticker.addEventListener('tick', function() {
+  TweenLite.ticker.addEventListener('tick', function () {
     linksCloudBgAnimation.progress(
       clamp(
         normalize(
@@ -468,14 +467,14 @@ if (hero) {
     paused: true
   });
 
-  TweenLite.ticker.addEventListener('tick', function() {
+  TweenLite.ticker.addEventListener('tick', function () {
     var step = clamp(
       normalize(
         window.pageYOffset,
         document.querySelector('.sponsors').offsetTop +
-          document.querySelector('.sponsors').clientHeight / 3,
+        document.querySelector('.sponsors').clientHeight / 3,
         document.querySelector('.form').offsetTop -
-          document.querySelector('.form').clientHeight / 3
+        document.querySelector('.form').clientHeight / 3
       ),
       0,
       1
@@ -491,10 +490,21 @@ if (hero) {
 const homeParallax = document.querySelector('.home');
 
 if (homeParallax) {
-  var parallaxIt = function(e, target, movementX, movementY) {
+  var playParallax = true;
+  var currentMousePos = {
+    x: -1,
+    y: -1
+  };
+
+  $(document).mousemove(function (event) {
+    currentMousePos.x = event.pageX;
+    currentMousePos.y = event.pageY;
+  });
+
+  var parallaxIt = function (target, movementX, movementY) {
     var $this = $('.hero');
-    var relX = e.pageX - $this.offset().left;
-    var relY = e.pageY - $this.offset().top;
+    var relX = currentMousePos.x - $this.offset().left;
+    var relY = currentMousePos.y - $this.offset().top;
 
     TweenMax.to(target, 1, {
       x: ((relX - $this.width() / 2) / $this.width()) * movementX,
@@ -503,12 +513,19 @@ if (homeParallax) {
     });
   };
 
-  $('.hero, .header').mousemove(function(e) {
-    parallaxIt(e, '.hero__clouds', -200, -100);
-    parallaxIt(e, '.hero__hills', -130, -40);
-    parallaxIt(e, '.hero__sea', -100, -30);
-    parallaxIt(e, '.hero__ships', -50, -20);
-  });
+  TweenLite.ticker.addEventListener('tick', initParallax);
+
+  function initParallax() {
+    if (playParallax) {
+      parallaxIt('.hero__clouds', -200, -100);
+      parallaxIt('.hero__hills', -130, -40);
+      parallaxIt('.hero__sea', -100, -30);
+      parallaxIt('.hero__ships', -50, -20);
+    }
+
+    //requestAnimationFrame(initParallax);
+  }
+  //requestAnimationFrame(initParallax);
 
   //
   // Hyroscope
@@ -518,10 +535,10 @@ if (homeParallax) {
     rotY = 0;
 
   if (window.DeviceMotionEvent) {
-    window.ondeviceorientation = function(event) {
+    window.ondeviceorientation = function (event) {
       beta = event.beta;
       gamma = event.gamma;
-      setTimeout(function() {
+      setTimeout(function () {
         normalizeData(gamma, beta);
       }, 50);
     };
