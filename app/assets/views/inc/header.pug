@@ -1,7 +1,7 @@
 mixin header($class, $active)
   header.header(class=$class)
     nav.header__nav
-      a.header__logo.header__logo--dark(href='/k1')
+      a.header__logo.header__logo--dark(href='/')
       .header__logo.header__logo--white
 
       .header__mobile-nav
@@ -12,7 +12,7 @@ mixin header($class, $active)
       .header__nav-wrap
         each name in ['history', 'press', 'about', 'partnership']
           a.header__link(
-            href='/k1/' + name + '.html' 
+            href='/' + name + '.html'
             class=($active == name ? 'header__link--active' : '')
             )
             .header__link-text= name.charAt(0).toUpperCase() + name.slice(1)

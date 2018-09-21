@@ -28,10 +28,10 @@
     &--style
 
       &-1
-        max-width: 72% @md 340px
+        max-width: 82% @md 340px
 
       &-2
-        max-width: 420px
+        max-width: 82% @md 420px
         margin-bottom: @md-down 35px
 
       &-3
@@ -60,11 +60,42 @@
       margin-top: 30px @md 90px @lg 130px
 
     &-3
-      margin: 55px 0 @md 60px 0 90px @lg 120px 0
+      margin: 55px 0 20px @md 60px 0 90px @lg 120px 0
       flex-direction: @md-down column-reverse
 
+    &-4
+      .img
+        margin-bottom: @md-down 20px
+
     &-5
-      margin: 55px 0 @md 90px 0 @lg 120px 0
+      margin: 35px 0 55px @md 90px 0 @lg 120px 0
+
+    &-6
+      flex-direction: @md-down column-reverse
+
+      .img
+        margin-top: @md-down 30px
+
+    &-7
+      margin: 55px 0 @md 90px 0 @lg 100px 0 120px
+
+      .img
+        margin-top: @md-down 30px
+
+    &-8
+      flex-direction: @md-down column-reverse
+
+      .img
+        margin-top: @md-down 30px
+
+    &-9
+      margin-top: 30px @md 90px @lg 130px
+
+    &-10
+      margin-bottom: 30px @md 70px @lg 90px
+
+      .img
+        margin-top: @md-down 30px
 
   &__img
 
@@ -83,6 +114,7 @@
   &__block-quote
     flex-direction: @md-down column-reverse
     margin-left: 6%
+    max-width: @md-down 80%
 
     .icon__tips
       margin-bottom: 30px
@@ -132,9 +164,9 @@
       opacity: 1
 
   &__big-numbers
-    background: resolve('history/photo-7.jpg') center / cover @retina resolve('history/photo-7@2x.jpg') center / cover
+    background: resolve('history/big-numb-bg.jpg') center / cover @retina resolve('history/big-numb-bg@2x.jpg') center / cover
     background-attachment: fixed
-    margin: 50px 0 @md 160px 0 120px
+    margin: 50px 0 20px @md 160px 0 120px
     padding: 70px 0 40px @md 90px 0 50px
     overflow: hidden
 
