@@ -1,7 +1,7 @@
 mixin header($class, $active)
   header.header(class=$class)
     nav.header__nav
-      a.header__logo.header__logo--dark(href='#!')
+      a.header__logo.header__logo--dark(href='/k1')
       .header__logo.header__logo--white
 
       .header__mobile-nav
@@ -10,9 +10,9 @@ mixin header($class, $active)
         .header__mobile-nav-line
 
       .header__nav-wrap
-        each name in ['history', 'press', 'about', 'sponsorship']
+        each name in ['history', 'press', 'about', 'partnership']
           a.header__link(
-            href='#!' 
+            href='/k1/' + name + '.html' 
             class=($active == name ? 'header__link--active' : '')
             )
             .header__link-text= name.charAt(0).toUpperCase() + name.slice(1)
