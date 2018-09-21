@@ -1,6 +1,6 @@
 section.form.lines__wrap
   .form__wrap
-    form.form__elem
+    form.form__elem(action='https://formspree.io/email@gmail.com' method='post')
       .form__head
         .form__head-item(data-aos) Platinum
         .form__head-item(data-aos) Gold
@@ -12,13 +12,13 @@ section.form.lines__wrap
 
         .form__fields(data-aos)
           .form__fields-half(data-aos)
-            input.input(placeholder='Your name')
-            input.input(placeholder='Your e-mail')
+            input.input(placeholder='Your name' name='name')
+            input.input(placeholder='Your e-mail' name='email')
 
           .form__fields-half(data-aos)
-            textarea.textarea(placeholder='Your message')
+            textarea.textarea(placeholder='Your message' name='message')
 
-            input.btn.form__btn(type="submit" value="Send message" data-aos)
+            input.btn.form__btn(type='submit' value='Send message' data-aos)
 
   .form__bg.parallax
 
