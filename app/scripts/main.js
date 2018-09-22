@@ -565,3 +565,33 @@ if (homeParallax) {
     });
   }
 }
+
+//
+// Disable CSS animate on window resize
+//
+
+window.addEventListener('resize', function () {
+  requestAnimationFrame(function () {
+    document.body.classList.add('disable-css-transitions');
+  });
+});
+
+var rtime;
+var timeout = false;
+var delta = 200;
+$(window).resize(function () {
+  rtime = new Date();
+  if (timeout === false) {
+    timeout = true;
+    setTimeout(resizeend, delta);
+  }
+});
+
+function resizeend() {
+  if (new Date() - rtime < delta) {
+    setTimeout(resizeend, delta);
+  } else {
+    timeout = false;
+    document.body.classList.remove('disable-css-transitions');
+  }
+}
