@@ -54,10 +54,16 @@
       display: block
       max-width: 100%
       width: 100%
+      transition: .5s ease
 
       &-wrap
         position: relative
         display: block
+        overflow: hidden
+
+        &:hover
+          ^^&
+            transform: scale(1.1)
 
     &-title
       text: #fff 700 30px 1.2
