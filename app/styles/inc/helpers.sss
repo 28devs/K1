@@ -41,6 +41,7 @@
   font-family: $font-title
   text-decoration: none
   display: inline-block
+  transition: .3s ease
 
   &:after
     content: ''
@@ -48,6 +49,12 @@
     background: svg-load('icons/wave.svg' fill: $wave-link)
     size: 50px 4px
     margin: 3px 0 0 0
+
+  &:hover
+    color: #F34C50
+
+    &:after
+      background: svg-load('icons/wave.svg' fill: #F34C50)
 
 .page
 
@@ -99,3 +106,6 @@
 
 .footer-padding
   padding-bottom: 140px @md 170px @xl 220px
+
+.disable-css-transitions *
+  transition: none !important
