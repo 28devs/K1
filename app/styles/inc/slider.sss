@@ -3,18 +3,44 @@
   &__control
     size: 42px @md 60px
     border: 1px #F0F0F0 solid
-    background: #fff svg-load('icons/arrow.svg', stroke: #1D273E) no-repeat center
+    background: #fff
     background-size: 23px @md 27px
     cursor: pointer
     opacity: 1
     transition: .3s ease
+    box: center middle
+    user-select: none
 
-    &--hide
+    &:after
+      content: ''
+      display: block
+      background: svg-load('icons/arrow-rounded.svg', fill: #1D273E)
+      size: size('icons/arrow-rounded.svg')
+      transition: .3s ease
+
+    &--hide, &--hide:after
+      transition: .1s ease
       visibility: hidden
       opacity: 0
 
     &--prev
       transform: scale(-1)
 
-    &:hover, &:active
-      background: #E03A3E svg-load('icons/arrow.svg', stroke: #fff) no-repeat center
+    &:hover
+      background: #E03A3E
+
+      &:after
+        transform: translateX(2px)
+        content: ''
+        display: block
+        background: svg-load('icons/arrow-rounded.svg', fill: #fff)
+
+    &--color
+      border: 0
+      background: #E03A3E
+
+      &:after
+        background: svg-load('icons/arrow-rounded.svg', fill: #fff)
+
+      &:hover
+        background-color: #F34C50
