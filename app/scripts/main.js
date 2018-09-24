@@ -14,21 +14,51 @@ const collWidth = function () {
 // Minify header when page scroll
 //
 
-// const stickyNav = document.querySelector(
-//   '.header:not(.header--permanent-scroll)'
-// );
+const stickyNav = document.querySelector(
+  '.header--on-home'
+);
 
-// if (stickyNav) {
-//   stickyNav.classList.add('header--is-load');
+if (stickyNav) {
+  //stickyNav.classList.add('header--is-scroll', 'header--hide-top');
+  var headerScrollFlag = false;
 
-//   const headerScroll = function() {
-//     this.scrollY < 8
-//       ? stickyNav.classList.remove('header--is-scroll')
-//       : stickyNav.classList.add('header--is-scroll');
-//   };
-//   headerScroll();
-//   window.onscroll = headerScroll;
-// }
+  var headerScroll = function () {
+    if (this.scrollY < $('.hero').height()) {
+
+      if (headerScrollFlag) {
+        headerScrollFlag = !headerScrollFlag;
+        console.log('hide')
+        stickyNav.classList.remove('header--show-top');
+
+        setTimeout(function () {
+          stickyNav.classList.remove('header--is-scroll', 'header--hide-top');
+          console.log('hide setTimeout')
+        }, 200)
+      }
+
+    } else {
+
+      if (!headerScrollFlag) {
+        headerScrollFlag = !headerScrollFlag;
+        console.log('show')
+        stickyNav.classList.add('header--hide-top');
+
+        setTimeout(function () {
+          stickyNav.classList.add('header--is-scroll');
+        }, 400)
+
+        setTimeout(function () {
+          stickyNav.classList.add('header--show-top');
+          console.log('show setTimeout')
+        }, 500)
+      }
+
+    }
+
+  };
+  headerScroll();
+  window.onscroll = headerScroll;
+}
 
 //
 // Open mobile menu button
@@ -273,7 +303,7 @@ animationElems.forEach(function (elem) {
   }
 });
 
-TweenLite.ticker.addEventListener('tick', update);
+//TweenLite.ticker.addEventListener('tick', update);
 
 function update() {
   var min = 0;
@@ -301,28 +331,52 @@ var loader = document.querySelector('.loader');
 
 if (loader) {
   var isLoad = false;
+  var load = Cookies.get('load');
 
-  $(window).load(function () {
-    isLoad = true;
-  });
+  if (load) {
+    loader.classList.add('loader--progress-hide');
+    loader.classList.add('loader--logo-hide');
 
-  setTimeout(function () {
-    var loadInterval = setInterval(function () {
-      if (isLoad) {
-        setTimeout(function () {
-          loader.classList.add('loader--lines-hide');
-        }, 500);
+    setTimeout(function () {
+      loader.classList.add('loader--lines-hide');
+    }, 300);
 
-        setTimeout(function () {
-          from1to2 = true;
-        }, 1000);
+    setTimeout(function () {
+      document.querySelector('.home').classList.remove('home--scroll-hide');
+    }, 400);
 
-        loader.classList.add('loader--progress-hide');
-        loader.classList.add('loader--logo-hide');
-        clearInterval(loadInterval);
-      }
-    }, 100);
-  }, 4800);
+    setTimeout(function () {
+      document.querySelector('.hero').classList.add('hero--is-show');
+      document.querySelector('.header').classList.add('header--is-show');
+    }, 700);
+  } else {
+    Cookies.set('load', true, {
+      expires: 90,
+      path: ''
+    });
+
+    $(window).load(function () {
+      isLoad = true;
+    });
+
+    setTimeout(function () {
+      var loadInterval = setInterval(function () {
+        if (isLoad) {
+          setTimeout(function () {
+            loader.classList.add('loader--lines-hide');
+          }, 500);
+
+          setTimeout(function () {
+            from1to2 = true;
+          }, 1000);
+
+          loader.classList.add('loader--progress-hide');
+          loader.classList.add('loader--logo-hide');
+          clearInterval(loadInterval);
+        }
+      }, 100);
+    }, 4800);
+  }
 }
 
 //
@@ -346,7 +400,7 @@ if (hero) {
     if ($('.home--animate-disable').length) {
       document.querySelector('.home').classList.remove('home--scroll-hide');
     }
-  }, 5600);
+  }, 5400);
 
   $('.home:not(.home--animate-disable) .hero__discover').click(function () {
     transitionFrom1To2();
@@ -502,7 +556,7 @@ if (hero) {
 // Parallax
 //
 
-const homeParallax = document.querySelector('.home');
+const homeParallax = document.querySelector('.home:not(.home--animate-disable)');
 
 if (homeParallax) {
   var playParallax = true;
@@ -674,4 +728,4 @@ $(window).load(function () {
   if (activeTab) {
     //accord(activeTab, false);
   }
-})
+});

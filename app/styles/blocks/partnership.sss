@@ -10,7 +10,7 @@
     position: fixed
     top: 360px
     left: auto @lg 5.95%
-    right: 2px @lg auto
+    right: 2px @md auto
     z-index: 99 @md 2
     width: @md-down 24% @lg-down 11% @lg 134px
 
@@ -18,28 +18,37 @@
     margin-bottom: 60px @md 130px
     text: #fff
 
+  &__subtitle
+    font-family: 'Futura'
+    text: #DB4045 14px * 400 @lg 20px
+    text-transform: uppercase
+    margin-bottom: 20px @lg 32px
+
   &__tabs
-    background: @lg rgba(255, 255, 255, .1)
-    padding: @lg 0 0 0 20%
+    background: @md rgba(255, 255, 255, .1)
     position: relative
-    padding-top: @lg 100px
-    padding-bottom: @lg 70px
+    padding-left: 0 @md 30px @lg 20%
+    padding-top: @md 80px @lg 100px
+    padding-bottom: @md 20px @lg 70px
+
+  &__md-offset
+    padding-left: 0 @md calc(25% - 57px) @lg 0
 
   &__tab
-    background: @lg-down rgba(0, 0, 0, .7)
+    background: rgba(0, 0, 0, .7) @md transparent
     padding: 22px 20px
     text: 34px 1 @lg 50px @xxl 60px
     font-family: $font-decor
     margin-bottom: 20px
-    position: @lg absolute
+    position: @md absolute
     top: 0
-    transform: @lg translateY(-50%)
+    transform: @md translateY(-45%) @lg translateY(-50%)
 
     &:after
       content: ''
       display: block
       margin-top: 14px
-      size: 50px 3px @lg 76px 5px
+      size: 50px 4px @lg 76px 5px
       background: svg-load('icons/wave.svg' fill: #fff) no-repeat left / cover
 
     &.accordion__header_active
@@ -52,15 +61,15 @@
 
     &--platinum
       text: #7b7f83
-      left: calc(20% - 24px)
+      left: 34px @lg calc(20% - 24px)
 
     &--gold
       text: #deae40
-      left: 49%
+      left: 36% @lg 49%
 
     &--silver
       text: #d2d2d2
-      left: 70%
+      left: 57% @lg 70%
 
     &-conten
       max-height: 0
@@ -82,10 +91,25 @@
     padding-right: 25px @sm2 50px @md 60px @lg 40px
     position: relative
     left: @lg -27px
+    margin-bottom: @lg 45px
+
+    &--wide
+      width: @lg 99%
+
+    &-large
+      text: #fff 16px @md 18px @lg 20px
+      margin-bottom: 50px @md 70px @lg 100px
+      margin-right: 40px @md 0
+
+    &-large-2
+      text: #fff 16px @md 18px @lg 20px
+      margin-top: 10px @md 40px @lg 80px
+      margin-right: 40px @md 0
+      margin-bottom: 0
 
     & + &
       margin-top: 30px @lg 0
-      margin-bottom: 0 @lg 45px @xxl 50px
+      margin-bottom: 0 @lg 45px
 
     &:first-child
       margin-top: 15px @lg 0
@@ -93,7 +117,7 @@
     &:last-child
       padding-bottom: 45px @lg 0
 
-    &:before
+    &:not(&--single):before
       content: ''
       position: absolute 0 null null 0
       transform: translateY(9px)
@@ -102,16 +126,16 @@
       background: svg-load('icons/dot.svg')
 
   &__list
-    margin-top: 50px @md 80px @lg 120px
+    margin-top: 50px @md 80px @lg 90px
     box: wrap
 
     &-item
-      width: 50% @md 25% @lg 20%
-      margin-bottom: 40px @md 50px @lg 60px
-      padding-right: 20px
+      width: 50% @md 33.333% @lg 20%
+      margin-bottom: 30px @md 50px @lg 60px
+      padding-right: 20px @lg 40px
 
     &-title
-      text: $third 700 11px 1 @md 12px
+      text: $third 700 12px 1.2 @md 16px
       text-transform: uppercase
       font-family: $font-title
 

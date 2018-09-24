@@ -95,7 +95,7 @@
       margin-left: @lg-down -5px @md-down 0
       left:  @md 50%
       transform: translateX(0) translateY(15px) @md translateX(-50%)
-      transition: transform .3s ease-in-out, opacity .3s ease-in-out
+      // transition: transform .3s ease-in-out, opacity .3s ease-in-out
       transition-delay: 0
       opacity: 0
 
@@ -120,7 +120,7 @@
     position: relative
     display: block
     padding: 5px 0
-    transition: .3s ease
+    transition: @lg color .3s ease
 
     &:nth-child(2):after
       background-position-x: -2px !important
@@ -132,13 +132,13 @@
       background: svg-load('icons/wave.svg' fill: transparent)
       size: size('icons/wave.svg')
       margin: 1px auto 0
-      transition: .3s ease
+      transition: background .3s ease
 
     &-text
       cursor: pointer
       display: inline-block
       position: relative
-      transition: .3s ease
+      transition: @lg color .3s ease
 
     & + &
       margin-left: 30px @md 50px @lg 80px
@@ -156,7 +156,7 @@
         animation: wave 10s infinite linear
 
       .header:not(.header--is-scroll):not(.header--nav-open) &:after
-        background: svg-load('icons/wave.svg' fill: $nav-active)
+        background: svg-load('icons/wave.svg' fill: #fff)
 
     &--active
       text: $nav-active !important
