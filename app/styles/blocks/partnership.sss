@@ -9,11 +9,112 @@
   &__vert-text
     position: fixed
     top: 360px
-    left: auto @lg 6.25%
+    left: auto @lg 5.95%
     right: 2px @lg auto
-    z-index: 2
+    z-index: 99 @md 2
     width: @md-down 24% @lg-down 11% @lg 134px
 
   &__title
     margin-bottom: 60px @md 130px
     text: #fff
+
+  &__tabs
+    background: @lg rgba(255, 255, 255, .1)
+    padding: @lg 0 0 0 20%
+    position: relative
+    padding-top: @lg 100px
+    padding-bottom: @lg 70px
+
+  &__tab
+    background: @lg-down rgba(0, 0, 0, .7)
+    padding: 22px 20px
+    text: 34px 1 @lg 50px @xxl 60px
+    font-family: $font-decor
+    cursor: pointer
+    margin-bottom: 20px
+    position: @lg absolute
+    top: 0
+    transform: @lg translateY(-50%)
+
+    &:after
+      content: ''
+      display: block
+      margin-top: 14px
+      size: 50px 3px @lg 76px 5px
+      background: svg-load('icons/wave.svg' fill: #fff) no-repeat left / cover
+
+    &.accordion__header_active
+      & + .partnership__tab-content
+        opacity: 1
+        overflow: visible
+
+      &:after
+        background: svg-load('icons/wave.svg' fill: $third) no-repeat left / cover
+
+    &--platinum
+      text: #7b7f83
+      left: calc(20% - 24px)
+
+    &--gold
+      text: #deae40
+      left: 49%
+
+    &--silver
+      text: #d2d2d2
+      left: 70%
+
+    &-content
+      max-height: 0
+      opacity: 0
+      overflow: hidden
+      box: wrap
+      will-change: max-height
+
+  &__text
+    width: @lg 50%
+    color: rgba(255, 255, 255, .8)
+    font-family: $font
+    text: 14px 1.86 400 @lg 16px
+    padding-left: 27px
+    padding-right: 25px @sm2 50px @md 60px @lg 40px
+    position: relative
+    left: @lg -27px
+
+    & + &
+      margin-top: 30px @lg 0
+      margin-bottom: 0 @lg 45px @xxl 50px
+
+    &:first-child
+      margin-top: 15px @lg 0
+
+    &:last-child
+      padding-bottom: 45px @lg 0
+
+    &:before
+      content: ''
+      position: absolute 0 null null 0
+      transform: translateY(9px)
+      display: block
+      size: 14px 7px
+      background: svg-load('icons/dot.svg')
+
+  &__list
+    margin-top: 50px @md 80px @lg 120px
+    box: wrap
+
+    &-item
+      width: 50% @md 25% @lg 20%
+      margin-bottom: 40px @md 50px @lg 60px
+      padding-right: 20px
+
+    &-title
+      text: $third 700 11px 1 @md 12px
+      text-transform: uppercase
+      font-family: $font-title
+
+    &-name
+      text: rgba(255, 255, 255, .8) 20px 1.2 @md 24px
+      margin-top: 11px
+
+  & + .footer .footer__copy
+    color: rgba(255, 255, 255, .5)

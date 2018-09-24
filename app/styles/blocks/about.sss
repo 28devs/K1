@@ -29,6 +29,7 @@
 
   &__slide-img
     width: 100%
+    display: block
 
   &__cap
     margin-top: 15px @lg 34px
@@ -54,9 +55,10 @@
 
     &__controls
       position: absolute
-      bottom: 12px @lg -10px
+      bottom: -1px @md @lg -13px
       right: 0
       box: horizontal
+      transform: @md-down translateY(100%)
 
     &__control
       size: 46px @md 66px
