@@ -10,11 +10,11 @@ section.links.lines__wrap
             each item in links
               a.links__item(href='#!')
                 .links__img-wrap
-                  img.links__img(src='img/links/img.png' alt='K1')
+                  img.links__img(src='img/links/' + item.logo + '.svg' alt='K1 ' + item.title)
 
                 .links__text
                   .links__item-title K1
-                  .links__item-desc= item
+                  .links__item-desc= item.title
 
   +lines('links__lines')
 

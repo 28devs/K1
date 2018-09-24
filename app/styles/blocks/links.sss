@@ -28,6 +28,10 @@
     text-decoration: none
     @mixin fade-out 30px, .3s, .9s
 
+    &:nth-child(1) ^&__img
+      margin-top: -100px
+      margin-bottom: 25px
+
     &:nth-child(2)
       transition-delay: 1.1s
 
@@ -43,7 +47,7 @@
     margin: @md-down 0 -5.5%
 
   &__img
-    height: auto
+    width: 134px
     cursor: pointer
 
     &-wrap
@@ -69,7 +73,7 @@
     padding-bottom: 30px @md initial
     max-width: 760px
     padding-left: @md-down 5%
-    padding-top: 50px
+    padding-top: 130px
 
     &:after
       content: ''
