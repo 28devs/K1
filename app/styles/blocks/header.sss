@@ -122,6 +122,9 @@
     padding: 5px 0
     transition: .3s ease
 
+    &:nth-child(2):after
+      background-position-x: -2px
+
     .header:not(.header--nav-open) &:after
       content: ''
       position: absolute
@@ -174,7 +177,7 @@
         right: -25px
 
       .header:not(.header--nav-open) &:after
-        background: svg-load('icons/wave.svg' fill: $nav-active) !important
+        background-image: svg-load('icons/wave.svg' fill: $nav-active) !important
 
   &__mobile-nav
     size: 50px
