@@ -4,13 +4,13 @@ include inc/head.pug
 include inc/header.pug
 +header
 
-.home.home--animate-disable.home--scroll-hide
+.home.home--scroll-hide
   include blocks/hero.pug
   include blocks/links.pug
-  //- include blocks/sponsors.pug
+  include blocks/sponsors.pug
   include blocks/form.pug
 
-  img.parallax.parallax__k1.home__k1.home__k1--show(src='img/icons/parallax-k1.svg')
+  img.parallax.parallax__k1.home__k1(src='img/icons/parallax-k1.svg')
 
 include inc/footer.pug
 +footer('offset-lg-2')

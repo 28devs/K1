@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   const gulp = require('gulp'),
@@ -41,7 +41,7 @@
       .pipe(gulp.dest('dest/'));
   });
 
-  gulp.task('hash', function() {
+  gulp.task('hash', function () {
     return gulp.src('dest/*.html')
       .pipe(rev())
       .pipe(gulp.dest('dest/'));
@@ -93,39 +93,43 @@
   ];
 
   //write style
-  gulp.task('postcss', function() {
+  gulp.task('postcss', function () {
     return (
       gulp
-        .src(['app/styles/main.sss'])
-        .pipe(sourcemaps.init())
-        .pipe(
-          postcss(processors, { parser: sugarss }).on('error', notify.onError())
-        )
-        .pipe(
-          cssbeautify({
-            indent: '  ',
-            autosemicolon: true
-          })
-        )
-        .pipe(rename({ extname: '.css' }))
-        //.pipe(sourcemaps.write('/'))
-        .pipe(gulp.dest('dest/styles/'))
+      .src(['app/styles/main.sss'])
+      .pipe(sourcemaps.init())
+      .pipe(
+        postcss(processors, {
+          parser: sugarss
+        }).on('error', notify.onError())
+      )
+      .pipe(
+        cssbeautify({
+          indent: '  ',
+          autosemicolon: true
+        })
+      )
+      .pipe(rename({
+        extname: '.css'
+      }))
+      //.pipe(sourcemaps.write('/'))
+      .pipe(gulp.dest('dest/styles/'))
     );
   });
 
   // write js
-  gulp.task('scripts', function() {
+  gulp.task('scripts', function () {
     return gulp.src('app/scripts/**')
-    .pipe(gulp.dest('dest/scripts'));
+      .pipe(gulp.dest('dest/scripts'));
   });
 
   //delete dest folder
-  gulp.task('clean', function() {
+  gulp.task('clean', function () {
     return del('dest');
   });
 
   //lib
-  gulp.task('libs-css', function() {
+  gulp.task('libs-css', function () {
     return gulp
       .src('app/libs/**/*.css')
       .pipe(uglifycss())
@@ -133,7 +137,7 @@
       .pipe(gulp.dest('dest/styles/'));
   });
 
-  gulp.task('libs-js', function() {
+  gulp.task('libs-js', function () {
     return gulp
       .src('app/libs/**/*.js')
       .pipe(concat('libs.min.js'))
@@ -141,7 +145,7 @@
   });
 
   //copy all assets files
-  gulp.task('assets', function() {
+  gulp.task('assets', function () {
     return gulp
       .src('app/assets/**', {
         since: gulp.lastRun('assets')
@@ -168,7 +172,7 @@
   );
 
   //up static server; watching change in dest and reload page
-  gulp.task('server', function() {
+  gulp.task('server', function () {
     browserSync.init({
       server: 'dest',
       notify: false
@@ -178,7 +182,7 @@
   });
 
   //watching by all files in dest
-  gulp.task('watch', function() {
+  gulp.task('watch', function () {
     gulp.watch('app/styles/**/*.*', gulp.series('postcss'));
     gulp.watch('app/scripts/**/*.*', gulp.series('scripts'));
     gulp.watch('app/assets/**/*.*', gulp.series('assets'));

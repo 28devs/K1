@@ -1,20 +1,27 @@
-section.links.lines__wrap
+section.links.lines__wrap.links--animate-disable
   img.links__cloud(src='img/links/bg-clouds.jpg')
   .container
     .row
       .col-2.offset-lg-2.col-lg-4
-        h2.links__title Explore more<br> charity websites
+        h2.links__title(data-aos) Explore more<br> charity websites
 
         .links__items-scroll
           .links__items-wrap
             each item in links
-              a.links__item(href='#!')
+              a.links__item(href='#!' data-aos)
                 .links__img-wrap
                   img.links__img(src='img/links/' + item.logo + '.svg' alt='K1 ' + item.title)
 
                 .links__text
                   .links__item-title K1
                   .links__item-desc= item.title
+
+                if item.child
+                  .links__childs
+                    each child in item.child
+                      .links__child
+                        img.links__child-img(src='img/links/' + child alt='logo')
+
 
   +lines('links__lines')
 

@@ -15,6 +15,7 @@
     width: 100%
     z-index: -1
     min-width: 940px
+    will-change: opacity
 
   &__lines .lines__elem
     background: linear-gradient(0, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.01) 20%, rgba(255, 255, 255, 0.6) 100%)
@@ -26,23 +27,25 @@
     padding: 0 0 25px 25px
     cursor: pointer
     text-decoration: none
-    @mixin fade-out 30px, .3s, .9s
 
-    &:nth-child(1) ^&__img
+    .links:not(.links--animate-disable) &
+      @mixin fade-out 30px, .3s, .9s
+
+    &:nth-child(3) ^&__img
       margin-top: -100px
       margin-bottom: 25px
 
-    &:nth-child(2)
+    .links:not(.links--animate-disable) &:nth-child(2)
       transition-delay: 1.1s
 
-    &:nth-child(3)
+    .links:not(.links--animate-disable) &:nth-child(3)
       transition-delay: 1.4s
 
     & + &
       margin-left: 40px @md 60px
 
   &__items-scroll
-    height: 340px @md initial
+    height: 465px @md initial
     overflow: hidden @md initial
     margin: @md-down 0 -5.5%
 
@@ -63,14 +66,16 @@
     font-range: $lg-px $xxl-px
     margin-bottom: 60px @lg 45px @xxl  65px
     max-width: 883px
-    @mixin fade-out 30px, .3s, .6s
+
+    .links:not(.links--animate-disable) &
+      @mixin fade-out 30px, .3s, .6s
 
   &__items-wrap
     box:
     margin: 0 @lg 0 -25px
     overflow: hidden
     overflow-x: auto @md hidden
-    padding-bottom: 30px @md initial
+    padding-bottom: 90px
     max-width: 760px
     padding-left: @md-down 5%
     padding-top: 130px
@@ -102,4 +107,14 @@
       size: size('links/wave.svg')
       display: block
       background: svg-load('links/wave.svg', fill: #E03A3E) no-repeat right center / contain
+
+  &__childs
+    box:
+    position: absolute null -13px -60px null
+
+  &__child
+    box: center
+
+    & + &
+      margin-left: 22px
 

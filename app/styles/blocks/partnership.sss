@@ -30,7 +30,6 @@
     padding: 22px 20px
     text: 34px 1 @lg 50px @xxl 60px
     font-family: $font-decor
-    cursor: pointer
     margin-bottom: 20px
     position: @lg absolute
     top: 0
@@ -63,12 +62,16 @@
       text: #d2d2d2
       left: 70%
 
-    &-content
+    &-conten
       max-height: 0
       opacity: 0
       overflow: hidden
+      transition: @lg .3s ease
       box: wrap
       will-change: max-height
+
+    &-content
+      box: wrap
 
   &__text
     width: @lg 50%

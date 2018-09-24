@@ -4,6 +4,10 @@
   z-index: 999
   overflow: hidden
 
+  .home--animate-disable &
+    position: relative
+    height: 100vh
+
   &:before
     content: ''
     position: absolute 0 0 0 0
@@ -20,6 +24,7 @@
 
     &-wraps
       position: absolute
+      will-change: transform
 
     &-img
       width: 100%
