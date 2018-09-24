@@ -28,6 +28,12 @@
     cursor: pointer
     text-decoration: none
 
+    &:hover &-title, &:hover &-desc
+      text: $wave-link
+
+    &:hover &-desc:after
+      animation: wave 10s infinite linear
+
     .links:not(.links--animate-disable) &
       @mixin fade-out 30px, .3s, .9s
 
@@ -93,20 +99,22 @@
   &__item-title
     text: $text-black 30px 1 40 @lg 24px @xl 30px
     cursor: pointer
+    transition: .3s ease
 
   &__item-desc
     text: $text-black 20px 1.2 400 @lg 18px @xl 20px
     cursor: pointer
     position: relative
+    transition: .3s ease
 
     &:after
       position: absolute
-      right: -3px
+      right: 0
       top: 10px
       content: ''
-      size: size('links/wave.svg')
+      size: 53px 4px
       display: block
-      background: svg-load('links/wave.svg', fill: #E03A3E) no-repeat right center / contain
+      background: svg-load('icons/wave.svg', fill: $wave-link)
 
   &__childs
     box:
