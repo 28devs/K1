@@ -50,9 +50,11 @@
     content: ''
     display: block
     background: svg-load('icons/wave.svg' fill: $wave-link)
-    size: 50px 4px
+    size: size('icons/wave.svg')
     margin: 3px 0 0 0
     transition: .3s ease
+    position: absolute
+    clip: rect(0px, 45px, 10px, 0px)
 
   &:hover
     color: $black
