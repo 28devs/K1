@@ -52,12 +52,21 @@
     background: svg-load('icons/wave.svg' fill: $wave-link)
     size: 50px 4px
     margin: 3px 0 0 0
+    transition: .3s ease
 
   &:hover
-    color: #F34C50
+    color: $black
 
     &:after
-      background: svg-load('icons/wave.svg' fill: #F34C50)
+      background: svg-load('icons/wave.svg' fill: $black)
+      animation: wave 10s infinite linear
+
+@keyframes wave
+  from
+    background-position-x: 0
+  to
+    background-position-x: -400px
+
 
 .page
 

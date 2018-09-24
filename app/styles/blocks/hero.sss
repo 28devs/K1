@@ -126,3 +126,10 @@
       background: svg-load('icons/wave.svg' fill: #fff)
       size: 50px 4px
       margin: 6px auto 0
+      transition: .3s ease
+
+    &:hover
+
+      &:after
+        background: svg-load('icons/wave.svg' fill: $nav-active)
+        animation: wave 10s infinite linear

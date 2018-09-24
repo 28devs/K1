@@ -103,10 +103,6 @@
         display: flex !important
         box: vertical left
         position: absolute 100px 0 0 0
-        // max-width: 100vw
-        // overflow-x: hidden
-        // overflow-y: scroll
-
 
         ^^^&__link
           text: $black 40px
@@ -124,11 +120,22 @@
     position: relative
     display: block
     padding: 5px 0
+    transition: .3s ease
+
+    .header:not(.header--nav-open) &:after
+      content: ''
+      position: absolute
+      display: block
+      background: svg-load('icons/wave.svg' fill: transparent)
+      size: size('icons/wave.svg')
+      margin: 1px auto 0
+      transition: .3s ease
 
     &-text
       cursor: pointer
       display: inline-block
       position: relative
+      transition: .3s ease
 
     & + &
       margin-left: 30px @md 50px @lg 80px
@@ -140,7 +147,13 @@
       margin-left: 30vw @lg 440px
 
     &:hover
-      text: $nav-active
+
+      .header:not(.header--nav-open) &:after
+        background: svg-load('icons/wave.svg' fill: $black)
+        animation: wave 10s infinite linear
+
+      .header:not(.header--is-scroll):not(.header--nav-open) &:after
+        background: svg-load('icons/wave.svg' fill: $nav-active)
 
     &--active
       text: $nav-active !important
@@ -161,12 +174,7 @@
         right: -25px
 
       .header:not(.header--nav-open) &:after
-        content: ''
-        position: absolute
-        display: block
-        background: svg-load('icons/wave.svg' fill: $nav-active)
-        size: size('icons/wave.svg')
-        margin: 1px auto 0
+        background: svg-load('icons/wave.svg' fill: $nav-active) !important
 
   &__mobile-nav
     size: 50px
