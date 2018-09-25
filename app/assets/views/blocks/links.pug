@@ -1,5 +1,6 @@
 section.links.lines__wrap.links--animate-disable
-  img.links__cloud(src='img/links/bg-clouds.jpg')
+  //- img.links__cloud(src='img/links/bg-clouds.jpg')
+
   .container
     .row
       .col-2.offset-lg-2.col-lg-4
@@ -18,9 +19,12 @@ section.links.lines__wrap.links--animate-disable
 
                 if item.child
                   .links__childs
-                    each child in item.child
-                      .links__child
-                        img.links__child-img(src='img/links/' + child alt='logo')
+                    .links__childs-title Charitable Partners
+
+                    .links__childs-wrap
+                      each child in item.child
+                        .links__child
+                          img.links__child-img(src='img/links/' + child alt='logo')
 
 
   +lines('links__lines')

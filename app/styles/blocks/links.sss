@@ -1,9 +1,10 @@
 .links
-  padding: 120px 0 100px @md 190px 0 150px
+  padding: 220px 0 100px @md 290px 0 150px
   box-sizing: border-box
   color: $black
   font-family: $font-title
   position: relative
+  background: resolve('links/bg-clouds.jpg') no-repeat top / cover
 
   &--is-show
     ^&__title, ^&__item
@@ -49,10 +50,10 @@
       transition-delay: .6s
 
     & + &
-      margin-left: 40px @md 60px
+      margin-left: 40px @md auto @xxxl 100px
 
   &__items-scroll
-    height: 465px @md initial
+    height: 500px @md initial
     overflow: hidden @md initial
     margin: @md-down 0 -5.5%
 
@@ -71,7 +72,7 @@
     line-height: 1
     font-size: responsive 70px 100px
     font-range: $lg-px $xxl-px
-    margin-bottom: 60px @lg 45px @xxl  65px
+    margin-bottom: 60px @lg 45px @xxl 65px
     max-width: 883px
 
     .links:not(.links--animate-disable) &
@@ -82,7 +83,7 @@
     margin: 0 @lg 0 -25px
     overflow: hidden
     overflow-x: auto @md hidden
-    padding-bottom: 90px
+    padding-bottom: 130px
     max-width: 760px
     padding-left: @md-down 5%
     padding-top: 130px
@@ -118,8 +119,30 @@
       clip: rect(0px, 90px, 5px, 33px)
 
   &__childs
-    box:
-    position: absolute null -13px -60px null
+    position: absolute null -13px -90px null
+
+    &-wrap
+      box:
+
+    &-title
+      width: 100%
+      text: $black 500 12px center
+      font-family: $font
+      box: center middle
+      white-space: nowrap
+      margin: 15px 0 9px
+
+      &:before, &:after
+        content: ''
+        display: block
+        size: 34px 1px
+        background: $black
+
+      &:before
+        margin-right: 8px
+
+      &:after
+        margin-left: 8px
 
   &__child
     box: center
