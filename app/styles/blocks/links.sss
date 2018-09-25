@@ -22,13 +22,20 @@
     background: linear-gradient(0, rgba(0, 0, 0, 0.05) 0, rgba(0, 0, 0, 0.01) 20%, rgba(255, 255, 255, 0.6) 100%)
 
   &__item
-    width: 200px
-    min-width: 200px
+    width: 45% @md 30% @xxl 240px
     border: #f0f0f0 1px solid
-    padding: 0 0 25px 25px
+    max-width: 250px
+    padding: 0 0 15px 15px @md 0 0 25px 25px
     cursor: pointer
     text-decoration: none
     background: #fff
+    margin-bottom: 60px
+
+    & + &
+      margin-left: 5% @md 0 @xxl 50px
+
+    &:last-child
+      margin-top: 60px @md 0
 
     &:hover &-title, &:hover &-desc
       text: $wave-link
@@ -40,8 +47,8 @@
       @mixin fade-out 30px, .3s, .9s
 
     &:nth-child(3) ^&__img
-      margin-top: -100px
-      margin-bottom: 25px
+      margin-top: -65px @md -100px
+      margin-bottom: 8px @md 25px
 
     &:nth-child(2)
       transition-delay: .3s
@@ -49,16 +56,13 @@
     &:nth-child(3)
       transition-delay: .6s
 
-    & + &
-      margin-left: 40px @md auto @xxxl 100px
-
   &__items-scroll
-    height: 500px @md initial
-    overflow: hidden @md initial
-    margin: @md-down 0 -5.5%
+    // height: 500px @md initial
+    // overflow: hidden @md initial
+    // margin: @md-down 0 -5.5%
 
   &__img
-    width: 134px
+    width: 84px @sm2 60% @md 134px
     cursor: pointer
 
     &-wrap
@@ -79,14 +83,14 @@
       @mixin fade-out 30px, .3s, .6s
 
   &__items-wrap
-    box:
-    margin: 0 @lg 0 -25px
-    overflow: hidden
-    overflow-x: auto @md hidden
-    padding-bottom: 130px
-    max-width: 760px
-    padding-left: @md-down 5%
-    padding-top: 130px
+    box: wrap space-between @xxl top
+    // margin: 0 @lg 0 -25px
+    // overflow: hidden
+    // overflow-x: auto @md hidden
+    padding-bottom: 50px
+    // max-width: 760px
+    // padding-left: @md-down 5%
+    padding-top: 50px @md 100px
 
     &:after
       content: ''
@@ -103,7 +107,7 @@
     transition: .3s ease
 
   &__item-desc
-    text: $text-black 20px 1.2 400 @lg 18px @xl 20px
+    text: $text-black 16px 1.2 400 @lg 18px @xl 20px
     cursor: pointer
     position: relative
     transition: .3s ease
@@ -116,13 +120,15 @@
       size: size('icons/wave.svg')
       display: block
       background: svg-load('icons/wave.svg', fill: $wave-link)
-      clip: rect(0px, 90px, 5px, 33px)
+      clip: rect(0px, 90px, 5px, 55px) @md rect(0px, 90px, 5px, 33px)
 
   &__childs
-    position: absolute null -13px -90px null
+    position: absolute null 0 0 0
+    transform: translateY(calc(100% + 10px))
 
     &-wrap
-      box:
+      box: center middle
+      flex-direction: column-reverse @md row
 
     &-title
       width: 100%
@@ -147,6 +153,11 @@
   &__child
     box: center
 
+    &-img
+      width: 100%
+      display: block
+
     & + &
-      margin-left: 22px
+      margin-left: 0 @md 22px
+      margin-bottom: 15px @md 0
 
