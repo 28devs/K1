@@ -18,3 +18,13 @@ mixin sponsorship(data, $class)
       .sponsorship__text-side
         each item in data.text2
           .sponsorship__text-item(data-aos)!= item
+
+mixin press_release(data)
+  article.press__article.press__article--large(data-aos)
+    a.press__article-img-wrap(href='#!' data-aos)
+      img.press__article-img(src='img/press/' + data.image alt= data.title)
+      .press__article-title= data.title
+    .press__article-content(data-aos)
+      p.press__article-text!= data.text
+      p.press__article-link
+        a(href='' + data.url target='_blank') Download

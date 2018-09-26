@@ -6,15 +6,8 @@ section.press.lines__wrap
 
     .row
       .col-2.offset-lg-1.col-lg-4
-        article.press__article.press__article--large(data-aos)
-          a.press__article-img-wrap(href='#!' data-aos)
-            img.press__article-img(src='img/press/img-0.jpg' alt='K1 Britannia launches new build project and website')
-            .press__article-title K1 Britannia launches new build project and website
-
-          .press__article-content(data-aos)
-            p.press__article-text September 26, 2018 —  To coincide with the 27th annual Monaco Yacht Show - K1 Britannia has announced it’s new development plans for the re-haul of the classic J Class sailing yacht Britannia, featuring an aluminum hull and fresh new design to give it a competitive edge to compete in worldwide regattas whilst flying the flag of charity and focusing on giving back to its various non-profit ventures. Come and check out the K1 Britannia stand at MYS 2018 and visit us online
-
-
+        each item in press
+          +press_release(item)
 
   .parallax.press__bg
   img.parallax.parallax__anchor.press__anchor(src='img/icons/parallax-anchor.jpg')
