@@ -1,0 +1,28 @@
+include ../inc/var.pug
+include ../inc/mixins.pug
+block onload
+doctype html
+html(lang='en' dir='ltr')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    block title
+      title K1
+    block head
+      link(href='styles/libs.min.css' rel='stylesheet')
+      link(href='https://fonts.googleapis.com/css?family=Cardo:400,700|Montserrat:400,500' rel='stylesheet')
+      link(href='styles/main.css?rev=@@hash' rel='stylesheet')
+      link(rel='shortcut icon' href='img/icons/favicon.png' type='image/png')
+
+  body
+    include ../inc/header.pug
+    block header
+    block content
+    include ../inc/footer.pug
+    block footer
+      +footer('offset-lg-2')
+    block foot
+      script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js')
+      script(type='text/javascript' src='scripts/libs.min.js')
+      script(type='text/javascript' src='scripts/main.js?rev=@@hash')

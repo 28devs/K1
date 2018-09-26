@@ -1,9 +1,10 @@
-include inc/head.pug
-include inc/header.pug
-+header('header--permanent-scroll header--is-scroll header--is-show', 'history')
-#info
-include blocks/history.pug
+extends layouts/layout.pug
 
-include inc/footer.pug
-+footer('offset-lg-2')
-include inc/foot.pug
+block title
+  title History | K1
+
+block header
+  +header('header--permanent-scroll header--is-scroll header--is-show', 'history')
+
+block content
+  include blocks/history.pug

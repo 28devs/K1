@@ -1,17 +1,14 @@
-include inc/loader.pug
+extends layouts/layout.pug
 
-include inc/head.pug
-include inc/header.pug
-+header('header--on-home')
+block onload
+  include inc/loader.pug
 
-.home.home--animate-disable.home--scroll-hide
-  include blocks/hero-static.pug
-  include blocks/links.pug
-  //- include blocks/sponsors.pug
-  include blocks/form.pug
+block header
+  +header('header--on-home')
 
-  img.parallax.parallax__k1.home__k1.home__k1--show(src='img/icons/parallax-k1.svg')
-
-include inc/footer.pug
-+footer('offset-lg-2')
-include inc/foot.pug
+block content
+  .home.home--animate-disable.home--scroll-hide
+    include blocks/hero-static.pug
+    include blocks/links.pug
+    include blocks/form.pug
+    img.parallax.parallax__k1.home__k1.home__k1--show(src='img/icons/parallax-k1.svg')
