@@ -35,7 +35,11 @@
       margin-left: 5% @md 0 @xxl 50px
 
     &:last-child
-      margin-top: 60px @md 0
+      margin-top: 200px @md 0
+
+    &:first-child, &:last-child
+      .links__childs-title
+        opacity: 1 @md 0
 
     &:hover &-title, &:hover &-desc
       text: $wave-link
@@ -70,6 +74,7 @@
       z-index: 2
       margin: -30px 0 38px 0
       cursor: pointer
+      display: block
 
   &__title
     font-family: $font-title
@@ -100,6 +105,7 @@
   &__text
     position: relative
     z-index: 1
+    text-decoration: none
 
   &__item-title
     text: $text-black 30px 1 40 @lg 24px @xl 30px
@@ -136,13 +142,14 @@
       font-family: $font
       box: center middle
       white-space: nowrap
-      margin: 15px 0 9px
+      margin: 20px 0 15px
 
       &:before, &:after
         content: ''
         display: block
         size: 34px 1px
         background: $black
+        opacity: .3
 
       &:before
         margin-right: 8px

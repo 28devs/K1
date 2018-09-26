@@ -260,7 +260,7 @@ var animationElems = [{
   {
     selector: '.press__anchor',
     settings: {
-      yPercent: -150,
+      yPercent: -100,
       paused: true
     }
   },

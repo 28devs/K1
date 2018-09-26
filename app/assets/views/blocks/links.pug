@@ -9,11 +9,11 @@ section.links.lines__wrap.links--animate-disable
         .links__items-scroll
           .links__items-wrap
             each item in links
-              a.links__item(href='#!' data-aos)
-                .links__img-wrap
+              .links__item(data-aos)
+                a.links__img-wrap(href=item.site target='_blank')
                   img.links__img(src='img/links/' + item.logo + '.svg' alt='K1 ' + item.title)
 
-                .links__text
+                a.links__text(href=item.site target='_blank')
                   .links__item-title K1
                   .links__item-desc= item.title
 
@@ -24,7 +24,8 @@ section.links.lines__wrap.links--animate-disable
                     .links__childs-wrap
                       each child in item.child
                         .links__child
-                          img.links__child-img(src='img/links/' + child alt='logo')
+                          a(href=child.site target='_blank')
+                            img.links__child-img(src='img/links/' + child.logo alt='logo')
 
 
   +lines('links__lines')

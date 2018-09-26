@@ -10,11 +10,14 @@
     margin-top: 40px @lg 70px
 
   &__title
-    font-size: responsive 70px 100px
+    font-size: responsive 60px 100px
     font-range: $lg-px $xxl-px
     font-family: $font-title
     line-height: 1
-    margin-bottom: 47px @lg 90px
+    // margin-bottom: 47px @lg 90px
+
+    br
+      display: @md-down none
 
   &__subtitle
     font-family: 'Futura'
@@ -39,7 +42,10 @@
     padding-right: 4vw
     font-style: italic
     text: #9E9E9E 14px 1.6 @lg 20px
-    font-family: Times New Roman
+    font-family: Times New Roman, arial
+
+    &--large
+      text: #9E9E9E 16px 1.6 @lg 22px
 
   &__img
     max-width: 100% @lg 29.79vw

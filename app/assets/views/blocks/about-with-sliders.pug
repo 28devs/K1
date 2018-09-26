@@ -1,0 +1,65 @@
+section.about.lines__wrap
+  .container
+    article.about__article
+      .row
+        .about__article-item.col-2.col-lg-3
+          h1.about__title(data-aos) The Build<br> of the Britannia
+
+          h4.about__subtitle(data-aos) Idea and birth
+          p.about__text(data-aos) In the interest of building a sustainable racing yacht, the Trust decided to enhance Britannia with an aluminum hull and keel, an idea that her original designer GL Watson had envisioned over a century ago: “We have not exhausted the possibilities of form yet,” he wrote. “When we do arrive at perfection in shape, we can set to then look out for better material. The frames and beams, then, of my ideal ship shall be made of aluminum..."
+
+        .about__article-item.col-2.col-lg-3
+          .about__slider-block
+            .about__slider-wrap(data-aos)
+              ul.about__slider
+                each i in [1,2,3,4]
+                  li.about__slide
+                    .about__slide-img-wrap
+                      img.about__slide-img(src='img/about/slide-1.jpg' alt='history')
+
+              .about__slider-controls.slider__controls
+                .about__slider-control.slider__control.slider__control--color.slider__control--prev(data-slider-control='prev')
+                .about__slider-control.slider__control.slider__control--color(data-slider-control='next')
+
+          .about__cap(data-aos) K1 Britannia will be based on GL Watson’s 1893 lines for the hull with modifications to ensure that she conforms to J Class Association rules. Other aspects of the modernized rebuild strategy include a keel-stepped carbon mast, box boom and bowsprit, carbon continuous rigging, and green technologies.
+
+        .about__article-item.col-2.col-lg-3
+          .about__img(data-aos)
+            img.about__img-inner(src='img/about/img-1.jpg' alt='history')
+
+            .about__cap(data-aos) After the Prince of Wales’ nephew Kaiser Wilhelm II acquired the racing cutter Thistle in 1891, her Scottish designer George Lennox Watson received
+
+        .about__article-item.col-2.col-lg-3
+          .about__img(data-aos)
+            img.about__img-inner(src='img/about/img-2.jpg' alt='history')
+
+            .about__cap(data-aos) After the Prince of Wales’ nephew Kaiser Wilhelm II acquired the racing cutter Thistle in 1891, her Scottish designer George Lennox Watson received
+
+    article.about__article
+      .row
+        .about__article-item.col-2.col-lg-3
+          h1.about__title(data-aos) The<br> new build
+
+          p.about__text(data-aos) The decision to commission a new rebuild of Britannia in 2018 comes after several years of research & development by the K1 Britannia Trust and key partners from the superyacht world who are acting as consultants for the project. After the completion of it’s corporate partnership campaign, the goal is to start construction in early 2019 and unveil the celebrated yacht in all her new-found glory at the Americas Cup in New Zealand two years later.
+
+          p.about__cap(data-aos) Bookmark this website as more details of the build will be added in the coming months.
+
+        .about__article-item.col-2.col-lg-3
+          .about__slider-block
+            .about__slider-wrap(data-aos)
+              ul.about__slider
+                each i in [1,2,3,4]
+                  li.about__slide
+                    .about__slide-img-wrap
+                      img.about__slide-img(src='img/about/slide-2.jpg' alt='history')
+
+              .about__slider-controls.slider__controls
+                .about__slider-control.slider__control.slider__control--prev.slider__control--color(data-slider-control='prev')
+                .about__slider-control.slider__control.slider__control--color(data-slider-control='next')
+
+          .about__cap(data-aos) K1 Britannia will be based on GL Watson’s 1893 lines for the hull with modifications to ensure that she conforms to J Class Association rules. Taking the latest ideas in terms of eco-conscious technology into account, her deck equipment, rigging and sail plan will be designed for high performance with modern materials so she may race competitively with the J Class Association fleet. Alongside her action on the regatta circuit, the yacht will be used to promote a wide range of charitable causes, epitomising the noble side of the spirit of Britannia.
+
+
+  img.parallax.about__wheel(src='img/icons/parallax-wheel.png')
+
+  +lines('about__lines')

@@ -12,28 +12,42 @@ section.history.lines__wrap
 
       .col-2.col-md-2.col-lg-3(data-aos)
         .history__align--right.history__text--style-1
-          .icon.icon--text.history__icon 1893
-            .icon__tips 54° 45’ 30"
+          .icon.icon--achor.history__icon
 
           p.text The royal cutter yacht Britannia was built by Henderson’s on the Clyde in 1893 for Queen Victoria’s son Albert Edward, then Prince of Wales. George Lennox Watson designed her to the Length and Sail Area Rule and had her constructed at the D&W Henderson Yard on the River Clyde in Scotland.
 
 
     .row.history__block-2
       .col-2.col-md-2.col-lg-3
-        .history__align--left.history__text--style-2(data-aos)
-          .icon.icon--achor.history__icon
+        .history__align--left.history__text--style-2
+          .icon.icon--text.history__icon(data-aos) 1893
+            .icon__tips 54° 45’ 30"
 
-          p.text Built of wooden planking over steel frames in little more than four months, she was launched on 20 April 1893. The time frame may have been impossibly fast by today’s standards but designer and builder alike made a fine job of Britannia.
+          p.text(data-aos) Built of wooden planking over steel frames in little more than four months, she was launched on 20 April 1893. The time frame may have been impossibly fast by today’s standards but designer and builder alike made a fine job of Britannia.
 
       .col-2.col-md-2.col-lg-3
         .history__align--right(data-aos)
           img.img(src='img/history/1893-II.jpg' alt='The crew of Britannia on the aft deck')
 
+
+  .history__slider-block
+    .history__slider-wrap(data-aos)
+      ul.history__slider
+        each i in [1,2,3,4]
+          li.history__slide
+            .history__slide-img-wrap
+              img.history__slide-img(src='img/history/slider-' + i + '.jpg' alt='history')
+
+      .history__slider-controls
+        .history__slider-control.slider__control.slider__control--prev(data-slider-control='prev')
+        .history__slider-control.slider__control(data-slider-control='next')
+
+
   .container
-    .row.history__block-quote.history__block-3
+    .row.history__block-quote(data-aos)
       .col-2.offset-lg-1.col-lg-4(data-aos)
         .history__quote.quote
-          .quote__text “So proud over the building of her were the men that the putting of her together was a real labour of love,” wrote journalist James Meikle at the time. “Really it was not difficult to imagine that the framework was woven together, so beautifully were the many parts joined into and onto each other.”
+          .quote__text So proud over the building of her were the men that the putting of her together was a real labour of love,” wrote journalist James Meikle at the time. “Really it was not difficult to imagine that the framework was woven together, so beautifully were the many parts joined into and onto each other.
 
       .col-2.col-lg-1(data-aos)
         .icon.icon--text.history__icon
@@ -65,9 +79,11 @@ section.history.lines__wrap
         .history__align--left.history__text--style-2
           .icon.icon--text.history__icon(data-aos) 1900-1914
 
-          p.text(data-aos) During the years leading up to World War I, Britannia was used mainly for cruising by King Edward VII and then, after his death in 1910, by his son and heir King George V.
+          p.text(data-aos) During the years leading up to World War One Britannia was used mainly for cruising by King Edward VII and then, after his death in 1910, by his son and heir King George V.
 
-          p.text(data-aos) While Britannia is famed for her racing exploits, she was also a beautiful boat on which to relax and many contemporaries told stories of their time onboard. If her elegant exterior profile transfixed the eye of observers from afar, those lucky few who got to spend time on and below her decks never forgot the experience.
+          p.text(data-aos) While Britannia is famed for her racing exploits, she was also a beautiful boat on which to relax and many contemporaries told stories of their time onboard.
+
+          p.text(data-aos) If her elegant exterior profile transfixed the eye of observers from afar, those lucky few who got to spend time on and below her decks never forgot the experience.
 
       .col-2.col-md-2.col-lg-3
         .history__align--right(data-aos)
@@ -106,7 +122,7 @@ section.history.lines__wrap
 
           p.text The Big Class revival initiated by Britannia was one of the key reasons for the immergence of the J-class yachts, built with only one mast to the Universal Rule. Five were launched in 1930 in the UK and US, namely Enterprise, Shamrock V, Weetamoe, Whirlwind and Yankee.
 
-          p.text Never one to resist a sailing challenge, King George commissioned a major refit for Britannia in 1931 that gave her a Bermudan rig. The legendary Charles E Nicholson designed the tallest wooden mast the world has ever seen: made of silver spruce, it weighed an incredible three tons.
+          p.text Never one to resist a sailing challenge, King George commissioned a major refit for Britannia in 1931 that gave her a Bermudan rig. The legendary Charles E Nicholson designed the tallest wooden mast the world has ever seen: made of silver spruce, it weighed an incredible three tonnes.
 
 
     .row.history__block-9
@@ -137,7 +153,7 @@ section.history.lines__wrap
         .history__text--style-3
           .icon.icon--text.history__icon 1936
 
-          p.text In January 1936 the British people mourned the passing of King George V. It was announced that in accordance with the monarch’s wishes upon his death, Britannia would be stripped of her spars and fittings and scuttled.
+          p.text In January 1936 the British people mourned as King George V passed away. It was announced that in accordance with the monarch’s wishes upon his death, Britannia would be stripped of her spars and fittings and scuttled.
 
       .col-2.col-md-2.col-lg-3(data-aos)
         img.img(src='img/history/1936.jpg' alt='1936')
@@ -156,23 +172,26 @@ section.history.lines__wrap
         .history__text--style-3.history__align--right
           .icon.icon--text.history__icon 1994
 
-          p.text Norwegian entrepreneur Sigurd Coates decided to follow a long-cherished wish and began construction of a replica of Britannia at the Solombala shipyard in Archangel, Russia. “It started with a dream and following your dreams is a big part of life,” he says at the time.
+          p.text Norwegian entrepreneur Sigurd Coates decides to follow a long-cherished wish and began construction of a replica of Britannia at the Solombala shipyard in Archangel, Russia. “It started with a dream and following your dreams is a big part of life,” he says at the time.
 
-          p.text The project then became a labour of love taking 11 years to complete and involved seven nationalities. Using the original drawings from Scotland, Sigurd and his team recreated the hull in pine wood with a laminated oak frame.
+          p.text The project becomes a labour of love that takes 11 years to complete and involves seven different nationalities. Using the original drawings from Scotland, Sigurd and his team recreate the hull in pine wood with a laminated oak frame.
 
 
     .row.history__block-7
+      .col-2.offset-lg-2(data-aos)
+        .icon.icon--text.history__icon 2009
+
       .col-2.col-md-2.offset-lg-2.col-lg-3(data-aos)
         .history__text--style-3
-          .icon.icon--text.history__icon 2009
-          p.text Although the boat was ready to launch for outfitting in 2005, Britannia became enmeshed in a legal minefield in Russia for another five years. By the time Sigurd was finally able to take possession of his Britannia in 2009 and move her to Norway for completion, the global recession had taken its toll financially.
+          p.text Although the boat is ready to launch for outfitting in 2005, Britannia becomes enmeshed in a legal minefield in Russia for another five years. By the time Sigurd is finally able to take possession of his Britannia in 2009 and move her to Norway for completion the global recession had taken its toll financially.
 
 
     .row.history__block-7
       .col-2.col-md-2.col-lg-3(data-aos)
-        .history__align--right.history__text--style-3
+        .history__align--right
           .icon.icon--text.history__icon 2012
-          p.text Realizing the difficulty of completing the project, Sigurd was inspired by the ideas of the K1 Britannia Trust to use the boat as a flagship for charity, and agreed to sell her. The hull was transported to Cowes and taken out of the water at the Southboats yard. K1 invested in the scaffolding, cradle, tools and workmen required and rebuilding work resumed in earnest on the next stages of the Britannia build.
+          .history__text--style-3
+            p.text Realising the difficulty of completing the project, Sigurd is inspired by the ideas of the K1 Britannia Trust to use the boat as a flagship for charity. The hull is transported to Cowes and taken out of the water at the Southboats yard. K1 invests in the scaffolding, cradle, tools and workmen required and work begins in earnest on the final stages of the Britannia build.
 
       .col-2.col-md-2.col-lg-3(data-aos)
         .history__align--right
@@ -185,13 +204,29 @@ section.history.lines__wrap
 
       .col-2.col-md-2.col-lg-3(data-aos)
         .history__align--right.history__text--style-3
-          .icon.icon--text.history__icon 2013 - 2018
+          .icon.icon--text.history__icon 2013
 
-          p.text The Southboats yard was liquidated and all building work stopped. Britannia was placed back in the water. Over the next couple of years, various surveyors carefully inspected Britannia and a full scope of the work for continuing the rebuild was undertaken.
+          p.text The Southboats yard is liquidated and all building work has to be stopped. Britannia is placed back in the water. Over the next couple of years, various surveyors research the yacht and outline a full scope of the work still to be undertaken.
 
     .history__block-7
       .col-2.offset-md-1.col-md-3.offset-lg-2.col-lg-3(data-aos)
-          p.text The K1 team decided to broaden its thinking as to the best type of replica and how they could fulfill the purpose of Britannia while ensuring Britannia’s relevance and stature in the modern sailing world. Based on research, and in the interest of sustainability, the Trust decided to follow the vision of GL Watson while also maximizing the best technology available to boat builders today
+        .history__text--style-3
+          p.text This information induces the K1 team to start broadening its horizons as to the type of replica which could be built and how they might best fulfil the boat’s purpose and ensure her relevance in the modern world.
+
+
+    .row.history__block-7
+      .col-2.offset-lg-1(data-aos)
+        .icon.icon--text.history__icon 2018
+
+      .col-2.col-md-3.offset-lg-1.col-lg-4(data-aos)
+        .history__text--style-3
+          p.text Based on all this research, and in the interest of sustainability, the decision is taken to make the most of all the technologies that are available to boatbuilders today and start the build again. This includes giving Britannia an aluminium hull, an idea that her original designer GL Watson had fantasied about over a century ago: “We have not exhausted the possibilities of form yet,” he wrote.
+
+          p.text.text--italic “When we do arrive at perfection in shape, we can set to then look out for better material. The frames and beams, then, of my ideal ship shall be made of aluminium..."
+
+          p.text The project team is delighted to have the encouragement of Sigurd Coates for this new venture, a man who gave so much to his own rebuild of Britannia. “I fully support the decision to build a new aluminium hull for K1 Britannia,” he says. “This will give ‘The Greatest Sail-Yacht of all time’ a better chance in competitive racing.”
+
+
 
 
 
