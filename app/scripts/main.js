@@ -660,9 +660,18 @@ function resizeend() {
 // heroPlaceholderFn
 //
 
-var heroPlaceholderFn = function () {
-  var heroPlaceholder = $('.hero__placeholder');
+var prevWindowInnerWidth = 0;
 
+var heroPlaceholderFn = function () {
+  if (prevWindowInnerWidth == window.innerWidth) {
+    console.log(2)
+    return false;
+  }
+
+  prevWindowInnerWidth = window.innerWidth;
+
+  var heroPlaceholder = $('.hero__placeholder');
+  console.log(1)
   if (heroPlaceholder) {
     heroPlaceholder.height(window.innerHeight - 100);
   }
@@ -674,52 +683,52 @@ heroPlaceholderFn();
 //
 
 
-var accordionsOne = document.querySelectorAll('[data-accordion-one]');
-var accordionsOneActive = document.querySelector(
-  '[data-accordion-one][data-accordion-active]'
-);
+// var accordionsOne = document.querySelectorAll('[data-accordion-one]');
+// var accordionsOneActive = document.querySelector(
+//   '[data-accordion-one][data-accordion-active]'
+// );
 
-var accord = function (elem, click) {
-  elem.classList.toggle('accordion__header_active');
+// var accord = function (elem, click) {
+//   elem.classList.toggle('accordion__header_active');
 
-  var panel = elem.nextElementSibling;
+//   var panel = elem.nextElementSibling;
 
-  panel.style.maxHeight ?
-    (panel.style.maxHeight = null) :
-    (panel.style.maxHeight = panel.scrollHeight + 'px');
+//   panel.style.maxHeight ?
+//     (panel.style.maxHeight = null) :
+//     (panel.style.maxHeight = panel.scrollHeight + 'px');
 
-  if (click && window.innerWidth <= 1024) {
-    setTimeout(function () {
-      $([document.documentElement, document.body]).animate({
-        scrollTop: $(elem).offset().top - 90
-      }, 300);
-    }, 100);
-  }
-};
+//   if (click && window.innerWidth <= 1024) {
+//     setTimeout(function () {
+//       $([document.documentElement, document.body]).animate({
+//         scrollTop: $(elem).offset().top - 90
+//       }, 300);
+//     }, 100);
+//   }
+// };
 
-if (accordionsOne.length) {
-  accord(accordionsOneActive, false);
+// if (accordionsOne.length) {
+//   accord(accordionsOneActive, false);
 
-  accordionsOne.forEach(function (elem, key, array) {
-    elem.addEventListener('click', function (e) {
-      array.forEach(function (elem) {
-        elem.classList.remove('accordion__header_active');
+//   accordionsOne.forEach(function (elem, key, array) {
+//     elem.addEventListener('click', function (e) {
+//       array.forEach(function (elem) {
+//         elem.classList.remove('accordion__header_active');
 
-        var panel = elem.nextElementSibling;
-        panel.style.maxHeight = null;
-      });
+//         var panel = elem.nextElementSibling;
+//         panel.style.maxHeight = null;
+//       });
 
-      accord(e.target, true);
-    });
-  });
-}
+//       accord(e.target, true);
+//     });
+//   });
+// }
 
-$(window).load(function () {
-  var activeTab = document.querySelector(
-    '[data-accordion-one][data-accordion-active]'
-  );
+// $(window).load(function () {
+//   var activeTab = document.querySelector(
+//     '[data-accordion-one][data-accordion-active]'
+//   );
 
-  if (activeTab) {
-    //accord(activeTab, false);
-  }
-});
+//   if (activeTab) {
+//     //accord(activeTab, false);
+//   }
+// });
