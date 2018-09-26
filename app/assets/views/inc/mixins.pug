@@ -22,7 +22,7 @@ mixin sponsorship(data, $class)
 mixin press_release(data)
   article.press__article.press__article--large(data-aos)
     a.press__article-img-wrap(href='#!' data-aos)
-      img.press__article-img(src='img/press/' + data.image alt= data.title)
+      img.press__article-img(src='/img/press/' + data.image alt= data.title)
       .press__article-title= data.title
     .press__article-content(data-aos)
       p.press__article-text!= data.text

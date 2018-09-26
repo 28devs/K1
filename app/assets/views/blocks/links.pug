@@ -11,7 +11,7 @@ section.links.lines__wrap.links--animate-disable
             each item in links
               .links__item(data-aos)
                 a.links__img-wrap(href=item.site target='_blank')
-                  img.links__img(src='img/links/' + item.logo + '.svg' alt='K1 ' + item.title)
+                  img.links__img(src='/img/links/' + item.logo + '.svg' alt='K1 ' + item.title)
 
                 a.links__text(href=item.site target='_blank')
                   .links__item-title K1
@@ -25,7 +25,7 @@ section.links.lines__wrap.links--animate-disable
                       each child in item.child
                         .links__child
                           a(href=child.site target='_blank')
-                            img.links__child-img(src='img/links/' + child.logo alt='logo')
+                            img.links__child-img(src='/img/links/' + child.logo alt='logo')
 
 
   +lines('links__lines')
