@@ -1,0 +1,5 @@
+application: k1britannia
+default_stage: staging
+local_path: ~/Sites/{{application}}
+shared_dirs:
+  - public/press

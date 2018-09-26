@@ -1,0 +1,6 @@
+{
+  "require": {
+    "deployer/deployer": "^6.3.0",
+    "php": ">=7.0"
+  }
+}

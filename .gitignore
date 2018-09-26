@@ -1,3 +1,7 @@
 node_modules
 dest
-package-lock.json
+public
+package-lock.jsonshared/*
+shared/*
+vendor
+!.gitkeep
