@@ -1,7 +1,5 @@
 node_modules
-dest
 public
-package-lock.jsonshared/*
 shared/*
 vendor
 !.gitkeep
