@@ -38,13 +38,13 @@
           pretty: true
         })
       )
-      .pipe(gulp.dest('dest/'));
+      .pipe(gulp.dest('public/'));
   });
 
   gulp.task('hash', function () {
-    return gulp.src('dest/*.html')
+    return gulp.src('public/*.html')
       .pipe(rev())
-      .pipe(gulp.dest('dest/'));
+      .pipe(gulp.dest('public/'));
   });
 
   const processors = [
@@ -55,7 +55,7 @@
     require('postcss-each'),
     require('postcss-assets')({
       loadPaths: ['img/', 'img/about', 'img/icons'],
-      basePath: 'dest/',
+      basePath: 'app/assets/',
       relative: 'styles/'
     }),
     require('postcss-nested-ancestors'),
@@ -113,19 +113,19 @@
         extname: '.css'
       }))
       //.pipe(sourcemaps.write('/'))
-      .pipe(gulp.dest('dest/styles/'))
+      .pipe(gulp.dest('public/styles/'))
     );
   });
 
   // write js
   gulp.task('scripts', function () {
     return gulp.src('app/scripts/**')
-      .pipe(gulp.dest('dest/scripts'));
+      .pipe(gulp.dest('public/scripts'));
   });
 
-  //delete dest folder
+  //delete public folder
   gulp.task('clean', function () {
-    return del('dest');
+    return del('public');
   });
 
   //lib
@@ -134,14 +134,14 @@
       .src('app/libs/**/*.css')
       .pipe(uglifycss())
       .pipe(concat('libs.min.css'))
-      .pipe(gulp.dest('dest/styles/'));
+      .pipe(gulp.dest('public/styles/'));
   });
 
   gulp.task('libs-js', function () {
     return gulp
       .src('app/libs/**/*.js')
       .pipe(concat('libs.min.js'))
-      .pipe(gulp.dest('dest/scripts/'));
+      .pipe(gulp.dest('public/scripts/'));
   });
 
   //copy all assets files
@@ -151,7 +151,7 @@
         since: gulp.lastRun('assets')
       })
       .pipe(cached('app/assets'))
-      .pipe(gulp.dest('dest'));
+      .pipe(gulp.dest('public'));
   });
 
   //run task for build once
@@ -171,23 +171,23 @@
     )
   );
 
-  //up static server; watching change in dest and reload page
+  //up static server; watching change in public and reload page
   gulp.task('server', function () {
     browserSync.init({
-      server: 'dest',
+      server: 'public',
       notify: false
     });
 
-    browserSync.watch('dest/**/*.*').on('change', browserSync.reload);
+    browserSync.watch('public/**/*.*').on('change', browserSync.reload);
   });
 
-  //watching by all files in dest
+  //watching by all files in public
   gulp.task('watch', function () {
     gulp.watch('app/styles/**/*.*', gulp.series('postcss'));
     gulp.watch('app/scripts/**/*.*', gulp.series('scripts'));
     gulp.watch('app/assets/**/*.*', gulp.series('assets'));
     gulp.watch('app/assets/views/**/*.*', gulp.series('views'));
-    // gulp.watch('dest/styles/main.css*', gulp.series('hash'));
+    // gulp.watch('public/styles/main.css*', gulp.series('hash'));
     gulp.watch('app/libs/**/*.js', gulp.series('libs-js'));
     gulp.watch('app/libs/**/*.css', gulp.series('libs-css'));
   });
