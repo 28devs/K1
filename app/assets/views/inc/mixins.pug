@@ -26,5 +26,4 @@ mixin press_release(data)
       .press__article-title= data.title
     .press__article-content(data-aos)
       p.press__article-text!= data.text
-      p.press__article-link
-        a(href='' + data.url target='_blank') Download
+      a.press__article-link.wave-link(href= data.url target='_blank') Download
