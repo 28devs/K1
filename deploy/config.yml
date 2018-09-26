@@ -1,5 +1,13 @@
 application: k1britannia
 default_stage: staging
 local_path: ~/Sites/{{application}}
+rsync_options:
+  - -k
+  - --exclude=.DS_Store
+  - --exclude=*.pdf
+rsync_options_shared:
+  - -k
+  - --exclude=.DS_Store
 shared_dirs:
   - public/press
+

@@ -2,18 +2,11 @@
 
 namespace Deployer;
 
-task( 'deploy:rsync:public', function() {
+task( 'deploy:rsync', function() {
 	upload( '{{local_path}}/public/', '{{release_path}}/public', [
-		'options' => [
-			'-k', '--exclude=.DS_Store', '--exclude=press/',
-		],
+		'options' => get( 'rsync_options' ),
 	]);
-});
-
-task( 'deploy:rsync:shared', function() {
 	upload( '{{local_path}}/shared/', '{{deploy_path}}/shared/public', [
-		'options' => [
-			'-k', '--exclude=.DS_Store',
-		],
+		'options' => get( 'rsync_options_shared' ),
 	]);
 });

@@ -154,6 +154,16 @@
       .pipe(gulp.dest('public'));
   });
 
+  //copy all shared files
+  gulp.task('shared', function () {
+    return gulp
+      .src(['shared/**'], {
+        since: gulp.lastRun('shared')
+      })
+      .pipe(cached('shared'))
+      .pipe(gulp.dest('public'));
+  });
+
   //run task for build once
   gulp.task(
     'build',
@@ -161,6 +171,7 @@
       'clean',
       gulp.parallel(
         'assets',
+        'shared',
         'postcss',
         // 'hash',
         'libs-css',
