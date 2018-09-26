@@ -147,7 +147,7 @@
   //copy all assets files
   gulp.task('assets', function () {
     return gulp
-      .src('app/assets/**', {
+      .src(['app/assets/**','!app/assets/views/**'], {
         since: gulp.lastRun('assets')
       })
       .pipe(cached('app/assets'))
