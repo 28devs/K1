@@ -1,0 +1,83 @@
+browsersync:
+  notify: false
+  proxy: http://k1britannia.test
+  server: public
+
+src:
+  css: app/styles/main.sss
+  fonts: app/fonts/**
+  html: public/*.html
+  images: app/images/**
+  js: app/scripts/**
+  shared: shared/**
+  views: app/views/*.pug
+
+dest:
+  fonts: public/assets/fonts/
+  css: public/assets/styles/
+  html: public/
+  images: public/assets/images/
+  js: public/assets/scripts/
+  shared: public/
+  views: public/
+
+processors:
+  postcss-import:
+  postcss-mixins:
+  postcss-alias:
+  postcss-for:
+  postcss-each:
+  postcss-assets:
+    basePath: app
+    loadPaths:
+      - images/
+    relative: assets/
+  postcss-nested-ancestors:
+  postcss-nested:
+  postcss-inline-media:
+  postcss-short-spacing:
+  postcss-size:
+  postcss-position:
+  postcss-flexbox:
+  postcss-simple-vars:
+  postcss-short-text:
+  postcss-responsive-type:
+  postcss-extend:
+  postcss-inline-svg:
+    path: app/images/
+  autoprefixer:
+  postcss-pxtorem:
+    selectorBlackList:
+      - h1
+      - h2
+      - h3
+      - h4
+      - h5
+      - .btn
+      - .hero-blocks__item li
+      - .sticky-nav__nav-link
+  postcss-unique-selectors:
+  css-mqpacker:
+    sort: true
+  postcss-sorting:
+
+scripts:
+  libs.js:
+    - node_modules/aos/dist/aos.js
+    - node_modules/js-cookie/src/js.cookie.js
+    - node_modules/lightslider/dist/js/lightslider.min.js
+    - node_modules/retinajs/dist/retina.min.js
+  main.js:
+    - app/scripts/main.js
+
+styles:
+  libs.css:
+    - node_modules/lightslider/dist/css/lightslider.css
+
+watch:
+  css: app/styles/**/*.*
+  fonts: app/fonts/**/*.*
+  images: app/images/**/*.*
+  js: app/scripts/**/*.*
+  public: public/**/*.*
+  views: app/views/**/*.*

@@ -1,209 +1,173 @@
-(function () {
-  'use strict';
+const {
+  dest, lastRun, parallel, series, src, task, watch
+} = require('gulp');
 
-  const gulp = require('gulp'),
-    sourcemaps = require('gulp-sourcemaps'),
-    del = require('del'),
-    notify = require('gulp-notify'),
-    concat = require('gulp-concat'),
-    concatCss = require('gulp-concat-css'),
-    uglifyJs = require('gulp-uglifyes'),
-    uglifycss = require('gulp-uglifycss'),
-    pug = require('gulp-pug'),
-    rename = require('gulp-rename'),
-    browserSync = require('browser-sync').create(),
-    postcss = require('gulp-postcss'),
-    sugarss = require('sugarss'),
-    watch = require('gulp-watch'),
-    cached = require('gulp-cached'),
-    gulpWatchPug = require('gulp-watch-pug'),
-    cssbeautify = require('gulp-cssbeautify'),
-    stripCssComments = require('gulp-strip-css-comments'),
-    cssDeclarationSorter = require('css-declaration-sorter'),
-    rev = require('gulp-rev-append');
+const args        = require('yargs').argv;
+const browserSync = require('browser-sync').create();
+const cache       = require('gulp-cache');
+const cached      = require('gulp-cached');
+const concat      = require('gulp-concat');
+const cssbeautify = require('gulp-cssbeautify');
+const cssnano     = require('gulp-cssnano');
+const del         = require('del');
+const eslint      = require('gulp-eslint');
+const gulpif      = require('gulp-if');
+const imagemin    = require('gulp-imagemin');
+const mergeStream = require('merge-stream');
+const notify      = require('gulp-notify');
+const postcss     = require('gulp-postcss');
+const pug         = require('gulp-pug');
+const pump        = require('pump');
+const rename      = require('gulp-rename');
+const rev         = require('gulp-rev-append');
+const sugarss     = require('sugarss');
+const terser      = require('gulp-terser');
+const yaml        = require('yamljs');
 
-  // Попробовать позже https://www.npmjs.com/package/gulp-pug-inheritance
-  // jadeInheritance = require('gulp-jade-inheritance'),
-  // changed = require('gulp-changed'),
-  // cached = require('gulp-cached'),
-  // gulpif = require('gulp-if'),
-  // filter = require('gulp-filter');
+const config = yaml.load('config.yml');
 
-  //write html by pug
-  gulp.task('views', function buildHTML() {
-    return gulp
-      .src('app/assets/views/*.pug')
-      .pipe(
-        pug({
-          pretty: true
-        })
-      )
-      .pipe(gulp.dest('public/'));
-  });
+const processors = Object.keys(config.processors).map(key => {
+  return config.processors[key] === null
+    ? require(key)
+    : require(key)(config.processors[key]);
+});
 
-  gulp.task('hash', function () {
-    return gulp.src('public/*.html')
-      .pipe(rev())
-      .pipe(gulp.dest('public/'));
-  });
+task('clean', () => {
+  return del('public');
+});
 
-  const processors = [
-    require('postcss-import'),
-    require('postcss-mixins'),
-    require('postcss-alias'),
-    require('postcss-for'),
-    require('postcss-each'),
-    require('postcss-assets')({
-      loadPaths: ['img/', 'img/about', 'img/icons'],
-      basePath: 'app/assets/',
-      relative: 'styles/'
+task('eslint', (cb) => {
+  pump([
+    src(config.src.js),
+    eslint(),
+    eslint.format(),
+    eslint.failAfterError(),
+  ], cb);
+});
+
+task('fonts', (cb) => {
+  pump([
+    src(config.src.fonts, {
+      since: lastRun('fonts'),
     }),
-    require('postcss-nested-ancestors'),
-    require('postcss-nested'),
-    require('postcss-inline-media'),
-    require('postcss-short-spacing'),
-    require('postcss-size'),
-    require('postcss-position'),
-    require('postcss-flexbox'),
-    require('postcss-simple-vars'),
-    require('postcss-short-text'),
-    require('postcss-responsive-type'),
-    require('postcss-extend'),
-    require('postcss-inline-svg')({
-      path: 'app/assets/img/'
+    cached('fonts'),
+    dest(config.dest.fonts),
+  ], cb);
+});
+
+task('hash', (cb) => {
+  pump([
+    src(config.src.html),
+    rev(),
+    dest(config.dest.html),
+  ], cb);
+});
+
+task('images', (cb) => {
+  pump([
+    src(config.watch.images, {
+      since: lastRun('images'),
     }),
-    require('autoprefixer'),
-    require('postcss-pxtorem')({
-      selectorBlackList: [
-        'h1',
-        'h2',
-        'h3',
-        'h4',
-        'h5',
-        '.btn',
-        '.sticky-nav__nav-link',
-        '.hero-blocks__item li'
-      ]
+    cache(imagemin([
+      imagemin.gifsicle(),
+      imagemin.jpegtran(),
+      imagemin.optipng(),
+      imagemin.svgo(),
+    ])),
+    dest(config.dest.images),
+  ], cb);
+});
+
+task('postcss', (cb) => {
+  pump([
+    src(config.src.css),
+    postcss(processors, {
+      parser: sugarss,
+    }).on('error', notify.onError()),
+    cssbeautify({
+      autosemicolon: true,
+      indent: '  ',
     }),
-    require('postcss-unique-selectors'),
-    require('css-mqpacker')({
-      sort: true
+    gulpif(args.production, cssnano({
+      minifyFontValues: false,
+      discardComments: {removeAll: true},
+      zindex: false,
+    })),
+    rename({
+      extname: '.css',
     }),
-    require('postcss-sorting')
-  ];
+    dest(config.dest.css),
+    browserSync.stream(),
+  ], cb);
+});
 
-  //write style
-  gulp.task('postcss', function () {
-    return (
-      gulp
-      .src(['app/styles/main.sss'])
-      .pipe(sourcemaps.init())
-      .pipe(
-        postcss(processors, {
-          parser: sugarss
-        }).on('error', notify.onError())
-      )
-      .pipe(
-        cssbeautify({
-          indent: '  ',
-          autosemicolon: true
-        })
-      )
-      .pipe(rename({
-        extname: '.css'
-      }))
-      //.pipe(sourcemaps.write('/'))
-      .pipe(gulp.dest('public/styles/'))
-    );
+task('scripts', (cb) => {
+  var streams = mergeStream();
+  for(var key in config.scripts) {
+    if(!config.scripts.hasOwnProperty(key))continue;
+    streams.add(src(config.scripts[key]).pipe(concat(key)));
+  }
+  pump([
+    streams,
+    gulpif(args.production, terser()),
+    dest(config.dest.js),
+    browserSync.stream(),
+  ], cb);
+});
+
+task('shared', (cb) => {
+  pump([
+    src(config.src.shared, {
+      since: lastRun('shared'),
+    }),
+    cached('shared'),
+    dest(config.dest.shared),
+  ], cb);
+});
+
+task('styles', (cb) => {
+  var streams = mergeStream();
+  for(var key in config.styles) {
+    if(!config.styles.hasOwnProperty(key))continue;
+    streams.add(src(config.styles[key]).pipe(concat(key)));
+  }
+  pump([
+    streams,
+    gulpif(args.production, cssnano({
+      minifyFontValues: false,
+      discardComments: {removeAll: true},
+      zindex: false,
+    })),
+    dest(config.dest.css),
+    browserSync.stream(),
+  ], cb);
+});
+
+task('views', (cb) => {
+  pump([
+    src(config.src.views),
+    pug({
+      pretty: true,
+    }),
+    dest(config.dest.views),
+    browserSync.stream(),
+  ], cb);
+});
+
+task('watch', () => {
+  browserSync.init({
+    notify: config.browsersync.notify,
+    server: config.browsersync.server,
+    // proxy: config.browsersync.proxy,
   });
+  watch(config.watch.css, parallel('postcss'));
+  watch(config.watch.fonts, parallel('fonts'));
+  watch(config.watch.images, parallel('images'));
+  watch(config.watch.js, parallel('eslint', 'scripts'));
+  watch(config.watch.public).on('change', browserSync.reload);
+  watch(config.watch.views, parallel('views'));
+});
 
-  // write js
-  gulp.task('scripts', function () {
-    return gulp.src('app/scripts/**')
-      .pipe(gulp.dest('public/scripts'));
-  });
-
-  //delete public folder
-  gulp.task('clean', function () {
-    return del('public');
-  });
-
-  //lib
-  gulp.task('libs-css', function () {
-    return gulp
-      .src('app/libs/**/*.css')
-      .pipe(uglifycss())
-      .pipe(concat('libs.min.css'))
-      .pipe(gulp.dest('public/styles/'));
-  });
-
-  gulp.task('libs-js', function () {
-    return gulp
-      .src('app/libs/**/*.js')
-      .pipe(concat('libs.min.js'))
-      .pipe(gulp.dest('public/scripts/'));
-  });
-
-  //copy all assets files
-  gulp.task('assets', function () {
-    return gulp
-      .src(['app/assets/**','!app/assets/views/**'], {
-        since: gulp.lastRun('assets')
-      })
-      .pipe(cached('app/assets'))
-      .pipe(gulp.dest('public'));
-  });
-
-  //copy all shared files
-  gulp.task('shared', function () {
-    return gulp
-      .src(['shared/**'], {
-        since: gulp.lastRun('shared')
-      })
-      .pipe(cached('shared'))
-      .pipe(gulp.dest('public'));
-  });
-
-  //run task for build once
-  gulp.task(
-    'build',
-    gulp.series(
-      'clean',
-      gulp.parallel(
-        'assets',
-        'shared',
-        'postcss',
-        // 'hash',
-        'libs-css',
-        'libs-js',
-        'scripts'
-      ),
-      'views'
-    )
-  );
-
-  //up static server; watching change in public and reload page
-  gulp.task('server', function () {
-    browserSync.init({
-      server: 'public',
-      notify: false
-    });
-
-    browserSync.watch('public/**/*.*').on('change', browserSync.reload);
-  });
-
-  //watching by all files in public
-  gulp.task('watch', function () {
-    gulp.watch('app/styles/**/*.*', gulp.series('postcss'));
-    gulp.watch('app/scripts/**/*.*', gulp.series('scripts'));
-    gulp.watch('app/assets/**/*.*', gulp.series('assets'));
-    gulp.watch('app/assets/views/**/*.*', gulp.series('views'));
-    // gulp.watch('public/styles/main.css*', gulp.series('hash'));
-    gulp.watch('app/libs/**/*.js', gulp.series('libs-js'));
-    gulp.watch('app/libs/**/*.css', gulp.series('libs-css'));
-  });
-
-  gulp.task('dev', gulp.series('build', gulp.parallel('watch', 'server')));
-
-  //
-})();
+task('default', series(parallel('eslint', 'fonts', 'images', 'postcss', 'scripts', 'shared', 'styles', 'views'), 'hash'));
+task('build', series('clean', 'default'));
+task('dev', series('build', 'watch'));
