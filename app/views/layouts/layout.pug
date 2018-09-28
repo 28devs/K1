@@ -6,9 +6,25 @@ html(lang='en' dir='ltr')
   head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    block meta
+      meta(name='description', content= meta.description)
+      meta(itemprop='name' content= meta.title)
+      meta(itemprop='description' content= meta.description)
+      meta(itemprop='image' content= meta.image)
+      meta(property='og:title' content= meta.title)
+      meta(property='og:site_name' content= meta.title)
+      meta(property='og:url' content= meta.url)
+      meta(property='og:description' content= meta.description)
+      meta(property='og:image' content= meta.image)
     block title
       title K1
     block head
+      script(async src='https://www.googletagmanager.com/gtag/js?id=UA-90570626-7')
+      script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-90570626-7');
       link(href='/assets/styles/libs.css' rel='stylesheet')
       link(href='https://fonts.googleapis.com/css?family=Cardo:400,700|Montserrat:400,500' rel='stylesheet')
       link(href='/assets/styles/main.css?rev=@@hash' rel='stylesheet')
