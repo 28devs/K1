@@ -288,8 +288,6 @@ animationElems.forEach(function (elem) {
   }
 });
 
-//TweenLite.ticker.addEventListener('tick', update);
-
 function update() {
   var min = 0;
   var max = document.body.scrollHeight;
@@ -413,37 +411,6 @@ if (hero) {
       }
     });
 
-    touch(hero, 'down', transitionFrom1To2);
-    touch(links, 'up', transitionFrom2To1, true);
-
-    function touch(elem, direction, callback, scroll) {
-      var swipeDir;
-      var posStart;
-      var posEnd;
-
-      elem.addEventListener(
-        'touchstart',
-        function (e) {
-          if (!scroll) e.preventDefault();
-          posStart = parseInt(e.changedTouches[0].pageY);
-        },
-        false
-      );
-
-      elem.addEventListener(
-        'touchend',
-        function (e) {
-          if (!scroll) e.preventDefault();
-          posEnd = parseInt(e.changedTouches[0].pageY);
-          swipeDir = posEnd - posStart > 0 ? 'up' : 'down';
-          if (window.pageYOffset == 0 && swipeDir === direction) {
-            callback();
-          }
-        },
-        false
-      );
-    }
-
     function transitionFrom1To2() {
       from1to2 = false;
       scrollTop = true;
@@ -488,140 +455,6 @@ if (hero) {
       }, 550 * 2);
     }
   }
-
-  // Cloud opacity
-
-  // var linksCloudBgAnimation = TweenLite.to(
-  //   document.querySelector('.links__cloud'),
-  //   1, {
-  //     autoAlpha: 0,
-  //     paused: true
-  //   }
-  // );
-
-  // var linksCloudBgAnimationTop = $('.home--animate-disable').length ? $('.hero').height() + 300 : 0;
-
-  // TweenLite.ticker.addEventListener('tick', function () {
-  //   linksCloudBgAnimation.progress(
-  //     clamp(
-  //       normalize(
-  //         window.pageYOffset,
-  //         linksCloudBgAnimationTop,
-  //         document.querySelector('.links').clientHeight * 2
-  //       ),
-  //       0,
-  //       1
-  //     )
-  //   );
-  // });
-
-  // Form bg opacity
-
-  // var formBgAnimation = TweenLite.to(document.querySelector('.form__bg'), 1, {
-  //   autoAlpha: 1,
-  //   paused: true
-  // });
-
-  // TweenLite.ticker.addEventListener('tick', function () {
-  //   var step = clamp(
-  //     normalize(
-  //       window.pageYOffset,
-  //       document.querySelector('.sponsors') ? document.querySelector('.sponsors').offsetTop +
-  //       document.querySelector('.sponsors').clientHeight / 3 : document.querySelector('.links').offsetTop +
-  //       document.querySelector('.links').clientHeight / 3,
-  //       document.querySelector('.form').offsetTop -
-  //       document.querySelector('.form').clientHeight / 3
-  //     ),
-  //     0,
-  //     1
-  //   );
-  //   formBgAnimation.progress(step);
-  // });
-}
-
-//
-// Parallax
-//
-
-const homeParallax = document.querySelector('.home:not(.home--animate-disable)');
-
-if (homeParallax) {
-  var playParallax = true;
-  var currentMousePos = {
-    x: -1,
-    y: -1
-  };
-
-  $(document).mousemove(function (event) {
-    if (event.pageY < $('.hero').height()) {
-      currentMousePos.x = event.pageX;
-      currentMousePos.y = event.pageY;
-    }
-  });
-
-  var parallaxIt = function (target, movementX, movementY) {
-    var $this = $('.hero');
-    var relX = currentMousePos.x - $this.offset().left;
-    var relY = currentMousePos.y - $this.offset().top;
-
-    TweenMax.to(target, 1, {
-      x: ((relX - $this.width() / 2) / $this.width()) * movementX,
-      y: ((relY - $this.height() / 2) / $this.height()) * movementY,
-      ease: Linear.easeNone
-    });
-  };
-
-  TweenLite.ticker.addEventListener('tick', initParallax);
-
-  function initParallax() {
-    if (playParallax) {
-      parallaxIt('.hero__clouds', -200, -100);
-      parallaxIt('.hero__hills', -130, -40);
-      parallaxIt('.hero__sea', -100, -30);
-      parallaxIt('.hero__ships', -50, -20);
-    }
-
-    //requestAnimationFrame(initParallax);
-  }
-  //requestAnimationFrame(initParallax);
-
-  //
-  // Hyroscope
-  //
-
-  var rotX = 0,
-    rotY = 0;
-
-  if (window.DeviceMotionEvent) {
-    window.ondeviceorientation = function (event) {
-      beta = event.beta;
-      gamma = event.gamma;
-      setTimeout(function () {
-        normalizeData(gamma, beta);
-      }, 50);
-    };
-  }
-
-  function normalizeData(_g, _b) {
-    b = Math.round(_b);
-    g = Math.round(_g);
-    rotY += (g - rotY) / 5;
-    rotX += (b - rotX) / 5;
-
-    parallaxGy('.hero__clouds', g, b, 2.2, 1.1);
-    parallaxGy('.hero__hills', g, b, 1.7, 1.5);
-    parallaxGy('.hero__sea', g, b, 1.2, 2);
-    parallaxGy('.hero__ships', g, b, 1.1, 2.5);
-  }
-
-  function parallaxGy(target, x, y, coefX, coefY) {
-    var $this = $('.hero');
-
-    TweenMax.to(target, 1, {
-      x: x * coefX,
-      y: y / coefY
-    });
-  }
 }
 
 //
@@ -664,71 +497,15 @@ var prevWindowInnerWidth = 0;
 
 var heroPlaceholderFn = function () {
   if (prevWindowInnerWidth == window.innerWidth) {
-    console.log(2)
     return false;
   }
 
   prevWindowInnerWidth = window.innerWidth;
 
   var heroPlaceholder = $('.hero__placeholder');
-  console.log(1)
+
   if (heroPlaceholder) {
     heroPlaceholder.height(window.innerHeight - 100);
   }
 }
 heroPlaceholderFn();
-
-//
-// Accordion with one active element
-//
-
-
-// var accordionsOne = document.querySelectorAll('[data-accordion-one]');
-// var accordionsOneActive = document.querySelector(
-//   '[data-accordion-one][data-accordion-active]'
-// );
-
-// var accord = function (elem, click) {
-//   elem.classList.toggle('accordion__header_active');
-
-//   var panel = elem.nextElementSibling;
-
-//   panel.style.maxHeight ?
-//     (panel.style.maxHeight = null) :
-//     (panel.style.maxHeight = panel.scrollHeight + 'px');
-
-//   if (click && window.innerWidth <= 1024) {
-//     setTimeout(function () {
-//       $([document.documentElement, document.body]).animate({
-//         scrollTop: $(elem).offset().top - 90
-//       }, 300);
-//     }, 100);
-//   }
-// };
-
-// if (accordionsOne.length) {
-//   accord(accordionsOneActive, false);
-
-//   accordionsOne.forEach(function (elem, key, array) {
-//     elem.addEventListener('click', function (e) {
-//       array.forEach(function (elem) {
-//         elem.classList.remove('accordion__header_active');
-
-//         var panel = elem.nextElementSibling;
-//         panel.style.maxHeight = null;
-//       });
-
-//       accord(e.target, true);
-//     });
-//   });
-// }
-
-// $(window).load(function () {
-//   var activeTab = document.querySelector(
-//     '[data-accordion-one][data-accordion-active]'
-//   );
-
-//   if (activeTab) {
-//     //accord(activeTab, false);
-//   }
-// });
