@@ -1,3 +1,35 @@
+const formspree = document.querySelector( '.formspree' );
+
+if( formspree ) {
+  formspree.addEventListener( 'submit', (ev) => {
+    ev.preventDefault();
+    let form = ev.target;
+    let button = form.querySelector( '[type=submit]' );
+    let result = form.querySelector( '.form__result' );
+    let xhr = new XMLHttpRequest();
+    if( button.disabled )return;
+    if( !window.FormData ) {
+      return form.submit();
+    }
+    button.setAttribute( 'disabled', '' );
+    result.innerHTML = '';
+    xhr.open( 'POST', form.action );
+    xhr.setRequestHeader( 'Accept', 'application/json' );
+    xhr.setRequestHeader( 'X-Requested-With', 'XMLHttpRequest' );
+    xhr.send( new FormData( form ));
+    xhr.onreadystatechange = () => {
+      if( xhr.readyState !== XMLHttpRequest.DONE )return;
+      let response = JSON.parse( xhr.responseText );
+      if( response.success !== 'email sent' ) {
+        return form.submit();
+      }
+      result.innerHTML = 'Thank you! Your message has been received.';
+      button.removeAttribute( 'disabled' );
+      form.reset();
+    };
+  });
+}
+
 //
 // Get coll width in px
 //
