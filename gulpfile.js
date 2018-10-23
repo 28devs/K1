@@ -3,6 +3,7 @@ const {
 } = require('gulp');
 
 const args        = require('yargs').argv;
+const babel       = require('gulp-babel');
 const browserSync = require('browser-sync').create();
 const cache       = require('gulp-cache');
 const cached      = require('gulp-cached');
@@ -109,6 +110,10 @@ task('scripts', (cb) => {
   }
   pump([
     streams,
+    babel({
+      presets: ['@babel/env'],
+      sourceType: 'unambiguous',
+    }),
     gulpif(args.production, terser()),
     dest(config.dest.js),
     browserSync.stream(),

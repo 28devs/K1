@@ -1,3 +1,35 @@
+const formspree = document.querySelector( '.formspree' );
+
+if( formspree ) {
+  formspree.addEventListener( 'submit', (ev) => {
+    ev.preventDefault();
+    let form = ev.target;
+    let button = form.querySelector( '[type=submit]' );
+    let result = form.querySelector( '.form__result' );
+    let xhr = new XMLHttpRequest();
+    if( button.disabled )return;
+    if( !window.FormData ) {
+      return form.submit();
+    }
+    button.setAttribute( 'disabled', '' );
+    result.innerHTML = '';
+    xhr.open( 'POST', form.action );
+    xhr.setRequestHeader( 'Accept', 'application/json' );
+    xhr.setRequestHeader( 'X-Requested-With', 'XMLHttpRequest' );
+    xhr.send( new FormData( form ));
+    xhr.onreadystatechange = () => {
+      if( xhr.readyState !== XMLHttpRequest.DONE )return;
+      let response = JSON.parse( xhr.responseText );
+      if( response.success !== 'email sent' ) {
+        return form.submit();
+      }
+      result.innerHTML = 'Thank you! Your message has been received.';
+      button.removeAttribute( 'disabled' );
+      form.reset();
+    };
+  });
+}
+
 //
 // Get coll width in px
 //
@@ -23,7 +55,7 @@ if (stickyNav) {
   var headerScrollFlag = false;
 
   var headerScroll = function () {
-    if (this.scrollY < $('.hero').height()) {
+    if (window.pageYOffset < $('.hero').height()) {
 
       if (headerScrollFlag) {
         headerScrollFlag = !headerScrollFlag;
@@ -117,9 +149,7 @@ if (sponsorsSliderBlock) {
       );
       let rank = currentSlide.getAttribute('data-rank');
 
-      document
-        .querySelectorAll('.sponsors__title-rank')
-        .forEach(function (elem) {
+      [].forEach.call( document.querySelectorAll('.sponsors__title-rank'), function (elem) {
           elem.classList.add(rankHideClass);
         });
 
@@ -136,7 +166,7 @@ if (sponsorsSliderBlock) {
 
   // Set new coll width for img-wrap
   var updateCollWidth = function () {
-    slides.forEach(function (slide, i) {
+    [].forEach.call(slides, function (slide, i) {
       // last slide always full width
       if (slides.length === i + 1) {
         var colls = collCount() == 6 ? 4 : collCount();
@@ -152,7 +182,7 @@ if (sponsorsSliderBlock) {
         }
       }
 
-      slide.querySelectorAll('.sponsors__img-wrap').forEach(function (elem) {
+      [].forEach.call( slide.querySelectorAll('.sponsors__img-wrap'), function (elem) {
         elem.style.width = collWidth().toFixed(0) + 'px';
       });
     });
@@ -222,7 +252,7 @@ function aboutSlider(slideElem, parent) {
 const aboutSliders = document.querySelectorAll('.about__slider-block');
 
 if (aboutSliders) {
-  aboutSliders.forEach(function (item) {
+  [].forEach.call(aboutSliders, function (item) {
     let slideElem = item.querySelector('.about__slider');
     aboutSlider(slideElem, item);
   });
