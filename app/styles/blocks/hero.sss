@@ -92,7 +92,6 @@
     @mixin fade-out 30px, .55s, .6s
 
   &__container
-    box: vertical center middle
     height: 100%
 
   &__title
@@ -100,7 +99,8 @@
     font-size: responsive 44px 120px
     font-range: $sm-px $xxl-px
     font-family: $font-title
-    margin-top: auto
+    position: absolute 50% 0 null 0
+    transform: translateY(-50%)
     cursor: default
 
     &-row
@@ -125,13 +125,14 @@
   &__discover
     text: 400 left 15px #fff @md 15px @lg 18px
     font-family: $font-title
-    margin-top: auto
+    position: absolute null 0 0 0
+    margin: auto
     cursor: pointer
     overflow: hidden
     padding-bottom: 12px
-    position: relative
     max-width: 67px
     text-align: center
+    width: 200px
     @mixin fade-out 0, .3s, .3s
 
     &:after

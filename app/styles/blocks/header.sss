@@ -2,9 +2,11 @@
   position: absolute 0 0 null 0
   z-index: 9999
   padding: 13px 0 @md 30px
+  left: calc((100% - 87.5% - 60px) / 2)
   margin: 20px auto @md 30px auto @xxl 40px auto
   max-width: 90% @md calc(90% + 60px) @md 87.5% @md calc(87.5% + 60px)
   min-height: 50px
+  overflow: hidden
 
   &--hide-top
     @mixin fade-out -30px, .3s
@@ -60,13 +62,15 @@
       &-wrap
         margin-left: @md 33.33333%
         transform: translateX(0) translateY(0) @md translateX(0)
+        justify-content: flex-start
 
     ^&__link
       text: $black
 
     ^&__logo--dark
       display: flex
-      position: @md absolute
+      position: @md absolute 0 null 0 null
+      margin: auto
 
     ^&__logo--white
       display: none
@@ -90,10 +94,11 @@
     box: center middle
 
     &-wrap
-      box: center
+      width: 100%
+      box: center middle
       display: @md-down none
       margin-left: @lg-down -5px @md-down 0
-      left:  @md 50%
+      left: @md 50%
       transform: translateX(0) translateY(15px) @md translateX(-50%)
       // transition: transform .3s ease-in-out, opacity .3s ease-in-out
       transition-delay: 0
@@ -112,6 +117,7 @@
 
       .header:not(.header--is-scroll) &
         position: absolute
+        top: 25px
 
   &__link
     text: 500 #fff 13px @lg 15px
