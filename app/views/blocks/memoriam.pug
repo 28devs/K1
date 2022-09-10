@@ -1,0 +1,15 @@
+block beforeBody
+  - bodyClasses.push('in-memoriam')
+
+.memoriam
+  .memoriam__container
+    .memoriam__row.memoriam__hero
+      .memoriam__column.memoriam__image
+        figure(role='img', aria-label='A portrait of Queen Elizabeth II')
+      .memoriam__column.memoriam__text
+        p Fair winds and <br> following seas your Majesty
+        h2.eyebrow Her Royal Highness
+        h2.headline Queen Elizabeth&nbsp;II
+        h3.date 1926&nbsp;-&nbsp;2022
+    .memoriam__row.memoriam__footer
+        a.memoriam__exit(href='/home.html') Continue to website

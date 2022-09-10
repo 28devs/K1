@@ -1,0 +1,163 @@
+.in-memoriam
+  min-width: 320px
+  min-height: 100vh
+  background-color: #000
+  color: #d4d4d4
+
+  .footer
+    display: none
+
+  .home
+    display: flex
+    flex-direction: column
+    min-height: 100vh
+    width: 100%
+    &:after
+      content: ''
+      position: fixed
+      pointer-events: none
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      border: 0 solid #171717
+      border-width: 0 @md 15px @lg 30px
+      z-index: 1
+
+.memoriam
+  display: flex
+  flex-direction: column
+  justify-content: start @lg center
+  flex: 1
+  &:after
+    content: ''
+    position: fixed null 6.25% null null
+    bottom: 14px @lg 25px
+    background: svg-load('icons/k1.svg' color: #171717) no-repeat center / contain
+    size: 50px @md 106px 100px @lg 186px 178px @xxl size('icons/k1.svg')
+    display: @md-down none
+    z-index: 1 @lg 0
+    @mixin fade-out 30px, .55s, .6s
+
+  &__container
+    position: relative
+    margin-left: auto
+    margin-right: auto
+    width: 100% @md 680px @lg 980px
+    display: flex
+    flex-grow: 0 @lg 1
+    flex-direction: column
+    z-index: 1
+
+  &__row
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
+    width: 100%
+
+  &__hero
+    min-height: auto @md 910px
+    padding-top: 30px @sm1 40px @md 60px @lg 0
+    flex-grow: 0 @lg 1
+
+  &__column
+    margin-left: auto
+    margin-right: auto
+    flex-basis: 100% @lg auto
+    max-width: 100%
+
+  &__image
+    align-self: center
+    order: 2 @lg 1
+    display: flex
+    justify-content: center
+    margin-bottom: 50px @md 100px @lg 0
+
+    figure
+      background-image: url(../images/memoriam/qe2-final.jpg)
+      width: 280px @sm1 308px @md 550px @lg 580px
+      height: 420px @sm1 462px @md 825px @lg 870px
+      background-size: 280px 420px @sm1 308px 462px @md 550px 825px @lg 580px 870px
+      background-repeat: no-repeat
+
+  &__footer
+    position: fixed
+    display: flex
+    width: 100%
+    align-items: center
+    justify-content: center
+    margin-top: 20px @lg 0px
+    margin-bottom: 40px @lg 60px
+    bottom: 0
+    left: 0
+    right: 0
+
+  &__text
+    text-align: center
+    align-self: center
+    font-family: $font-text
+    order: 1 @lg 2
+    font-size: 10px @sm1 15px
+
+    p
+      font-size: 1.2em @sm1 1em
+      line-height: 1.2
+      font-weight: 400
+      letter-spacing: .023em
+    h2.eyebrow
+      color: #f5f5f5
+      margin-top: 25px
+      font-size: 1.86666667em
+      line-height: 1
+      font-weight: 300
+    h2.headline
+      color: #f5f5f5
+      margin-top: 4px
+      font-size: 2.26666667em
+      line-height: 1
+      font-weight: 600
+      letter-spacing: -0.014em
+    h3.date
+      margin-top: 20px
+      font-size: 1.2em @sm1 1.4em
+      line-height: 1
+      font-weight: 300
+      letter-spacing: .02em
+
+    .memoriam__exit
+      display: none @lg block
+
+  &--is-hide
+    display: none
+
+  &--is-show
+
+    ^&__exit, &^&:after
+      @mixin fade-in
+
+  &__exit
+    display: block
+    color: #525252
+    position: relative
+    text-decoration: none
+    font-family: $font-text
+    cursor: pointer
+    text-align: center
+    width: 170px @lg 184px
+    @mixin fade-out 0, .3s, .3s
+
+    &:after
+      content: ''
+      display: block
+      background: svg-load('icons/wave.svg' fill: #404040)
+      size: size('icons/wave.svg')
+      margin: 6px auto 0
+      transition: .3s ease
+      position: absolute
+      background-position: -10px 0
+      width: 170px @lg 184px
+
+    &:hover
+
+      &:after
+        animation: wave 10s infinite linear

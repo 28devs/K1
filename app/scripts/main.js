@@ -362,8 +362,18 @@ if (loader) {
     }, 400);
 
     setTimeout(function () {
-      document.querySelector('.hero').classList.add('hero--is-show');
-      document.querySelector('.header').classList.add('header--is-show');
+      let heroEl = document.querySelector('.hero');
+      if (heroEl) {
+        heroEl.classList.add('hero--is-show');
+      }
+      let headerEl = document.querySelector('.header');
+      if (headerEl) {
+        headerEl.classList.add('header--is-show')
+      }
+      let memoriamEl = document.querySelector('.memoriam');
+      if (memoriamEl) {
+        memoriamEl.classList.add('memoriam--is-show');
+      }
     }, 700);
   } else {
     Cookies.set('load', true, {
@@ -401,6 +411,13 @@ if (loader) {
 
 var hero = document.querySelector('.hero');
 var links = document.querySelector('.links');
+var memoriam = document.querySelector('.memoriam');
+
+if (memoriam) {
+  setTimeout(function () {
+    memoriam.classList.add('memoriam--is-show');
+  }, 1000);
+}
 
 if (hero) {
   var header = document.querySelector('.header');
