@@ -26,12 +26,16 @@ html(lang='en' dir='ltr')
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-90570626-7');
+      link(rel="preconnect" href="https://fonts.bunny.net")
       link(href='/assets/styles/libs.css' rel='stylesheet')
-      link(href='https://fonts.googleapis.com/css?family=Cardo:400,700|Montserrat:400,500' rel='stylesheet')
+      link(href='https://fonts.bunny.net/css?family=cardo:400,700|montserrat:300,400,500,600' rel='stylesheet')
       link(href='/assets/styles/main.css?rev=@@hash' rel='stylesheet')
       link(rel='shortcut icon' href='/assets/images/icons/favicon.png' type='image/png')
 
-  body
+  - var bodyClasses = [];
+  block beforeBody
+
+  body(class=bodyClasses)
     include ../inc/header.pug
     block header
     block content
