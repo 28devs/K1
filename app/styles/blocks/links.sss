@@ -32,10 +32,7 @@
     margin-bottom: 60px
 
     & + &
-      margin-left: 5% @md 0 @xxl 50px
-
-    &:last-child
-      margin-top: 200px @md 0
+      margin-left: 5% @md 50px
 
     &:first-child, &:last-child
       .links__childs-title
@@ -88,7 +85,7 @@
       @mixin fade-out 30px, .3s, .6s
 
   &__items-wrap
-    box: wrap space-between @xxl top
+    box: wrap start @xxl top
     // margin: 0 @lg 0 -25px
     // overflow: hidden
     // overflow-x: auto @md hidden

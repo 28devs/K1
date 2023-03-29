@@ -1,14 +1,14 @@
 {
   "require": {
-    "deployer/deployer": "^6.3.0",
-    "php": ">=7.0"
+    "deployer/deployer": "^6.7",
+    "php": ">=7.2"
   },
   "scripts": {
     "post-install-cmd": [
-      "npm install; gulp build"
+      "npm install; npx gulp build --production"
     ],
     "post-update-cmd": [
-      "gulp build"
+      "npx gulp build --production"
     ]
   }
 }

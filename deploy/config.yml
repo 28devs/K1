@@ -1,5 +1,5 @@
 application: k1britannia
-default_stage: staging
+default_stage: ploi-k1
 local_path: ~/Sites/{{application}}
 rsync_options:
   - -k
